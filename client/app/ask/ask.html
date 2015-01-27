@@ -1,0 +1,34 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <h1>Post a Query!</h1>
+    <p class="lead">{{ask.user.name}} would like to know...</p>
+
+    <textarea class="form-control"
+    					ng-model="question"></textarea>
+
+    <p class="swipe-option">Swipe Left For:
+    	<input type="text"
+    				 class="form-control"
+    				 ng-model="swipeLeft">
+    </p>
+    <p class="swipe-option">Swipe Right For:
+    	<input type="text"
+    				 class="form-control"
+    				 ng-model="swipeRight">
+    </p>
+    <div class="clearfix"></div>
+    <div>
+    	<button class="btn btn-default">Upload photo</button>
+    </div>
+    <br>
+    <div>
+    	<button class="btn btn-default"
+    					ng-click="ask.postQuestion()">Post Question</button>
+    </div>
+    
+  </div>
+</header>
+
+<div ng-include="'components/footer/footer.html'"></div>

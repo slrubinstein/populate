@@ -1,22 +1,29 @@
 'use strict';
 
 angular.module('populateApp')
-  .controller('MainCtrl', function ($scope, $http) {
-    $scope.awesomeThings = [];
+  .controller('MainCtrl', MainCtrl);
 
-    $http.get('/api/things').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
-    });
+MainCtrl.$inject = ['$scope', '$http', '$state'];
 
-    $scope.addThing = function() {
-      if($scope.newThing === '') {
-        return;
-      }
-      $http.post('/api/things', { name: $scope.newThing });
-      $scope.newThing = '';
-    };
+function MainCtrl($scope, $http, $state) {
 
-    $scope.deleteThing = function(thing) {
-      $http.delete('/api/things/' + thing._id);
-    };
-  });
+  var vm = this;
+
+  vm.answer = answer;
+  vm.ask = ask;
+  vm.discover = discover;
+
+  function answer() {
+
+  }
+
+  function ask() {
+    $state.go('main.ask', {});
+  }
+
+  function discover() {
+
+  }
+
+
+}
