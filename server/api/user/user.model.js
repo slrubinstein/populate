@@ -4,6 +4,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var crypto = require('crypto');
 var authTypes = ['github', 'twitter', 'facebook', 'google'];
+var QuestionSchema = require('../question/question.model').Schema;
 
 var UserSchema = new Schema({
   name: String,
@@ -16,8 +17,12 @@ var UserSchema = new Schema({
   provider: String,
   salt: String,
   facebook: {},
-  questions: Array
+  questions: [QuestionSchema],
+  friends: Array
 });
+
+
+
 
 /**
  * Virtuals
@@ -141,6 +146,20 @@ UserSchema.methods = {
     if (!password || !this.salt) return '';
     var salt = new Buffer(this.salt, 'base64');
     return crypto.pbkdf2Sync(password, salt, 10000, 64).toString('base64');
+  },
+
+  // loadQuestions: function (cb) {
+  //   return this.model('User')
+  //         .find({_id: 'friends'})
+  //         .populate('questions');
+  // }
+  loadQuestions: function (cb) {
+    console.log('load q')
+    for (var i = 0, len = this.friends.length; i < len; i++) {
+      console.log(this.friends[i])
+    }
+    // console.log('f', f)
+          // .populate('questions');
   }
 };
 

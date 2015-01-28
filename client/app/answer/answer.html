@@ -1,0 +1,14 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <div ng-repeat="question in answer.questions">
+    	<h4>{{question.query}}</h4>
+    	<p>{{question.swipeLeft.option}}</p>
+    	<p>{{question.swipeRight.option}}</p>
+    </div>
+    
+  </div>
+</header>
+
+<div ng-include="'components/footer/footer.html'"></div>

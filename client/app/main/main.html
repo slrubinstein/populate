@@ -8,4 +8,13 @@
   </div>
 </header>
 
+<div>
+	<p>Current friends who are using Populate:</p>
+	<ul>
+		<li ng-repeat="friend in main.databaseFriends">
+			{{friend.name}} <button ng-click="main.addFriend($index)">add friend</button>
+		</li>
+	</ul>
+</div>
+
 <div ng-include="'components/footer/footer.html'"></div>

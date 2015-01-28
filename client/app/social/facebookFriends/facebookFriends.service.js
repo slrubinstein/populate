@@ -21,7 +21,6 @@ function facebookFriends() {
           function (response) {
             if (response && !response.error) {
               facebookFriends = response.data;
-              console.log('friends', facebookFriends)
               return facebookFriends;
             }
           }

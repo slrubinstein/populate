@@ -80,14 +80,30 @@ exports.changePassword = function(req, res, next) {
 };
 
 /**
- * Change a users password
+ * Add a question to a User's questions
  */
 exports.addQuestion = function(req, res, next) {
   var userId = req.user._id;
-  var questionId = req.body.questionId;
+console.log('add q')
+  User.findById(userId, function (err, user) {
+    console.log('req', req.body)
+    user.questions.push(req.body);
+    user.save(function(err) {
+      if (err) return next(err);
+      res.send(200);
+    });
+  });
+}
+
+/**
+ * Add a friend to a User's friends
+ */
+exports.addFriend = function(req, res, next) {
+  var userId = req.user._id;
+  var friendId = req.body.friendId;
 
   User.findById(userId, function (err, user) {
-    user.questions.push(questionId);
+    user.friends.push(friendId);
     user.save(function(err) {
       if (err) return next(err);
       res.send(200);
@@ -107,6 +123,20 @@ exports.me = function(req, res, next) {
     if (!user) return res.json(401);
     res.json(user);
   });
+};
+
+/**
+ * Load questions
+ */
+exports.loadQuestions = function(req, res, next) {
+  var userId = req.user._id;
+  User.findOne({
+    _id: userId
+  }).populate('friends')
+    .exec(function(err, user) {
+      if (err) return next(err);
+      res.json(user);
+  })
 };
 
 /**

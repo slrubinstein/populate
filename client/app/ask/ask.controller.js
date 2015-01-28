@@ -14,23 +14,6 @@ function AskCtrl($scope, $state, Auth, dataService) {
 	vm.swipeLeft = '';
 	vm.swipeRight = '';
 	vm.user = Auth.getCurrentUser();
-	console.log(vm.user)
-
-
-
-
-
-	FB.api(
-    "/me/friends",
-    function (response) {
-      if (response && !response.error) {
-        /* handle the result */
-      }
-    }
-	);
-
-
-
 
 
 	function postQuestion() {
@@ -48,5 +31,8 @@ function AskCtrl($scope, $state, Auth, dataService) {
 				image: ''
 			}
 		});
+		vm.question = '';
+		vm.swipeRight = '';
+		vm.swipeLeft = '';
 	}
 }
