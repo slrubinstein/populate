@@ -80,6 +80,22 @@ exports.changePassword = function(req, res, next) {
 };
 
 /**
+ * Change a users password
+ */
+exports.addQuestion = function(req, res, next) {
+  var userId = req.user._id;
+  var questionId = req.body.questionId;
+
+  User.findById(userId, function (err, user) {
+    user.questions.push(questionId);
+    user.save(function(err) {
+      if (err) return next(err);
+      res.send(200);
+    });
+  });
+}
+
+/**
  * Get my info
  */
 exports.me = function(req, res, next) {

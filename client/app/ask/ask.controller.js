@@ -16,10 +16,19 @@ function AskCtrl($scope, $state, Auth, dataService) {
 	vm.user = Auth.getCurrentUser();
 
 	function postQuestion() {
-		dataService.post(vm.user, {
-			question: vm.question,
-			swipeLeft: vm.swipeLeft,
-			swipeRight: vm.swipeRight
-		})
+		dataService.post({
+			owner: vm.user._id,
+			query: vm.question,
+			swipeLeft: {
+				option: vm.swipeLeft,
+				votes: 0,
+				image: ''
+			},
+			swipeRight: {
+				option: vm.swipeRight,
+				votes: 0,
+				image: ''
+			}
+		});
 	}
 }
