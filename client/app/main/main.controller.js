@@ -3,14 +3,15 @@
 angular.module('populateApp')
   .controller('MainCtrl', MainCtrl);
 
-MainCtrl.$inject = ['$scope', '$http', '$state'];
+MainCtrl.$inject = ['$scope', '$http', '$state', 'facebookFriends'];
 
-function MainCtrl($scope, $http, $state) {
+function MainCtrl($scope, $http, $state, facebookFriends) {
 
   var vm = this;
 
   vm.answer = answer;
   vm.discover = discover;
+  vm.friends = facebookFriends.getFriends();
 
   function answer() {
 
@@ -19,14 +20,5 @@ function MainCtrl($scope, $http, $state) {
   function discover() {
 
   }
-
-  FB.api(
-    "/me/friends",
-    function (response) {
-      if (response && !response.error) {
-        console.log('Friends', response)
-      }
-    }
-  );
-
+  
 }
