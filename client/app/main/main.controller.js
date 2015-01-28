@@ -20,5 +20,13 @@ function MainCtrl($scope, $http, $state) {
 
   }
 
+  FB.api(
+    "/me/friends",
+    function (response) {
+      if (response && !response.error) {
+        console.log('Friends', response)
+      }
+    }
+  );
 
 }
