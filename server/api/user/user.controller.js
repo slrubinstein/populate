@@ -84,9 +84,7 @@ exports.changePassword = function(req, res, next) {
  */
 exports.addQuestion = function(req, res, next) {
   var userId = req.user._id;
-console.log('add q')
   User.findById(userId, function (err, user) {
-    console.log('req', req.body)
     user.questions.push(req.body);
     user.save(function(err) {
       if (err) return next(err);
@@ -103,7 +101,9 @@ exports.addFriend = function(req, res, next) {
   var friendId = req.body.friendId;
 
   User.findById(userId, function (err, user) {
-    user.friends.push(friendId);
+    if (user.friends.indexOf(friendId) === -1) {
+      user.friends.push(friendId);
+    }
     user.save(function(err) {
       if (err) return next(err);
       res.send(200);
