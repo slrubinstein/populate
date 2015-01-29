@@ -3,7 +3,9 @@
 angular.module('populateApp')
   .factory('facebookFriends', facebookFriends);
 
-function facebookFriends() {
+facebookFriends.$inject = ['$q']
+
+function facebookFriends($q) {
 
   var facebookFriends = [];
 
@@ -13,6 +15,8 @@ function facebookFriends() {
   }
 
   function getFriends() {
+    var deferred = $q.defer();
+
     FB.getLoginStatus(function(response) {
       if (response.status === 'connected') {
 
@@ -21,11 +25,12 @@ function facebookFriends() {
           function (response) {
             if (response && !response.error) {
               facebookFriends = response.data;
-              return facebookFriends;
+              deferred.resolve(facebookFriends);
             }
           }
         );
       }
     });
+    return deferred.promise;
   }
 }

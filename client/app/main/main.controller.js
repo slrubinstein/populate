@@ -12,7 +12,7 @@ function MainCtrl($scope, $http, $state, facebookFriends,
   var vm = this;
 
   vm.addFriend = addFriend;
-  vm.friends = facebookFriends.getFriends();
+  vm.friends = [];
   vm.databaseFriends = [];
   vm.user;
 
@@ -20,10 +20,20 @@ function MainCtrl($scope, $http, $state, facebookFriends,
 
   function activate() {
   	vm.user = Auth.getCurrentUser();
-  	dataService.getFriendsFromDB()
-  	  .then(function(result) {
-  			vm.databaseFriends = result.data
-  	});
+
+    facebookFriends.getFriends()
+      .then(function(friends) {
+        var friendIds = _.pluck(friends, 'id');
+        console.log('friend ids', friendIds);
+    
+      	dataService.getFriendsFromDB(vm.user._id, friendIds)
+      	  .then(function(result) {
+            console.log('result', result)
+      			vm.databaseFriends = result.data;
+      	});
+      })
+
+
   }
 
   function addFriend(index) {

@@ -153,7 +153,22 @@ exports.loadQuestions = function(req, res, next) {
     .exec(function(err, user) {
       if (err) return next(err);
       res.json(user);
-  })
+  });
+};
+
+/**
+ * Load questions
+ */
+exports.loadFriends = function(req, res, next) {
+  var userId = req.user._id;
+  var friendIds = req.body.friendIds;
+
+  User.find({
+    'facebook.id': { $in: friendIds }
+  }, function(err, friends) {
+    if (err) return next(err);
+    res.json(friends);
+  });
 };
 
 /**

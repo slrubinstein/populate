@@ -20,8 +20,9 @@ function dataService($http) {
       {friendId: friendId});
   }
 
-  function getFriendsFromDB() {
-    return $http.get('/api/users/');
+  function getFriendsFromDB(userId, friendIds) {
+    console.log('get friends with id', userId)
+    return $http.post('/api/users/' + userId + '/load', {friendIds: friendIds});
   }
 
   function loadQuestions(userId) {
