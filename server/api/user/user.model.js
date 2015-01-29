@@ -4,7 +4,6 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var crypto = require('crypto');
 var authTypes = ['github', 'twitter', 'facebook', 'google'];
-var QuestionSchema = require('../question/question.model').Schema;
 
 var UserSchema = new Schema({
   name: String,
@@ -17,7 +16,8 @@ var UserSchema = new Schema({
   provider: String,
   salt: String,
   facebook: {},
-  questions: [QuestionSchema],
+  myQuestions: [{ type: Schema.Types.ObjectId, ref: 'Question' }],
+  questionQueue: [{ type: Schema.Types.ObjectId, ref: 'Question' }],
   friends: Array
 });
 
@@ -148,18 +148,14 @@ UserSchema.methods = {
     return crypto.pbkdf2Sync(password, salt, 10000, 64).toString('base64');
   },
 
-  // loadQuestions: function (cb) {
-  //   return this.model('User')
-  //         .find({_id: 'friends'})
-  //         .populate('questions');
-  // }
-  loadQuestions: function (cb) {
-    console.log('load q')
+  assignQuestionToFriends: function (questionId) {
     for (var i = 0, len = this.friends.length; i < len; i++) {
-      console.log(this.friends[i])
+      this.model('User').findOne({_id: this.friends[i]}, function(err, friend) {
+        if (err) throw err;
+        friend.questionQueue.push(questionId);
+        friend.save();
+      });
     }
-    // console.log('f', f)
-          // .populate('questions');
   }
 };
 

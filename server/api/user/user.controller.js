@@ -84,8 +84,25 @@ exports.changePassword = function(req, res, next) {
  */
 exports.addQuestion = function(req, res, next) {
   var userId = req.user._id;
+  var questionId = req.body.questionId;
   User.findById(userId, function (err, user) {
-    user.questions.push(req.body);
+    user.myQuestions.push(questionId);
+    user.save(function(err) {
+      if (err) return next(err);
+      res.send(200);
+    });
+  });
+}
+
+/**
+ * Add a question to a User's questions
+ */
+exports.addQuestion = function(req, res, next) {
+  var userId = req.user._id;
+  var questionId = req.body.questionId;
+  User.findById(userId, function (err, user) {
+    user.myQuestions.push(questionId);
+    user.assignQuestionToFriends(questionId);
     user.save(function(err) {
       if (err) return next(err);
       res.send(200);
@@ -132,7 +149,7 @@ exports.loadQuestions = function(req, res, next) {
   var userId = req.user._id;
   User.findOne({
     _id: userId
-  }).populate('friends')
+  }).populate('questionQueue')
     .exec(function(err, user) {
       if (err) return next(err);
       res.json(user);

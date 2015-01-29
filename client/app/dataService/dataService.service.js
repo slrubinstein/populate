@@ -11,7 +11,8 @@ function dataService($http) {
     addFriend: addFriend,
     getFriendsFromDB: getFriendsFromDB,
     loadQuestions: loadQuestions,
-    post: post
+    post: post,
+    vote: vote
   }
 
   function addFriend(userId, friendId) {
@@ -24,7 +25,6 @@ function dataService($http) {
   }
 
   function loadQuestions(userId) {
-    console.log('load q')
     return $http.get('/api/users/' + userId + '/loadquestions');
   }
 
@@ -32,7 +32,11 @@ function dataService($http) {
     return $http.post('/api/questions', questionOptions)
       .then(function(result) {
         $http.put('/api/users/' + questionOptions.owner +
-          '/addquestion', result.data)
+          '/addquestion', {questionId: result.data._id})
       });
+  }
+
+  function vote(question) {
+    return $http.put('/api/questions/' + question._id, question);
   }
 }

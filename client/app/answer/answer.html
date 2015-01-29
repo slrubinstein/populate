@@ -2,12 +2,17 @@
 
 <header class="hero-unit" id="banner">
   <div class="container">
-    <div ng-repeat="question in answer.questions">
-    	<h4>{{question.query}}</h4>
-    	<p>{{question.swipeLeft.option}}</p>
-    	<p>{{question.swipeRight.option}}</p>
+    <div>
+    	<h4>{{answer.currentQuestion.query}}</h4>
+    	<button class="btn btn-default left-swipe"
+    					ng-click="answer.vote('swipeLeft')">
+    					{{answer.currentQuestion.swipeLeft.option}}
+    	</button>
+    	<button class="btn btn-default right-swipe"
+    					ng-click="answer.vote('swipeRight')">
+    					{{answer.currentQuestion.swipeRight.option}}
+    	</button>
     </div>
-    
   </div>
 </header>
 
