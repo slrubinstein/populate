@@ -24,6 +24,7 @@ function facebookFriends($q) {
           "/me/friends",
           function (response) {
             if (response && !response.error) {
+              console.log('facebook friends returned', response)
               facebookFriends = response.data;
               deferred.resolve(facebookFriends);
             }

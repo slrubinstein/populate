@@ -163,11 +163,20 @@ exports.loadFriends = function(req, res, next) {
   var userId = req.user._id;
   var friendIds = req.body.friendIds;
 
-  User.find({
-    'facebook.id': { $in: friendIds }
-  }, function(err, friends) {
+  // find current logged in user
+  User.findById(userId, function(err, user) {
     if (err) return next(err);
-    res.json(friends);
+
+    // find other users whose facebook ID was returned as a friend
+    // by facebook BUT whose _id is not already in the friends array
+    User.find({ 'facebook.id': { $in: friendIds },
+                _id: { $nin: user.friends }
+              }, function(err, friends) {
+
+      if (err) return next(err);
+      res.json(friends);
+    });
+
   });
 };
 

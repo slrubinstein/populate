@@ -31,12 +31,13 @@ function MainCtrl($scope, $http, $state, facebookFriends,
             console.log('result', result)
       			vm.databaseFriends = result.data;
       	});
-      })
+      });
 
 
   }
 
   function addFriend(index) {
+    vm.friends.splice(index, 1);
   	dataService.addFriend(vm.user._id, vm.databaseFriends[index]._id);
   }
 
