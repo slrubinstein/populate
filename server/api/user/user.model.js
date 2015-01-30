@@ -149,9 +149,26 @@ UserSchema.methods = {
     return crypto.pbkdf2Sync(password, salt, 10000, 64).toString('base64');
   },
 
-  assignQuestionToFriends: function (questionId) {
-    for (var i = 0, len = this.friends.length; i < len; i++) {
-      this.model('User').findOne({_id: this.friends[i]}, function(err, friend) {
+  assignQuestionToFriends: function (selectedFriends, questionId) {
+    var thisUser = this;
+
+    if (selectedFriends === 'all') {
+      thisUser.addQsToFriends(this.friends, questionId);
+    } else {
+      // if only select friends, we need to match them up by facebookId
+      var facebookIds = _.pluck(selectedFriends,  'id');
+
+      this.model('User').find({ 'facebook.id' : { $in: facebookIds }
+        }, function(err, friends) {
+          if (err) throw err;
+          thisUser.addQsToFriends(friends, questionId);
+        });
+    }
+  },
+
+  addQsToFriends: function(friends, questionId) {
+    for (var i = 0, len = friends.length; i < len; i++) {
+      this.model('User').findOne({_id: friends[i]}, function(err, friend) {
         if (err) throw err;
         friend.questionQueue.push(questionId);
         friend.save();

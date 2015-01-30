@@ -3,12 +3,17 @@
 angular.module('populateApp')
   .controller('AskCtrl', AskCtrl);
 
-AskCtrl.$inject = ['$scope', '$state', 'Auth', 'dataService']
+AskCtrl.$inject = ['$scope', '$state', 'Auth', 'dataService',
+									 'facebookFriends']
 
-function AskCtrl($scope, $state, Auth, dataService) {
+function AskCtrl($scope, $state, Auth, dataService,
+								 facebookFriends) {
 
 	var vm = this;
 
+	vm.answerers;
+	vm.getFriends = getFriends;
+	vm.friends = [];
 	vm.postQuestion = postQuestion;
 	vm.question = '';
 	vm.swipeLeft = '';
@@ -16,7 +21,26 @@ function AskCtrl($scope, $state, Auth, dataService) {
 	vm.user = Auth.getCurrentUser();
 
 
+	function getFriends() {
+		if (vm.friends.length === 0) {
+			vm.friends = facebookFriends.getFriends()
+				.then(function(friends) {
+					vm.friends = friends;
+				});
+		}
+
+	}
+
 	function postQuestion() {
+		// send question only to selected friends
+		var selectedFriends = vm.answerers === 'all' ? 'all' :
+														vm.friends.filter(function(f) {
+															return f.selected;
+														});
+
+		// decide how to pass along if everyone is answering or just selected friends
+		console.log(selectedFriends)
+
 		dataService.post({
 			owner: vm.user._id,
 			query: vm.question,
@@ -30,7 +54,8 @@ function AskCtrl($scope, $state, Auth, dataService) {
 				votes: 0,
 				image: ''
 			}
-		});
+		}, selectedFriends);
+
 		vm.question = '';
 		vm.swipeRight = '';
 		vm.swipeLeft = '';

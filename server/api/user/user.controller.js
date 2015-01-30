@@ -100,9 +100,11 @@ exports.addQuestion = function(req, res, next) {
 exports.addQuestion = function(req, res, next) {
   var userId = req.user._id;
   var questionId = req.body.questionId;
+  var selectedFriends = req.body.selectedFriends;
+
   User.findById(userId, function (err, user) {
     user.myQuestions.push(questionId);
-    user.assignQuestionToFriends(questionId);
+    user.assignQuestionToFriends(selectedFriends, questionId);
     user.save(function(err) {
       if (err) return next(err);
       res.send(200);
