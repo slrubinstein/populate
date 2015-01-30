@@ -4,3 +4,15 @@
 	float: left;
 	margin: 20px 0;
 }
+
+.container p {
+	text-align: left;
+}
+
+.friend-zone {
+	text-align: left;
+
+	li {
+		list-item-style: none;
+	}
+}

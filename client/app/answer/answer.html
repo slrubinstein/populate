@@ -1,7 +1,7 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <header class="hero-unit" id="banner">
-  <div class="container">
+  <div ng-if="!answer.end" class="container">
     <div>
     	<h4>{{answer.currentQuestion.query}}</h4>
     	<button class="btn btn-default left-swipe"
@@ -13,6 +13,11 @@
     					{{answer.currentQuestion.swipeRight.option}}
     	</button>
     </div>
+  </div>
+  <div ng-if="answer.end" class="container">
+    <h4>There are no more question to answer. Why don't you ask some?</h4>
+
+
   </div>
 </header>
 

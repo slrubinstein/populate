@@ -3,15 +3,16 @@
 angular.module('populateApp')
   .controller('AnswerCtrl', AnswerCtrl);
 
-AnswerCtrl.$inject = ['$scope', 'dataService', 'Auth']
+AnswerCtrl.$inject = ['$scope', 'dataService', 'Auth', '$state']
 
-function AnswerCtrl($scope, dataService, Auth) {
+function AnswerCtrl($scope, dataService, Auth, $state) {
 
 	var vm = this;
 
 	var index = 0;
 
 	vm.currentQuestion = {};
+	vm.end = false;
 	vm.friends;
 	vm.questions = [];
 	vm.user;
@@ -23,11 +24,8 @@ function AnswerCtrl($scope, dataService, Auth) {
 		vm.user = Auth.getCurrentUser();
 		dataService.loadQuestions(vm.user.friends)
 			.then(function(result) {
-				console.log(result)
 				vm.questions = result.data.questionQueue;
-				
 				vm.currentQuestion = vm.questions[index];
-				console.log(vm.questions)
 			});
 
 	}
@@ -36,7 +34,11 @@ function AnswerCtrl($scope, dataService, Auth) {
 		vm.currentQuestion[swipeDir].votes++;
 		dataService.vote(vm.currentQuestion);
 		index++;
-		vm.currentQuestion = vm.questions[index];
+		if (vm.questions[index]) {
+			vm.currentQuestion = vm.questions[index];
+		} else {
+			vm.end = true;
+		}
 
 	}
 
