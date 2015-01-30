@@ -24,12 +24,19 @@ function MainCtrl($scope, $http, $state, facebookFriends,
   	vm.user = Auth.getCurrentUser();
 
     Auth.isLoggedInAsync(function(loggedIn) {
+      console.log('logged in?', loggedIn)
       if (loggedIn) {
-        getFriends();
         vm.loggedIn = true;
-        console.log('user', vm.user)
       }
     });
+
+    facebookFriends.activate()
+      .then(function() {
+        if (vm.loggedIn) {
+          console.log('logged in and fbook active?', vm.loggedIn)
+          getFriends();
+        }
+      })
 
   }
 
@@ -41,11 +48,13 @@ function MainCtrl($scope, $http, $state, facebookFriends,
   function getFriends() {
     facebookFriends.getFriends()
       .then(function(friends) {
+        console.log('friends', friends)
         var friendIds = _.pluck(friends, 'id');
     
         dataService.getFriendsFromDB(vm.user._id, friendIds)
           .then(function(result) {
             vm.databaseFriends = result.data;
+            console.log('friends', vm.databaseFriends)
         });
     });
   }

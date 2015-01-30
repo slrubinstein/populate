@@ -22,7 +22,7 @@ function dataService($http) {
   }
 
   function getFriendsFromDB(userId, friendIds) {
-    return $http.post('/api/users/' + userId + '/load', {friendIds: friendIds});
+    return $http.post('/api/users/' + userId + '/loadfriends', {friendIds: friendIds});
   }
 
   function loadQuestionQueue(userId) {

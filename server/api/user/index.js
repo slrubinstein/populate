@@ -17,6 +17,6 @@ router.get('/:id', auth.isAuthenticated(), controller.show);
 router.get('/:id/loadquestionqueue', auth.isAuthenticated(), controller.loadQuestionQueue);
 router.get('/:id/pastquestions', auth.isAuthenticated(), controller.pastQuestions);
 router.post('/', controller.create);
-router.post('/:id/load', auth.isAuthenticated(), controller.loadFriends);
+router.post('/:id/loadfriends', auth.isAuthenticated(), controller.loadFriends);
 
 module.exports = router;

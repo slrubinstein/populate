@@ -8,30 +8,58 @@ facebookFriends.$inject = ['$q']
 function facebookFriends($q) {
 
   var facebookFriends = [];
+  var facebookLogin = false;
 
   return {
+    activate: activate,
     facebookFriends: facebookFriends,
-    getFriends: getFriends
+    getFriends: getFriends,
+    facebookLogin: facebookLogin
+  }
+
+  function activate() {
+    // returns a promise so friends will not be requested
+    // before facebook api has loaded
+    var deferred = $q.defer();
+
+     window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '776373095733502',
+        xfbml      : true,
+        version    : 'v2.1',
+        status     : true
+      });
+      deferred.resolve(true);
+    };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+
+    return deferred.promise;
   }
 
   function getFriends() {
     var deferred = $q.defer();
-
+    console.log('getfriends')
     if (!FB) {
+      console.log('not finding FB')
       return;
     }
 
     FB.getLoginStatus(function(response) {
-      console.log('get login status', response)
+console.log('login response', response)
       if (response.status === 'connected') {
 
         FB.api(
           "/me/friends",
           function (response) {
-            console.log('FB.api')
-            console.log(response)
+console.log('f book response', response)
             if (response && !response.error) {
-              console.log('facebook friends returned', response)
               facebookFriends = response.data;
               deferred.resolve(facebookFriends);
             }
