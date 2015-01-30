@@ -17,12 +17,19 @@ function facebookFriends($q) {
   function getFriends() {
     var deferred = $q.defer();
 
+    if (!FB) {
+      return;
+    }
+
     FB.getLoginStatus(function(response) {
+      console.log('get login status', response)
       if (response.status === 'connected') {
 
         FB.api(
           "/me/friends",
           function (response) {
+            console.log('FB.api')
+            console.log(response)
             if (response && !response.error) {
               console.log('facebook friends returned', response)
               facebookFriends = response.data;

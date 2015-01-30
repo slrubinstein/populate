@@ -25,7 +25,7 @@ function AskCtrl($scope, $state, Auth, dataService,
 
 	function getFriends() {
 		if (vm.friends.length === 0) {
-			vm.friends = facebookFriends.getFriends()
+			facebookFriends.getFriends()
 				.then(function(friends) {
 					vm.friends = friends;
 				});

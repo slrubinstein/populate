@@ -25,7 +25,7 @@ function AnswerCtrl($scope, dataService, Auth, $state) {
 		dataService.loadQuestionQueue(vm.user._id)
 			.then(function(result) {
 				vm.questions = result.data.questionQueue;
-				vm.currentQuestion = vm.questions[index];
+				setNextQuestion(index);
 			});
 
 	}
@@ -34,13 +34,16 @@ function AnswerCtrl($scope, dataService, Auth, $state) {
 		vm.currentQuestion[swipeDir].votes++;
 		dataService.vote(vm.currentQuestion);
 		index++;
+		setNextQuestion(index);
+
+	}
+
+	function setNextQuestion(index) {
 		if (vm.questions[index]) {
 			vm.currentQuestion = vm.questions[index];
 		} else {
 			vm.end = true;
 		}
-
 	}
-
 
 }
