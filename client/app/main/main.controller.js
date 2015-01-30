@@ -4,10 +4,10 @@ angular.module('populateApp')
   .controller('MainCtrl', MainCtrl);
 
 MainCtrl.$inject = ['$scope', '$http', '$state', 'facebookFriends',
-										'dataService', 'Auth'];
+										'dataService', 'Auth', '$window'];
 
 function MainCtrl($scope, $http, $state, facebookFriends,
-									dataService, Auth) {
+									dataService, Auth, $window) {
 
   var vm = this;
 
@@ -21,18 +21,11 @@ function MainCtrl($scope, $http, $state, facebookFriends,
   function activate() {
   	vm.user = Auth.getCurrentUser();
 
-    facebookFriends.getFriends()
-      .then(function(friends) {
-        var friendIds = _.pluck(friends, 'id');
-        console.log('friend ids', friendIds);
-    
-      	dataService.getFriendsFromDB(vm.user._id, friendIds)
-      	  .then(function(result) {
-            console.log('result', result)
-      			vm.databaseFriends = result.data;
-      	});
-      });
-
+    Auth.isLoggedInAsync(function(loggedIn) {
+      if (loggedIn) {
+        getFriends();
+      }
+    });
 
   }
 
@@ -41,4 +34,20 @@ function MainCtrl($scope, $http, $state, facebookFriends,
   	dataService.addFriend(vm.user._id, vm.databaseFriends[index]._id);
   }
 
+  function getFriends() {
+    facebookFriends.getFriends()
+      .then(function(friends) {
+        var friendIds = _.pluck(friends, 'id');
+        console.log('friend ids', friendIds);
+    
+        dataService.getFriendsFromDB(vm.user._id, friendIds)
+          .then(function(result) {
+            vm.databaseFriends = result.data;
+        });
+    });
+  }
+
+  function loginOauth(provider) {
+    $window.location.href = '/auth/' + provider;
+  };
 }
