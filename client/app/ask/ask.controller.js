@@ -66,9 +66,7 @@ function AskCtrl($scope, $state, Auth, dataService,
 	function seePastQuestions() {
 		dataService.seePastQuestions(vm.user._id)
 			.then(function(result) {
-				console.log('past questions returning', result)
 				$state.go('ask.pastquestions', {pastQuestions: result.data});
 			});
 	}
-	console.log('past questions param', vm.pastQuestions)
 }

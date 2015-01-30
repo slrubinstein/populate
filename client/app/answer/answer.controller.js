@@ -22,7 +22,7 @@ function AnswerCtrl($scope, dataService, Auth, $state) {
 
 	function activate() {
 		vm.user = Auth.getCurrentUser();
-		dataService.loadQuestions(vm.user._id)
+		dataService.loadQuestionQueue(vm.user._id)
 			.then(function(result) {
 				vm.questions = result.data.questionQueue;
 				vm.currentQuestion = vm.questions[index];
