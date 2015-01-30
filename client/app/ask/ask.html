@@ -2,57 +2,10 @@
 
 <header class="hero-unit" id="banner">
   <div class="container">
-    <h1>Post a Query!</h1>
-    <p class="lead">{{ask.user.name}} would like to know...</p>
-
-    <textarea class="form-control"
-    	        ng-model="ask.question"
-              maxlength="140"></textarea>
-
-    <p class="swipe-option">Swipe Left For:
-    	<input type="text"
-    				 class="form-control"
-    				 ng-model="ask.swipeLeft">
-    </p>
-    <p class="swipe-option">Swipe Right For:
-    	<input type="text"
-    				 class="form-control"
-    				 ng-model="ask.swipeRight">
-    </p>
-    <div class="clearfix"></div>
-    <div>
-    	<button class="btn btn-default">Upload photo</button>
-    </div>
+    <div ui-view></div>
   </div>
-
-  <div class="container">
-    <div class="col-xs-6">
-      <h4>Who should answer?</h4>
-      <form class="who-should-answer">
-        <p><input type="radio"
-             ng-model="ask.answerers"
-             value="all" /> Everyone</p>
-        <p><input type="radio"
-             ng-model="ask.answerers"
-             value="friends"
-             ng-change="ask.getFriends()" /> Just these guys:</p>
-      </form>
-      <div class="friend-zone">
-        <ul>
-          <li ng-repeat="friend in ask.friends">
-            <input type="checkbox"
-                   ng-model="friend.selected" />{{friend.name}}
-          </li>
-        </ul>
-      </div>
-    </div>
-    <br>
-    <div class="col-xs-6">
-    	<button class="btn btn-default"
-    					ng-click="ask.postQuestion()">Post Question</button>
-    </div>
-  </div>
-
+  <button class="btn btn-default"
+        ng-click="ask.seePastQuestions()">My past questions</button>
 </header>
 
 <div ng-include="'components/footer/footer.html'"></div>

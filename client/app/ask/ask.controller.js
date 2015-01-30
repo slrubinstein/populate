@@ -4,22 +4,24 @@ angular.module('populateApp')
   .controller('AskCtrl', AskCtrl);
 
 AskCtrl.$inject = ['$scope', '$state', 'Auth', 'dataService',
-									 'facebookFriends']
+									 'facebookFriends', '$stateParams']
 
 function AskCtrl($scope, $state, Auth, dataService,
-								 facebookFriends) {
+								 facebookFriends, $stateParams) {
 
 	var vm = this;
 
 	vm.answerers;
 	vm.getFriends = getFriends;
 	vm.friends = [];
+	vm.newQuestion = $stateParams.newQuestion;
+	vm.pastQuestions = $stateParams.pastQuestions;
 	vm.postQuestion = postQuestion;
 	vm.question = '';
+	vm.seePastQuestions = seePastQuestions;
 	vm.swipeLeft = '';
 	vm.swipeRight = '';
 	vm.user = Auth.getCurrentUser();
-
 
 	function getFriends() {
 		if (vm.friends.length === 0) {
@@ -41,7 +43,7 @@ function AskCtrl($scope, $state, Auth, dataService,
 															return f.selected;
 														});
 
-		dataService.post({
+		var newQuestion = {
 			owner: vm.user._id,
 			query: vm.question,
 			swipeLeft: {
@@ -54,10 +56,19 @@ function AskCtrl($scope, $state, Auth, dataService,
 				votes: 0,
 				image: ''
 			}
-		}, selectedFriends);
+		};
 
-		vm.question = '';
-		vm.swipeRight = '';
-		vm.swipeLeft = '';
+		dataService.post(newQuestion, selectedFriends);
+
+		$state.go('ask.confirmation', {newQuestion: newQuestion});
 	}
+
+	function seePastQuestions() {
+		dataService.seePastQuestions(vm.user._id)
+			.then(function(result) {
+				console.log('past questions returning', result)
+				$state.go('ask.pastquestions', {pastQuestions: result.data});
+			});
+	}
+	console.log('past questions param', vm.pastQuestions)
 }

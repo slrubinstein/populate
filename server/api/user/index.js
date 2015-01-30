@@ -14,7 +14,8 @@ router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
 router.put('/:id/addfriend', auth.isAuthenticated(), controller.addFriend);
 router.put('/:id/addquestion', auth.isAuthenticated(), controller.addQuestion);
 router.get('/:id', auth.isAuthenticated(), controller.show);
-router.get('/:id/loadquestions', auth.isAuthenticated(), controller.loadQuestions);
+router.get('/:id/loadquestionqueue', auth.isAuthenticated(), controller.loadQuestionQueue);
+router.get('/:id/pastquestions', auth.isAuthenticated(), controller.pastQuestions);
 router.post('/', controller.create);
 router.post('/:id/load', auth.isAuthenticated(), controller.loadFriends);
 

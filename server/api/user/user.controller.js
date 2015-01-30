@@ -147,7 +147,7 @@ exports.me = function(req, res, next) {
 /**
  * Load questions
  */
-exports.loadQuestions = function(req, res, next) {
+exports.loadQuestionQueue = function(req, res, next) {
   var userId = req.user._id;
   User.findOne({
     _id: userId
@@ -155,6 +155,20 @@ exports.loadQuestions = function(req, res, next) {
     .exec(function(err, user) {
       if (err) return next(err);
       res.json(user);
+  });
+};
+
+/**
+ * Load questions
+ */
+exports.pastQuestions = function(req, res, next) {
+  var userId = req.user._id;
+  User.findOne({
+    _id: userId
+  }).populate('myQuestions')
+    .exec(function(err, user) {
+      if (err) return next(err);
+      res.json(user.myQuestions);
   });
 };
 

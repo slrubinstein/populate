@@ -10,8 +10,9 @@ function dataService($http) {
   return {
     addFriend: addFriend,
     getFriendsFromDB: getFriendsFromDB,
-    loadQuestions: loadQuestions,
+    loadQuestionQueue: loadQuestionQueue,
     post: post,
+    seePastQuestions: seePastQuestions,
     vote: vote
   }
 
@@ -24,8 +25,8 @@ function dataService($http) {
     return $http.post('/api/users/' + userId + '/load', {friendIds: friendIds});
   }
 
-  function loadQuestions(userId) {
-    return $http.get('/api/users/' + userId + '/loadquestions');
+  function loadQuestionQueue(userId) {
+    return $http.get('/api/users/' + userId + '/loadquestionqueue');
   }
 
   function post(questionOptions, selectedFriends) {
@@ -35,6 +36,10 @@ function dataService($http) {
           '/addquestion', {questionId: result.data._id,
                            selectedFriends: selectedFriends})
       });
+  }
+
+  function seePastQuestions(userId) {
+    return $http.get('/api/users/' + userId + '/pastquestions');
   }
 
   function vote(question) {
