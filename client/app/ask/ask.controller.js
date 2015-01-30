@@ -32,14 +32,14 @@ function AskCtrl($scope, $state, Auth, dataService,
 	}
 
 	function postQuestion() {
+		if (vm.answerers === undefined) {
+			return;
+		}
 		// send question only to selected friends
 		var selectedFriends = vm.answerers === 'all' ? 'all' :
 														vm.friends.filter(function(f) {
 															return f.selected;
 														});
-
-		// decide how to pass along if everyone is answering or just selected friends
-		console.log(selectedFriends)
 
 		dataService.post({
 			owner: vm.user._id,
