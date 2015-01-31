@@ -178,17 +178,14 @@ exports.pastQuestions = function(req, res, next) {
 exports.loadFriends = function(req, res, next) {
   var userId = req.user._id;
   var friendIds = req.body.friendIds;
-  console.log('friends ids', friendIds)
   // find current logged in user
   User.findById(userId, function(err, user) {
     if (err) return next(err);
-    console.log('searching this user for friends', user)
     // find other users whose facebook ID was returned as a friend
     // by facebook BUT whose _id is not already in the friends array
     User.find({ 'facebook.id': { $in: friendIds },
                 _id: { $nin: user.friends }
               }, function(err, newFriends) {
-      console.log('returned these friends', newFriends)
       if (err) return next(err);
       res.json(newFriends);
     });

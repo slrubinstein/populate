@@ -29,7 +29,6 @@ function AskCtrl($scope, $state, Auth, dataService,
 			dataService.getUserFriends()
 				.then(function(result) {
 					vm.friends = result.data.friends;
-					console.log('returned ', vm.friends)
 				});
 		}
 
