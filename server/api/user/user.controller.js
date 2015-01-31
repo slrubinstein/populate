@@ -173,7 +173,7 @@ exports.pastQuestions = function(req, res, next) {
 };
 
 /**
- * Load questions
+ * Load friends
  */
 exports.loadFriends = function(req, res, next) {
   var userId = req.user._id;
@@ -193,6 +193,21 @@ exports.loadFriends = function(req, res, next) {
       res.json(newFriends);
     });
 
+  });
+};
+
+
+/**
+ * Get user friends
+ */
+exports.getUserFriends = function(req, res, next) {
+  var userId = req.user._id;
+  User.findOne({
+    _id: userId
+  }).populate('friends')
+    .exec(function(err, user) {
+      if (err) return next(err);
+      res.json(user);
   });
 };
 

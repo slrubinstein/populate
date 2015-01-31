@@ -10,6 +10,7 @@ function dataService($http) {
   return {
     addFriend: addFriend,
     getFriendsFromDB: getFriendsFromDB,
+    getUserFriends: getUserFriends,
     loadQuestionQueue: loadQuestionQueue,
     post: post,
     seePastQuestions: seePastQuestions,
@@ -23,6 +24,10 @@ function dataService($http) {
 
   function getFriendsFromDB(userId, friendIds) {
     return $http.post('/api/users/' + userId + '/loadfriends', {friendIds: friendIds});
+  }
+
+  function getUserFriends(userId) {
+    return $http.get('api/users/' + userId + '/getuserfriends');
   }
 
   function loadQuestionQueue(userId) {
