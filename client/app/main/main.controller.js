@@ -40,8 +40,10 @@ function MainCtrl($scope, $http, $state, facebookFriends,
   }
 
   function addFriend(index) {
+    console.log('user', vm.user)
+    console.log('friends', vm.databaseFriends)
+    dataService.addFriend(vm.user._id, vm.databaseFriends[index]._id);
     vm.databaseFriends.splice(index, 1);
-  	dataService.addFriend(vm.user._id, vm.databaseFriends[index]._id);
   }
 
   function getFriends() {
