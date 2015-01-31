@@ -23,7 +23,7 @@ angular.module('populateApp')
         params: { newQuestion: {} }
       })
       .state('ask.pastquestions', {
-      	url: 'pastquestions',
+      	url: '/pastquestions',
       	templateUrl: 'app/ask/ask.pastquestions.html',
       	controller: 'AskCtrl',
       	controllerAs: 'ask',

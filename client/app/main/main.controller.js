@@ -12,7 +12,6 @@ function MainCtrl($scope, $http, $state, facebookFriends,
   var vm = this;
 
   vm.addFriend = addFriend;
-  vm.friends = [];
   vm.databaseFriends = [];
   vm.loggedIn = false;
   vm.loginOauth = loginOauth;
@@ -41,7 +40,7 @@ function MainCtrl($scope, $http, $state, facebookFriends,
   }
 
   function addFriend(index) {
-    vm.friends.splice(index, 1);
+    vm.databaseFriends.splice(index, 1);
   	dataService.addFriend(vm.user._id, vm.databaseFriends[index]._id);
   }
 
@@ -54,7 +53,7 @@ function MainCtrl($scope, $http, $state, facebookFriends,
         dataService.getFriendsFromDB(vm.user._id, friendIds)
           .then(function(result) {
             vm.databaseFriends = result.data;
-            console.log('friends', vm.databaseFriends)
+            console.log('friends from DB', vm.databaseFriends)
         });
     });
   }
