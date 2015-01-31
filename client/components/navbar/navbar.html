@@ -1,8 +1,19 @@
 <div class="navbar navbar-default navbar-static-top" ng-controller="NavbarCtrl">
   <header class="hero-unit" id="banner">
     <div class="container">
-      <h2>Populate</h2>
-      <p class="lead">Ask More. Be Heard.</p>
+      <div class="col-xs-4"></div>
+
+      <div class="col-xs-4">
+        <h2>Populate</h2>
+        <p class="lead">Ask More. Be Heard.</p>
+      </div>
+
+      <div class="col-xs-4">
+        <img ng-if="profile.profilePage" 
+             id="user-pic"
+             ng-src={{profile.profilePic}} />
+      </div>
+
     </div>
   </header>
 </div>
