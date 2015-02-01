@@ -33,7 +33,7 @@ function MainCtrl($scope, $http, $state, facebookFriends,
         if (vm.loggedIn) {
           getFriends();
         }
-      })
+      });
 
   }
 

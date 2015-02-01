@@ -21,7 +21,11 @@ function AskCtrl($scope, $state, Auth, dataService,
 	vm.seePastQuestions = seePastQuestions;
 	vm.swipeLeft = '';
 	vm.swipeRight = '';
+	vm.timer = 1;
 	vm.user = Auth.getCurrentUser();
+
+	vm.profilePic = 'https://graph.facebook.com/' +
+                   vm.user.facebook.id + '/picture' || null;
 
 	function getFriends() {
 		if (vm.friends.length === 0) {

@@ -17,3 +17,41 @@
 		list-style-type: none;
 	}
 }
+
+.top-row {
+	min-height: 72px;
+
+	.question-box {
+		width: 78%;
+	}
+}
+
+.lead img {
+	float: left;
+	margin: 10px;
+}
+
+.mid-row {
+
+	.swipe-option {
+		width: 50%;
+		height: 100px;
+		margin-bottom: -1px;
+		margin-top: 0px;
+	}
+
+	.btn {
+		width: 49.5%;
+	}
+}
+
+/*.bottom-row {
+	border-bottom: 1px solid;
+}*/
+
+#ask-button {
+  width: 100%;
+  background-color: #F55858;
+  border-radius: 0;
+  border: 0;
+}

@@ -1,28 +1,36 @@
-<h4>Post a Query!</h4>
-<p class="lead">{{ask.user.name}} would like to know...</p>
-
-<textarea class="form-control"
-	        ng-model="ask.question"
-          maxlength="140"></textarea>
-
-<p class="swipe-option">Swipe Left For:
-	<input type="text"
-				 class="form-control"
-				 ng-model="ask.swipeLeft">
-</p>
-<p class="swipe-option">Swipe Right For:
-	<input type="text"
-				 class="form-control"
-				 ng-model="ask.swipeRight">
-</p>
+<div class="top-row">
+  <p class="lead">{{ask.user.name}} would like to know...
+    <img ng-src={{ask.profilePic}}>
+    <textarea class="form-control question-box"
+              ng-model="ask.question"
+              maxlength="140"></textarea>
+  </p>
+</div>
 <div class="clearfix"></div>
-<div>
-	<button class="btn btn-default">Upload photo</button>
+
+<div class="mid-row">
+
+    <textarea class="form-control swipe-option"
+                ng-model="ask.swipeLeft"
+                maxlength="140"></textarea>
+
+    <textarea type="text"
+                class="form-control swipe-option"
+                ng-model="ask.swipeRight"
+                maxlength="140"></textarea>
+  <div class="clearfix"></div>
+    <div class="button-row">
+    <button class="btn btn-default">Add photo</button>
+    <button class="btn btn-default">Add photo</button>
+    </div>
+  <br>
 </div>
 
-<div class="container">
-  <div class="col-xs-6">
-    <h4>Voters</h4>
+
+<div class="bottom-row">
+  <div class="container">
+    <h3>Select Voters</h3>
+
     <form class="who-should-answer">
       <p><input type="radio"
            ng-model="ask.answerers"
@@ -41,9 +49,25 @@
       </ul>
     </div>
   </div>
-  <br>
-  <div class="col-xs-6">
-  	<button class="btn btn-default"
-  					ng-click="ask.postQuestion()">Post Question</button>
+
+  <div class="container">
+    <h3>Timer</h3>
+    <div class="col-xs-9">
+      <input type="range"
+            min="1"
+            max="100"
+            ng-model="ask.timer">
+    </div>
+    <div class="col-xs-3">
+      {{ask.timer}}
+    </div>
+
+
   </div>
 </div>
+
+<!-- <div class="container"> -->
+  <button class="btn btn-default btn-lg"
+          id="ask-button"
+          ng-click="ask.postQuestion()">Ask!</button>
+<!-- </div> -->
