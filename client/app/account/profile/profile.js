@@ -9,6 +9,12 @@ angular.module('populateApp')
         controller: 'ProfileCtrl',
         controllerAs: 'profile'
       })
+      .state('profile.me', {
+      	url: '/me',
+      	templateUrl: 'app/account/profile/profile.me.html',
+      	controller: 'ProfileCtrl',
+      	controllerAs: 'profile'
+      })
       .state('profile.myquestions', {
       	url: '/myquestions',
       	templateUrl: 'app/account/profile/profile.myquestions.html',

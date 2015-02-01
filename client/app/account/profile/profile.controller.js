@@ -11,6 +11,8 @@ function ProfileCtrl(Auth, dataService, $state) {
 
   vm.loggedIn = false;
   vm.myQuestions = [];
+  vm.myQuestionsActive = [];
+  vm.myQuestionsInactive = [];
   vm.pastQuestions = [];
   vm.profilePage = true;
   vm.seeMyQuestions = seeMyQuestions;
@@ -35,11 +37,17 @@ function ProfileCtrl(Auth, dataService, $state) {
         console.log(result.data)
         vm.myQuestions = result.data.myQuestions;
         vm.questionsAnswered = result.data.questionsAnswered;
+        vm.myQuestionsActive = _.filter(vm.myQuestions, function(q) {
+          return q.isActive;
+        });
+        vm.myQuestionsInactive = _.filter(vm.myQuestions, function(q) {
+          return !q.isActive;
+        });
       })
   }
 
   function seeMyQuestions() {
-    $state.go('profile.myquestions', {myQuestions: myQuestions});
+    $state.go('profile.myquestions', {myQuestions: vm.myQuestions});
   }
 
   function seePastQuestions() {

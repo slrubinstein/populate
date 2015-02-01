@@ -1,17 +1,5 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<div class="container">
-  <button class="btn btn-default" ng-click="profile.seeMyQuestions()">
-  	{{profile.myQuestions.length}} questions asked.
-  </button>
-</div>
-
-<div class="container">
-	<button class="btn btn-default" ng-click="profile.seePastQuestions()">
-		{{profile.questionsAnswered.length}} questions answered.
-	</button>
-</div>
-
 <div ui-view></div>
 
 <div ng-include="'components/footer/footer.html'"></div>

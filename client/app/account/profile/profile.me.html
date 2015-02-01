@@ -1,0 +1,29 @@
+<div class="container profile-view">
+  <button class="btn btn-default" ng-click="profile.seeMyQuestions()">
+  	{{profile.myQuestions.length}} questions asked.
+  </button>
+
+	<button class="btn btn-default" ng-click="profile.seePastQuestions()">
+		{{profile.questionsAnswered.length}} questions answered.
+	</button>
+	<div class="clearfix"></div>
+	<button class="btn btn-default">Edit Profile</button>
+</div>
+
+<div class="container question-list">
+	<h3>Active</h3>
+	<div ng-repeat="question in profile.myQuestionsActive">
+		<button class="btn btn-default">{{question.query}}</button>
+		<button class="btn btn-default">{{question.swipeLeft.option}}</button>
+		<button class="btn btn-default">{{question.swipeRight.option}}</button>
+	</div>
+</div>
+
+<div class="container question-list">
+	<h3>Past</h3>
+	<div ng-repeat="question in profile.myQuestionsInactive | limitTo: 2">
+		<button class="btn btn-default">{{question.query}}</button>
+		<button class="btn btn-default">{{question.swipeLeft.option}}</button>
+		<button class="btn btn-default">{{question.swipeRight.option}}</button>
+	</div>
+</div>

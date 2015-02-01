@@ -14,7 +14,8 @@ var QuestionSchema = new Schema({
   swipeRight: {
   	option: String,
   	votes: Number,
-  	image: String
+  	image: String,
+    isActive: Boolean
   }
 });
 
