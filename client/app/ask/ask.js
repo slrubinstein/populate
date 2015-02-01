@@ -21,12 +21,5 @@ angular.module('populateApp')
         controller: 'AskCtrl',
         controllerAs: 'ask',
         params: { newQuestion: {} }
-      })
-      .state('ask.pastquestions', {
-      	url: '/pastquestions',
-      	templateUrl: 'app/ask/ask.pastquestions.html',
-      	controller: 'AskCtrl',
-      	controllerAs: 'ask',
-      	params: { pastQuestions: {} }
       });
   });

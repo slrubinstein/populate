@@ -18,6 +18,7 @@ var UserSchema = new Schema({
   salt: String,
   facebook: {},
   myQuestions: [{ type: Schema.Types.ObjectId, ref: 'Question' }],
+  questionsAnswered: [{ type: Schema.Types.ObjectId, ref: 'Question'}],
   questionQueue: [{ type: Schema.Types.ObjectId, ref: 'Question' }],
   friends: Array
 });

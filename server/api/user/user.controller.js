@@ -165,10 +165,10 @@ exports.pastQuestions = function(req, res, next) {
   var userId = req.user._id;
   User.findOne({
     _id: userId
-  }).populate('myQuestions')
+  }).populate('myQuestions questionsAnswered')
     .exec(function(err, user) {
       if (err) return next(err);
-      res.json(user.myQuestions);
+      res.json(user);
   });
 };
 

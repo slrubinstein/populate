@@ -18,10 +18,10 @@ function AskCtrl($scope, $state, Auth, dataService,
 	vm.pastQuestions = $stateParams.pastQuestions;
 	vm.postQuestion = postQuestion;
 	vm.question = '';
-	vm.seePastQuestions = seePastQuestions;
 	vm.swipeLeft = '';
 	vm.swipeRight = '';
-	vm.timer = 1;
+	vm.timerIndex = 1;
+	vm.timerOptions = ['10 minutes', '30 minutes', '1 hour', '12 hours', '24 hours', '2 days', '7 days']
 	vm.user = Auth.getCurrentUser();
 
 	vm.profilePic = 'https://graph.facebook.com/' +
@@ -66,12 +66,5 @@ function AskCtrl($scope, $state, Auth, dataService,
 		dataService.post(newQuestion, selectedFriends);
 
 		$state.go('ask.confirmation', {newQuestion: newQuestion});
-	}
-
-	function seePastQuestions() {
-		dataService.seePastQuestions(vm.user._id)
-			.then(function(result) {
-				$state.go('ask.pastquestions', {pastQuestions: result.data});
-			});
 	}
 }
