@@ -22,6 +22,7 @@ function ProfileCtrl(Auth, dataService, $state, highcharts,
   vm.profilePage = true;
   vm.seeMyQuestions = seeMyQuestions;
   vm.seePastQuestions = seePastQuestions;
+  vm.seeQuestion = seeQuestion;
   vm.user;
 
   var myIndex = 0;
@@ -77,6 +78,10 @@ function ProfileCtrl(Auth, dataService, $state, highcharts,
     if (vm.friendQuestionArchive[friendIndex]) {
       createChart(vm.friendQuestionArchive[friendIndex]);
     }
+  }
+
+  function seeQuestion(index) {
+    $state.go('profile.myquestions', {question: vm.myQuestions[index]});
   }
 
   // function createChart(question) {

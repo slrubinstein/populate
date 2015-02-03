@@ -6,7 +6,7 @@ angular.module('populateApp')
 dataService.$inject = ['$http'];
 
 function dataService($http) {
-console.log('dataService')
+
   return {
     addFriend: addFriend,
     getFriendsFromDB: getFriendsFromDB,

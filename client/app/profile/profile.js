@@ -20,7 +20,7 @@ angular.module('populateApp')
       	templateUrl: 'app/profile/profile.myquestions/profile.myquestions.html',
       	controller: 'ProfileMyquestionsCtrl',
       	controllerAs: 'myquestions',
-        // params: { myQuestions: {} }
+        params: { question: {} }
       })
       .state('profile.questionsanswered', {
       	url: '/questionsanswered',

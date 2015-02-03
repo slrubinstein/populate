@@ -11,8 +11,8 @@ function MainCtrl($scope, $http, $state, facebookFriends,
 
   var vm = this;
 
-  vm.addFriend = addFriend;
-  vm.databaseFriends = [];
+  // vm.addFriend = addFriend;
+  // vm.databaseFriends = [];
   vm.loggedIn = false;
   vm.loginOauth = loginOauth;
   vm.user;
@@ -20,43 +20,41 @@ function MainCtrl($scope, $http, $state, facebookFriends,
   activate();
 
   function activate() {
-  	vm.user = Auth.getCurrentUser();
+    facebookFriends.activate();
+    vm.user = Auth.getCurrentUser();
 
     Auth.isLoggedInAsync(function(loggedIn) {
       if (loggedIn) {
-        vm.loggedIn = true;
+        $state.go('answer');
       }
     });
 
-    facebookFriends.activate()
-      .then(function() {
-        if (vm.loggedIn) {
-          getFriends();
-        }
-      });
+    //   .then(function() {
+    //     if (vm.loggedIn) {
+    //       getFriends();
+    //     }
+    //   });
 
   }
 
-  function addFriend(index) {
-    console.log('user', vm.user)
-    console.log('friends', vm.databaseFriends)
-    dataService.addFriend(vm.user._id, vm.databaseFriends[index]._id);
-    vm.databaseFriends.splice(index, 1);
-  }
+  // function addFriend(index) {
+  //   dataService.addFriend(vm.user._id, vm.databaseFriends[index]._id);
+  //   vm.databaseFriends.splice(index, 1);
+  // }
 
-  function getFriends() {
-    facebookFriends.getFriends()
-      .then(function(friends) {
-        console.log('facebook friends', friends)
-        var friendIds = _.pluck(friends, 'id');
+  // function getFriends() {
+  //   facebookFriends.getFriends()
+  //     .then(function(friends) {
+  //       console.log('facebook friends', friends)
+  //       var friendIds = _.pluck(friends, 'id');
     
-        dataService.getFriendsFromDB(vm.user._id, friendIds)
-          .then(function(result) {
-            vm.databaseFriends = result.data;
-            console.log('friends from DB', vm.databaseFriends)
-        });
-    });
-  }
+  //       dataService.getFriendsFromDB(vm.user._id, friendIds)
+  //         .then(function(result) {
+  //           vm.databaseFriends = result.data;
+  //           console.log('friends from DB', vm.databaseFriends)
+  //       });
+  //   });
+  // }
 
   function loginOauth(provider) {
     $window.location.href = '/auth/' + provider;

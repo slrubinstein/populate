@@ -11,22 +11,15 @@ function ProfileMyquestionsCtrl($stateParams, highcharts, userQuestionService, A
 	vm.chartConfig;
 	vm.createChart = createChart;
 	vm.myQuestions = userQuestionService.myQuestions;
+  vm.currentQuestion = $stateParams.question || vm.myQuestions[0];
 
-activate()
+  activate();
+
   function activate() {
 
     vm.user = Auth.getCurrentUser();
 
-    Auth.isLoggedInAsync(function(loggedIn) {
-      
-      if (loggedIn) {
-        vm.loggedIn = true;
-        vm.profilePic = 'https://graph.facebook.com/' +
-                         vm.user.facebook.id + '/picture';
-      }
-    });
-
-    userQuestionService.getQuestions(vm.user._id, vm)
+    userQuestionService.getQuestions(vm.user._id)
       .then(function(result) {
         vm.myQuestions = result.myQuestions;
         // vm.myQuestionsActive = result.myQuestionsActive;

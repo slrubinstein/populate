@@ -26,7 +26,7 @@ function userQuestionService($q, dataService) {
     friendIndex: friendIndex
   };
 
-  function getQuestions(userId, ctrl) {
+  function getQuestions(userId) {
 
     var deferred = $q.defer();
 

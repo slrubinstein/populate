@@ -22,10 +22,18 @@
 
 .question-list div {
 
-	&:nth-child(2) {
-		width: 250px;
+	.btn {
 		text-overflow: ellipsis;
+		width: 24%;
+	
+		&.query {
+			border: solid 1px #ccc;
+			float: left;
+			width: 48%;
+		}
+	
 	}
+
 }
 
 .question-box {
@@ -41,3 +49,5 @@
 		margin: 10px;
 	}
 }
+
+

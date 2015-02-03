@@ -10,20 +10,41 @@
 	<button class="btn btn-default">Edit Profile</button>
 </div>
 
-<div class="container question-list">
-	<h3>Active</h3>
+<div class="container">
+	<h3>My Votes</h3>
+</div>
+
+<div ng-show="!profile.myQuestionsActive.length"
+		 class="container">
+	<h4>No active votes!</h4>
+	<a ui-sref="ask.newquestion"><button class="btn btn-default">Ask a new question</button></a>
+</div>
+
+<div ng-if="profile.myQuestionsActive.length" 
+		 class="container question-list">
+	<h4>Active</h4>
 	<div ng-repeat="question in profile.myQuestionsActive">
-		<button class="btn btn-default">{{question.query}}</button>
-		<button class="btn btn-default">{{question.swipeLeft.option}}</button>
-		<button class="btn btn-default">{{question.swipeRight.option}}</button>
+
+		<button class="btn btn-default query"
+						ng-click="profile.seeQuestion($index)">{{question.query}}</button>
+
+		<button class="btn btn-default"
+						ng-click="profile.seeQuestion($index)">{{question.swipeLeft.option}}</button>
+		<button class="btn btn-default"
+						ng-click="profile.seeQuestion($index)">{{question.swipeRight.option}}</button>
+
 	</div>
 </div>
 
 <div class="container question-list">
-	<h3>Past</h3>
+	<h4>Past</h4>
 	<div ng-repeat="question in profile.myQuestionsInactive | limitTo: 2">
-		<button class="btn btn-default">{{question.query}}</button>
-		<button class="btn btn-default">{{question.swipeLeft.option}}</button>
-		<button class="btn btn-default">{{question.swipeRight.option}}</button>
+		<button class="btn btn-default query"
+						ng-click="profile.seeQuestion($index)">{{question.query}}</button>
+
+		<button class="btn btn-default"
+						ng-click="profile.seeQuestion($index)">{{question.swipeLeft.option}}</button>
+		<button class="btn btn-default"
+						ng-click="profile.seeQuestion($index)">{{question.swipeRight.option}}</button>
 	</div>
 </div>
