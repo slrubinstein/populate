@@ -1,0 +1,12 @@
+<div class="container question-box">
+  <div class="button-row">
+		<button class="btn btn-default" 
+						ng-repeat="question in myquestions.myQuestions"
+						ng-click="myquestions.createChart($index)">{{question.query}}</button>
+	</div>
+</div>
+
+<highchart id="chart1" config="myquestions.chartConfig"></highchart>
+<!-- <button class="btn btn-default"
+				ng-click="myquestions.nextQuestion('me')">Next</button>
+ -->

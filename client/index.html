@@ -57,7 +57,9 @@
       <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+      <script src="bower_components/highcharts-ng/dist/highcharts-ng.js"></script>
       <!-- endbower -->
+      <script src="http://code.highcharts.com/highcharts.src.js"></script>
     <!-- endbuild -->
 
         <!-- build:js({.tmp,client}) app/app.js -->
@@ -65,8 +67,6 @@
           <!-- injector:js -->
           <script src="app/account/account.js"></script>
           <script src="app/account/login/login.controller.js"></script>
-          <script src="app/account/profile/profile.controller.js"></script>
-          <script src="app/account/profile/profile.js"></script>
           <script src="app/account/settings/settings.controller.js"></script>
           <script src="app/account/signup/signup.controller.js"></script>
           <script src="app/admin/admin.controller.js"></script>
@@ -79,10 +79,15 @@
           <script src="app/dataService/dataService.service.js"></script>
           <script src="app/main/main.controller.js"></script>
           <script src="app/main/main.js"></script>
+          <script src="app/profile/profile.controller.js"></script>
+          <script src="app/profile/profile.js"></script>
+          <script src="app/profile/profile.myquestions/profile.myquestions.controller.js"></script>
+          <script src="app/profile/userQuestionService/userQuestionService.service.js"></script>
           <script src="app/social/facebookFriends/facebookFriends.service.js"></script>
           <script src="components/auth/auth.service.js"></script>
           <script src="components/auth/user.service.js"></script>
           <script src="components/footer/footer.controller.js"></script>
+          <script src="components/highcharts/highcharts.service.js"></script>
           <script src="components/modal/modal.service.js"></script>
           <script src="components/mongoose-error/mongoose-error.directive.js"></script>
           <script src="components/navbar/navbar.controller.js"></script>

@@ -27,3 +27,17 @@
 		text-overflow: ellipsis;
 	}
 }
+
+.question-box {
+	overflow-x: scroll;
+	width: 100%;
+	height: 70px;
+}
+
+.button-row {
+	white-space: nowrap;
+
+	.btn {
+		margin: 10px;
+	}
+}
