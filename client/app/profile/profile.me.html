@@ -23,7 +23,7 @@
 <div ng-if="profile.myQuestionsActive.length" 
 		 class="container question-list">
 	<h4>Active</h4>
-	<div ng-repeat="question in profile.myQuestionsActive">
+	<div ng-repeat="question in profile.myQuestionsActive | limitTo: 2">
 
 		<button class="btn btn-default query"
 						ng-click="profile.seeQuestion($index)">{{question.query}}</button>

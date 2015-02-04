@@ -6,6 +6,8 @@ var crypto = require('crypto');
 var authTypes = ['github', 'twitter', 'facebook', 'google'];
 var _ = require('lodash');
 
+var Question = require('../question/question.model');
+
 var UserSchema = new Schema({
   name: String,
   email: { type: String, lowercase: true },
@@ -174,6 +176,21 @@ UserSchema.methods = {
         friend.questionQueue.push(questionId);
         friend.save();
       });
+    }
+  },
+
+  filterInactiveQuestions: function() {
+    var date = new Date,
+        user = this;
+
+    for (var i = 0, len = user.myQuestions.length; i < len; i++) {
+      if (user.myQuestions[i].closesAt < date) {
+        Question.findById(user.myQuestions[i]._id, function(err, q) {
+          if (err) throw err;
+          q.isActive = false;
+          q.save();
+        });
+      }
     }
   }
 };

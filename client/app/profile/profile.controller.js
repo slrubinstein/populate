@@ -43,12 +43,15 @@ function ProfileCtrl(Auth, dataService, $state, highcharts,
       }
     });
 
-    userQuestionService.getQuestions(vm.user._id, vm)
+    userQuestionService.getQuestions(vm.user._id)
       .then(function(result) {
+        console.log(result)
         vm.myQuestions = result.myQuestions;
         vm.myQuestionsActive = result.myQuestionsActive;
         vm.myQuestionsInactive = result.myQuestionsInactive;
         vm.friendQuestionArchive = result.friendQuestionArchive;
+      }, function(err) {
+        console.log(err);
       });
   }
 

@@ -9,14 +9,18 @@ var QuestionSchema = new Schema({
   swipeLeft: {
   	option: String,
   	votes: Number,
-  	image: String
+  	image: String,
+    voters: Array
   },
   swipeRight: {
   	option: String,
   	votes: Number,
   	image: String,
-    isActive: Boolean
-  }
+    voters: Array
+  },
+  isActive: { type: Boolean, default: true },
+  timeCreated: { type: Date, default: new Date , index: {unique: true } },
+  closesAt: { type: Date, index: { unique: true } }
 });
 
 module.exports = mongoose.model('Question', QuestionSchema);

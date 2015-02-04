@@ -10,7 +10,7 @@ function AskCtrl($scope, $state, Auth, dataService,
 								 facebookFriends, $stateParams) {
 
 	var vm = this;
-
+console.log('ask')
 	vm.answerers;
 	vm.getFriends = getFriends;
 	vm.friends = [];
@@ -21,11 +21,16 @@ function AskCtrl($scope, $state, Auth, dataService,
 	vm.swipeLeft = '';
 	vm.swipeRight = '';
 	vm.timerIndex = 1;
-	vm.timerOptions = ['10 minutes', '30 minutes', '1 hour', '12 hours', '24 hours', '2 days', '7 days']
+	vm.timerOptions = ['10 minutes', '30 minutes', '1 hour', '12 hours', '24 hours', '2 days', '7 days'];
 	vm.user = Auth.getCurrentUser();
 
 	vm.profilePic = 'https://graph.facebook.com/' +
                    vm.user.facebook.id + '/picture' || null;
+
+  var timerMillis = [10 * 60 * 1000, 30 * 60 * 1000, 60 * 60 * 1000, 
+  									 12 * 60 * 60 * 1000, 24 * 60 * 60 * 1000,
+  									 2 * 24 * 60 * 60 * 1000, 7 * 24 * 60 * 60 * 1000];
+
 
 	function getFriends() {
 		if (vm.friends.length === 0) {
@@ -39,6 +44,7 @@ function AskCtrl($scope, $state, Auth, dataService,
 	}
 
 	function postQuestion() {
+		console.log('post')
 		if (vm.answerers === undefined) {
 			return;
 		}
@@ -47,6 +53,8 @@ function AskCtrl($scope, $state, Auth, dataService,
 														vm.friends.filter(function(f) {
 															return f.selected;
 														});
+
+		var date = new Date;
 
 		var newQuestion = {
 			owner: vm.user._id,
@@ -60,8 +68,11 @@ function AskCtrl($scope, $state, Auth, dataService,
 				option: vm.swipeRight,
 				votes: 0,
 				image: ''
-			}
+			},
+			timeCreated: date,
+			closesAt: new Date (date.getTime() + timerMillis[vm.timerIndex])
 		};
+		console.log(new Date (date.getTime() + timerMillis[vm.timerIndex]))
 
 		dataService.post(newQuestion, selectedFriends);
 
