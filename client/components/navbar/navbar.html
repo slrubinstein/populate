@@ -1,4 +1,4 @@
-<div class="navbar navbar-default navbar-static-top" ng-controller="NavbarCtrl">
+<div class="navbar navbar-default navbar-static-top" ng-controller="NavbarCtrl as navbar">
   <header class="hero-unit" id="banner">
     <div class="container">
       <div class="col-xs-2"></div>
@@ -9,9 +9,8 @@
       </div>
 
       <div class="col-xs-2">
-        <img ng-if="profile.profilePage" 
-             id="user-pic"
-             ng-src={{profile.profilePic}} />
+        <img id="user-pic"
+             ng-src="https://graph.facebook.com/{{navbar.user.facebook.id}}/picture" />
       </div>
 
     </div>

@@ -23,7 +23,7 @@ function ProfileCtrl(Auth, dataService, $state, highcharts,
   vm.seeMyQuestions = seeMyQuestions;
   vm.seePastQuestions = seePastQuestions;
   vm.seeQuestion = seeQuestion;
-  vm.user;
+  vm.user = userQuestionService.user;
 
   var myIndex = 0;
   var friendIndex = 0;
@@ -34,14 +34,14 @@ function ProfileCtrl(Auth, dataService, $state, highcharts,
 
     vm.user = Auth.getCurrentUser();
 
-    Auth.isLoggedInAsync(function(loggedIn) {
+    // Auth.isLoggedInAsync(function(loggedIn) {
       
-      if (loggedIn) {
-        vm.loggedIn = true;
-        vm.profilePic = 'https://graph.facebook.com/' +
-                         vm.user.facebook.id + '/picture';
-      }
-    });
+    //   if (loggedIn) {
+    //     vm.loggedIn = true;
+    //     vm.profilePic = 'https://graph.facebook.com/' +
+    //                      vm.user.facebook.id + '/picture';
+    //   }
+    // });
 
     userQuestionService.getQuestions(vm.user._id)
       .then(function() {

@@ -10,7 +10,7 @@ function highcharts() {
   };
 
   function createChartOptions(question) {
-    console.log('creating chart with', question)
+
     var votePercents = percent(question.swipeLeft, question.swipeRight);
 
     var chartConfig = {
