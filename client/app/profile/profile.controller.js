@@ -44,12 +44,11 @@ function ProfileCtrl(Auth, dataService, $state, highcharts,
     });
 
     userQuestionService.getQuestions(vm.user._id)
-      .then(function(result) {
-        console.log(result)
-        vm.myQuestions = result.myQuestions;
-        vm.myQuestionsActive = result.myQuestionsActive;
-        vm.myQuestionsInactive = result.myQuestionsInactive;
-        vm.friendQuestionArchive = result.friendQuestionArchive;
+      .then(function() {
+        vm.myQuestions = userQuestionService.myQuestions;
+        vm.myQuestionsActive = userQuestionService.myQuestionsActive;
+        vm.myQuestionsInactive = userQuestionService.myQuestionsInactive;
+        vm.friendQuestionArchive = userQuestionService.friendQuestionArchive;
       }, function(err) {
         console.log(err);
       });

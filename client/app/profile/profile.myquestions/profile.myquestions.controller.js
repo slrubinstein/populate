@@ -16,16 +16,9 @@ function ProfileMyquestionsCtrl($stateParams, highcharts, userQuestionService, A
   activate();
 
   function activate() {
-
-    vm.user = Auth.getCurrentUser();
-
-    userQuestionService.getQuestions(vm.user._id)
-      .then(function(result) {
-        vm.myQuestions = result.myQuestions;
-        // vm.myQuestionsActive = result.myQuestionsActive;
-        // vm.myQuestionsInactive = result.myQuestionsInactive;
-        // vm.friendQuestionArchive = result.friendQuestionArchive;
-      });
+    if (vm.myQuestions.length) {
+      createChart(0);
+    }
   }
 
 

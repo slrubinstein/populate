@@ -34,10 +34,10 @@ function userQuestionService($q, dataService) {
       .then(function(result) {
         var organizedQs = organizeMyQuestions(result.data);
 
-          myQuestions = organizedQs.myQuestions
-          myQuestionsActive = organizedQs.myQuestionsActive
-          myQuestionsInactive = organizedQs.myQuestionsInactive
-          friendQuestionArchive = organizedQs.friendQuestionArchive
+          angular.copy(organizedQs.myQuestions, myQuestions);
+          angular.copy(organizedQs.myQuestionsActive, myQuestionsActive);
+          angular.copy(organizedQs.myQuestionsInactive, myQuestionsInactive);
+          angular.copy(organizedQs.friendQuestionArchive, friendQuestionArchive);
 
         deferred.resolve(organizedQs);
       });
