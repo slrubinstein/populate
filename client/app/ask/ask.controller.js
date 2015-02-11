@@ -10,7 +10,7 @@ function AskCtrl($scope, $state, Auth, dataService,
 								 facebookFriends, $stateParams) {
 
 	var vm = this;
-console.log('ask')
+
 	vm.answerers;
 	vm.getFriends = getFriends;
 	vm.friends = [];
@@ -24,8 +24,8 @@ console.log('ask')
 	vm.timerOptions = ['10 minutes', '30 minutes', '1 hour', '12 hours', '24 hours', '2 days', '7 days'];
 	vm.user = Auth.getCurrentUser();
 
-	vm.profilePic = 'https://graph.facebook.com/' +
-                   vm.user.facebook.id + '/picture' || null;
+	// vm.profilePic = 'https://graph.facebook.com/' +
+ //                   vm.user.facebook.id + '/picture' || null;
 
   var timerMillis = [10 * 60 * 1000, 30 * 60 * 1000, 60 * 60 * 1000, 
   									 12 * 60 * 60 * 1000, 24 * 60 * 60 * 1000,
@@ -44,10 +44,9 @@ console.log('ask')
 	}
 
 	function postQuestion() {
-		console.log('post')
-		if (vm.answerers === undefined) {
-			return;
-		}
+		// if (vm.answerers === undefined) {
+		// 	return;
+		// }
 		// send question only to selected friends
 		var selectedFriends = vm.answerers === 'all' ? 'all' :
 														vm.friends.filter(function(f) {
@@ -55,9 +54,10 @@ console.log('ask')
 														});
 
 		var date = new Date;
-
 		var newQuestion = {
-			owner: vm.user._id,
+			askerId: vm.user._id,
+			askerName: vm.user.name,
+			askerPic: 'https://graph.facebook.com/' + vm.user.facebook.id + '/picture',
 			query: vm.question,
 			swipeLeft: {
 				option: vm.swipeLeft,
@@ -72,7 +72,6 @@ console.log('ask')
 			timeCreated: date,
 			closesAt: new Date (date.getTime() + timerMillis[vm.timerIndex])
 		};
-		console.log(new Date (date.getTime() + timerMillis[vm.timerIndex]))
 
 		dataService.post(newQuestion, selectedFriends);
 

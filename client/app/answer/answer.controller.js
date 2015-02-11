@@ -13,37 +13,45 @@ function AnswerCtrl($scope, dataService, Auth, $state,
 
 	var index = 0;
 
+	vm.createDateString = createDateString;
 	vm.currentQuestion = {};
 	vm.end = false;
 	vm.friends;
-	vm.questions = userQuestionService.;
+	vm.questions = [];
 	vm.user = Auth.getCurrentUser();
+	vm.userFromDB;
 	vm.vote = vote;
 
-	console.log(vm.user)
 	activate();
+
 	function activate() {
-		dataService.loadQuestionQueue(vm.user._id)
-			.then(function(result) {
-				vm.questions = result.data.questionQueue;
+
+		userQuestionService.getAllQuestions(vm.user._id)
+			.then(function() {
+				vm.friendQuestionsCurrent = userQuestionService.friendQuestionsCurrent;
+				console.log(vm.friendQuestionsCurrent)
 				setNextQuestion(index);
-			});
+			})
+			
 	}
 
-	function vote(swipeDir) {
-		vm.currentQuestion[swipeDir].votes++;
-		dataService.vote(vm.currentQuestion);
-		index++;
-		setNextQuestion(index);
-
+	function createDateString(date) {
+		var d = new Date(date);
+		return d.toDateString() + ', ' + d.toLocaleTimeString();
 	}
 
 	function setNextQuestion(index) {
-		if (vm.questions[index]) {
-			vm.currentQuestion = vm.questions[index];
+		if (vm.friendQuestionsCurrent[index]) {
+			vm.currentQuestion = vm.friendQuestionsCurrent[index];
 		} else {
 			vm.end = true;
 		}
 	}
 
+	function vote(swipeDir) {
+		vm.currentQuestion[swipeDir].votes++;
+		dataService.vote(vm.currentQuestion, vm.user._id);
+		index++;
+		setNextQuestion(index);
+	}
 }

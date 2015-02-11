@@ -43,7 +43,7 @@ function ProfileCtrl(Auth, dataService, $state, highcharts,
     //   }
     // });
 
-    userQuestionService.getQuestions(vm.user._id)
+    userQuestionService.getAllQuestions(vm.user._id)
       .then(function() {
         vm.myQuestions = userQuestionService.myQuestions;
         vm.myQuestionsActive = userQuestionService.myQuestionsActive;

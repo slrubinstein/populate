@@ -25,10 +25,14 @@
 .footer {
     text-align: center;
     padding: 0;
-    margin-top: 70px;
+    margin-top: 10px;
     border-top: 1px solid #E5E5E5;
 }
 
 .navbar {
     margin-bottom: -1px;
+}
+
+.footer .btn-group.container .btn {
+    padding: 6px 10px;
 }

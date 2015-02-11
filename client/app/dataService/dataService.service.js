@@ -9,6 +9,7 @@ function dataService($http) {
 
   return {
     addFriend: addFriend,
+    getAllQuestions: getAllQuestions,
     getFriendsFromDB: getFriendsFromDB,
     getUserFriends: getUserFriends,
     loadQuestionQueue: loadQuestionQueue,
@@ -34,10 +35,14 @@ function dataService($http) {
     return $http.get('/api/users/' + userId + '/loadquestionqueue');
   }
 
+  function getAllQuestions(userId) {
+    return $http.get('/api/users/' + userId + '/getallquestions');
+  }
+
   function post(questionOptions, selectedFriends) {
     return $http.post('/api/questions', questionOptions)
       .then(function(result) {
-        $http.put('/api/users/' + questionOptions.owner +
+        $http.put('/api/users/' + questionOptions.askerId +
           '/addquestion', {questionId: result.data._id,
                            selectedFriends: selectedFriends})
       });
@@ -47,7 +52,8 @@ function dataService($http) {
     return $http.get('/api/users/' + userId + '/pastquestions');
   }
 
-  function vote(question) {
-    return $http.put('/api/questions/' + question._id, question);
+  function vote(question, userId) {
+    $http.put('/api/questions/' + question._id, question);
+    $http.put('/api/users/' + userId + '/vote/' + question._id);
   }
 }

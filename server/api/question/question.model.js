@@ -4,7 +4,10 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var QuestionSchema = new Schema({
-  owner: {type: Schema.Types.ObjectId, ref: 'User'},
+  // maybe refactor asker into an object
+  askerId: {type: Schema.Types.ObjectId, ref: 'User'},
+  askerName: String,
+  askerPic: String,
   query: String,
   swipeLeft: {
   	option: String,

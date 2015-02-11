@@ -19,9 +19,13 @@ var UserSchema = new Schema({
   provider: String,
   salt: String,
   facebook: {},
-  myQuestions: [{ type: Schema.Types.ObjectId, ref: 'Question' }],
-  questionsAnswered: [{ type: Schema.Types.ObjectId, ref: 'Question'}],
-  questionQueue: [{ type: Schema.Types.ObjectId, ref: 'Question' }],
+  myQuestionsCurrent: [{ type: Schema.Types.ObjectId, ref: 'Question' }],
+  myQuestionsOld: [{ type: Schema.Types.ObjectId, ref: 'Question' }],
+  friendQuestionsCurrent: [{ type: Schema.Types.ObjectId, ref: 'Question' }],
+  friendQuestionsOld: [{ type: Schema.Types.ObjectId, ref: 'Question' }],
+  // myQuestions: [{ type: Schema.Types.ObjectId, ref: 'Question' }],
+  // questionsAnswered: [{ type: Schema.Types.ObjectId, ref: 'Question'}],
+  // questionQueue: [{ type: Schema.Types.ObjectId, ref: 'Question' }],
   friends: Array
 });
 

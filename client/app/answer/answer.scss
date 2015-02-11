@@ -1,13 +1,24 @@
-.left-swipe {
-	float: left;
-}
-
-.right-swipe {
-	float: right;
-}
-
 .no-more-questions {
 	a {
 		color: yellow;
+	}
+}
+
+.query {
+	font-size: 1.2em;
+	margin: -10px 0 10px 100px;
+}
+
+.vote-count {
+	font-size: 1.1em;
+	height: 50px;
+	text-align: center;
+
+	p {
+		border: 3px solid #ccc;
+		display: inline-block;
+		margin: 5px;
+		padding: 1px;
+		width: 45%;
 	}
 }

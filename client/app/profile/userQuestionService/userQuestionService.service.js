@@ -15,16 +15,48 @@ function userQuestionService($q, dataService) {
       myIndex = 0,
       friendIndex = 0;
 
+  var userFromDB = {},
+      myQuestionsCurrent = [],
+      myQuestionsOld = [],
+      friendQuestionsCurrent = [],
+      friendQuestionsOld = [];
+
   return {
     getQuestions: getQuestions,
+    getAllQuestions: getAllQuestions,
     myQuestions: myQuestions,
     myQuestionsActive: myQuestionsActive,
     myQuestionsInactive: myQuestionsInactive,
     friendQuestionArchive: friendQuestionArchive,
     currentQuestion: currentQuestion,
     myIndex: myIndex,
-    friendIndex: friendIndex
+    friendIndex: friendIndex,
+
+    myQuestionsCurrent: myQuestionsCurrent,
+    myQuestionsOld: myQuestionsOld,
+    friendQuestionsCurrent: friendQuestionsCurrent,
+    friendQuestionsOld: friendQuestionsOld
   };
+
+
+  function getAllQuestions(userId) {
+
+    var deferred = $q.defer();
+
+    dataService.getAllQuestions(userId)
+      .then(function(result) {
+
+          angular.copy(result.data.myQuestionsCurrent, myQuestionsCurrent);
+          angular.copy(result.data.myQuestionsOld, myQuestionsOld);
+          angular.copy(result.data.friendQuestionsCurrent, friendQuestionsCurrent);
+          angular.copy(result.data.friendQuestionsOld, friendQuestionsOld);
+          angular.copy(result.data, userFromDB);
+        deferred.resolve(result.datadata);
+      });
+
+    return deferred.promise;
+  }
+
 
   function getQuestions(userId) {
 

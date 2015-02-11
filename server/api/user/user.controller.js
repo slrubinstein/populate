@@ -95,6 +95,21 @@ exports.addQuestion = function(req, res, next) {
 }
 
 /**
+ * Vote on a question
+ */
+exports.vote = function(req, res, next) {
+  var userId = req.user._id;
+  var questionId = req.params.questionid;
+  User.findById(userId, function (err, user) {
+    user.friendQuestionsOld.push(user.friendQuestionsCurrent.shift());
+    user.save(function(err) {
+      if (err) return next(err);
+      res.send(200);
+    });
+  });
+}
+
+/**
  * Add a question to a User's questions
  */
 exports.addQuestion = function(req, res, next) {
@@ -103,7 +118,7 @@ exports.addQuestion = function(req, res, next) {
   var selectedFriends = req.body.selectedFriends;
 
   User.findById(userId, function (err, user) {
-    user.myQuestions.push(questionId);
+    user.myQuestionsCurrent.push(questionId);
     user.assignQuestionToFriends(selectedFriends, questionId);
     user.save(function(err) {
       if (err) return next(err);
@@ -151,7 +166,7 @@ exports.loadQuestionQueue = function(req, res, next) {
   var userId = req.user._id;
   User.findOne({
     _id: userId
-  }).populate('questionQueue')
+  }).populate('friendQuestionsCurrent')
     .exec(function(err, user) {
       if (err) return next(err);
       res.json(user);
@@ -167,9 +182,27 @@ exports.pastQuestions = function(req, res, next) {
     _id: userId
   }, function(err, user) {
     if (err) return next(err);
-    user.filterInactiveQuestions()
+    // user.filterInactiveQuestions()
   })
-    .populate('myQuestions questionsAnswered')
+    .populate('myQuestionsCurrent myQuestionsOld friendQuestionsOld')
+    .exec(function(err, user) {
+      if (err) return next(err);
+      res.json(user);
+  });
+};
+
+/**
+ * Get all questions
+ */
+exports.getAllQuestions = function(req, res, next) {
+  var userId = req.user._id;
+  User.findOne({
+    _id: userId
+  }, function(err, user) {
+    if (err) return next(err);
+    // user.filterInactiveQuestions()
+  })
+    .populate('myQuestionsCurrent myQuestionsOld friendQuestionsCurrent friendQuestionsOld')
     .exec(function(err, user) {
       if (err) return next(err);
       res.json(user);

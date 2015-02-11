@@ -1,24 +1,44 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<header class="hero-unit" id="banner">
-  <div ng-if="!answer.end" class="container">
-    <div>
-    	<h4>{{answer.currentQuestion.query}}</h4>
-    	<button class="btn btn-default left-swipe"
-    					ng-click="answer.vote('swipeLeft')">
-    					{{answer.currentQuestion.swipeLeft.option}}
-    	</button>
-    	<button class="btn btn-default right-swipe"
-    					ng-click="answer.vote('swipeRight')">
-    					{{answer.currentQuestion.swipeRight.option}}
-    	</button>
-    </div>
+<div class="top-row" ng-if="!answer.end">
+  <p class="lead">{{answer.currentQuestion.askerName}} would like to know...
+    <img ng-src={{answer.currentQuestion.askerPic}}>
+    <p class="query">{{answer.currentQuestion.query}}</p>
+  </p>
+</div>
+<div class="clearfix"></div>
+<div ng-if="!answer.end" class="mid-row">
+
+  <div class="form-control swipe-option"
+       ng-click="answer.vote('swipeLeft')">
+    {{answer.currentQuestion.swipeLeft.option}}
   </div>
-  <div ng-if="answer.end" class="container no-more-questions">
-    <h4>There are no more question to answer. Why don't you <a ui-sref="ask.newquestion">ask some?</a></h4>
+
+  <div class="form-control swipe-option"
+       ng-click="answer.vote('swipeRight')">
+    {{answer.currentQuestion.swipeRight.option}}
+  </div>
+  <div class="clearfix"></div>
+</div>
+
+<div class="vote-count">
+  <p>{{answer.currentQuestion.swipeLeft.votes}}</p>
+  <p>{{answer.currentQuestion.swipeRight.votes}}</p>
+</div>
+
+<div class="bottom-row">
+  <div class="container">
+    <p>This Vote closes at</p>
+    <p>{{answer.createDateString(answer.currentQuestion.closesAt)}}</p>
+  </div>
+</div>
 
 
-  </div>
-</header>
+<div ng-if="answer.end" class="mid-row">
+
+  <h4>There are no more question to answer. Why don't you <a ui-sref="ask.newquestion">ask some?</a></h4>
+
+
+</div>
 
 <div ng-include="'components/footer/footer.html'"></div>
