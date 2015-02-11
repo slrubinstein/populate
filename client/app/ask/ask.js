@@ -5,19 +5,19 @@ angular.module('populateApp')
     $stateProvider
       .state('ask', {
         url: '/ask',
-        templateUrl: 'app/ask/ask.html',
+        templateUrl: 'app/ask/templates/ask.html',
         controller: 'AskCtrl',
         controllerAs: 'ask'
       })
       .state('ask.newquestion', {
         url: '/newquestion',
-        templateUrl: 'app/ask/ask.newquestion.html',
+        templateUrl: 'app/ask/templates/ask.newquestion.html',
         // controller: 'AskCtrl',
         // controllerAs: 'ask'
       })
       .state('ask.confirmation', {
         url: '/confirmation',
-        templateUrl: 'app/ask/ask.confirmation.html',
+        templateUrl: 'app/ask/templates/ask.confirmation.html',
         // controller: 'AskCtrl',
         // controllerAs: 'ask',
         params: { newQuestion: {} }
