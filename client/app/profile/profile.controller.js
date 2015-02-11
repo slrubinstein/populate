@@ -4,20 +4,19 @@ angular.module('populateApp')
   .controller('ProfileCtrl', ProfileCtrl);
 
 ProfileCtrl.$inject = ['Auth', 'dataService', '$state', 'highcharts',
-                       'userQuestionService', 'facebookFriends'];
+                       'userQuestionService'];
 
 function ProfileCtrl(Auth, dataService, $state, highcharts,
-                     userQuestionService, fb) {
+                     userQuestionService) {
 
   var vm = this;
 
-  vm.myCurrentQuestion;
-  vm.friendCurrentQuestion;
+
   vm.loggedIn = false;
-  vm.friendQuestionArchive = [];
-  vm.myQuestions = [];
-  vm.myQuestionsActive = [];
-  vm.myQuestionsInactive = [];
+  vm.friendQuestionsCurrent = [];
+  vm.friendQuestionsOld = [];
+  vm.myQuestionsCurrent = [];
+  vm.myQuestionsOld = [];
   vm.nextQuestion = nextQuestion;
   vm.profilePage = true;
   vm.seeMyQuestions = seeMyQuestions;
@@ -34,21 +33,12 @@ function ProfileCtrl(Auth, dataService, $state, highcharts,
 
     vm.user = Auth.getCurrentUser();
 
-    // Auth.isLoggedInAsync(function(loggedIn) {
-      
-    //   if (loggedIn) {
-    //     vm.loggedIn = true;
-    //     vm.profilePic = 'https://graph.facebook.com/' +
-    //                      vm.user.facebook.id + '/picture';
-    //   }
-    // });
-
     userQuestionService.getAllQuestions(vm.user._id)
       .then(function() {
-        vm.myQuestions = userQuestionService.myQuestions;
-        vm.myQuestionsActive = userQuestionService.myQuestionsActive;
-        vm.myQuestionsInactive = userQuestionService.myQuestionsInactive;
-        vm.friendQuestionArchive = userQuestionService.friendQuestionArchive;
+        vm.myQuestionsCurrent = userQuestionService.myQuestionsCurrent;
+        vm.myQuestionsOld = userQuestionService.myQuestionsOld;
+        vm.friendQuestionsCurrent = userQuestionService.friendQuestionsCurrent;
+        vm.friendQuestionsOld = userQuestionService.friendQuestionsOld;
       }, function(err) {
         console.log(err);
       });
@@ -71,7 +61,6 @@ function ProfileCtrl(Auth, dataService, $state, highcharts,
   }
 
   function seeMyQuestions() {
-    // createChart(vm.myQuestions[userQuestionService.myIndex])
     $state.go('profile.myquestions');
   }
 
@@ -85,9 +74,4 @@ function ProfileCtrl(Auth, dataService, $state, highcharts,
   function seeQuestion(index) {
     $state.go('profile.myquestions', {question: vm.myQuestions[index]});
   }
-
-  // function createChart(question) {
-  //   vm.chartConfig = highcharts.createChartOptions(question);
-  // }
-
 }

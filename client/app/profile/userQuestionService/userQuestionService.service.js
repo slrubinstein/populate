@@ -40,8 +40,12 @@ function userQuestionService($q, dataService) {
 
 
   function getAllQuestions(userId) {
-
     var deferred = $q.defer();
+
+    if (!_.isEmpty(userFromDB)) {
+      deferred.resolve(userFromDB);
+      return deferred.promise;
+    }
 
     dataService.getAllQuestions(userId)
       .then(function(result) {
@@ -51,7 +55,7 @@ function userQuestionService($q, dataService) {
           angular.copy(result.data.friendQuestionsCurrent, friendQuestionsCurrent);
           angular.copy(result.data.friendQuestionsOld, friendQuestionsOld);
           angular.copy(result.data, userFromDB);
-        deferred.resolve(result.datadata);
+        deferred.resolve(result.data);
       });
 
     return deferred.promise;
