@@ -44,7 +44,7 @@ function AnswerCtrl($scope, dataService, Auth, $state,
 		if (vm.friendQuestionsCurrent[index]) {
 			vm.currentQuestion = vm.friendQuestionsCurrent[index];
 		} else {
-			vm.end = true;
+			$state.go('answer.end');
 		}
 	}
 

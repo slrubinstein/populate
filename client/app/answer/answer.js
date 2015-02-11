@@ -5,14 +5,20 @@ angular.module('populateApp')
     $stateProvider
       .state('answer', {
         url: '/answer',
-        templateUrl: 'app/answer/answer.html',
+        templateUrl: 'app/answer/templates/answer.html',
         controller: 'AnswerCtrl',
         controllerAs: 'answer'
       })
-      .state('answer.end', {
-      	url: '/end',
-      	templateUrl: 'app/answer/answer.end.html',
-      	controller: 'Answer',
+      .state('answer.questions', {
+      	url: '/questions',
+      	templateUrl: 'app/answer/templates/answer.questions.html',
+      	controller: 'AnswerCtrl',
       	controllerAs: 'answer'
+      })
+      .state('answer.end', {
+        url: '/end',
+        templateUrl: 'app/answer/templates/answer.end.html',
+        controller: 'AnswerCtrl',
+        controllerAs: 'answer'
       });
   });
