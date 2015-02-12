@@ -39,6 +39,7 @@ function ProfileCtrl(Auth, dataService, $state, highcharts,
         vm.myQuestionsOld = userQuestionService.myQuestionsOld;
         vm.friendQuestionsCurrent = userQuestionService.friendQuestionsCurrent;
         vm.friendQuestionsOld = userQuestionService.friendQuestionsOld;
+        console.log(vm.myQuestionsCurrent)
       }, function(err) {
         console.log(err);
       });

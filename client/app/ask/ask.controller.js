@@ -77,6 +77,6 @@ function AskCtrl($scope, $state, Auth, dataService,
 		vm.question = '';
 		vm.swipeLeft = '';
 		vm.swipeRight = '';
-		$state.go('ask.confirmation', {newQuestion: newQuestion});
+		$state.go('profile.me');
 	}
 }

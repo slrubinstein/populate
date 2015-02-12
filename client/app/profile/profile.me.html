@@ -10,41 +10,38 @@
 	<button class="btn btn-default">Edit Profile</button>
 </div>
 
-<div class="container">
+<div class="container center">
 	<h3>My Votes</h3>
 </div>
 
-<div ng-show="!profile.myQuestionsActive.length"
+<div ng-show="!profile.myQuestionsCurrent.length"
 		 class="container">
 	<h4>No active votes!</h4>
 	<a ui-sref="ask.newquestion"><button class="btn btn-default">Ask a new question</button></a>
 </div>
 
-<div ng-if="profile.myQuestionsActive.length" 
+<div ng-if="profile.myQuestionsCurrent.length" 
 		 class="container question-list">
 	<h4>Active</h4>
-	<div ng-repeat="question in profile.myQuestionsActive | limitTo: 2">
+	<div ng-repeat="question in profile.myQuestionsCurrent | limitTo: 2" ng-click="profile.seeQuestion($index)">
 
-		<button class="btn btn-default query"
-						ng-click="profile.seeQuestion($index)">{{question.query}}</button>
-
-		<button class="btn btn-default"
-						ng-click="profile.seeQuestion($index)">{{question.swipeLeft.option}}</button>
-		<button class="btn btn-default"
-						ng-click="profile.seeQuestion($index)">{{question.swipeRight.option}}</button>
-
+		<button class="btn btn-default">{{question.query}}</button>
+		<button class="btn btn-default">{{question.swipeLeft.votes}}</button class="btn btn-default">
+		<button class="btn btn-default">{{question.swipeLeft.option}}</button>
+		<button class="btn btn-default">{{question.swipeRight.votes}}</button class="btn btn-default">
+		<button class="btn btn-default">{{question.swipeRight.option}}</button>
 	</div>
+	<button class="btn btn-default">See all active votes</button>
 </div>
 
 <div class="container question-list">
 	<h4>Past</h4>
-	<div ng-repeat="question in profile.myQuestionsInactive | limitTo: 2">
-		<button class="btn btn-default query"
-						ng-click="profile.seeQuestion($index)">{{question.query}}</button>
-
-		<button class="btn btn-default"
-						ng-click="profile.seeQuestion($index)">{{question.swipeLeft.option}}</button>
-		<button class="btn btn-default"
-						ng-click="profile.seeQuestion($index)">{{question.swipeRight.option}}</button>
+	<div ng-repeat="question in profile.myQuestionsOld | limitTo: 2" ng-click="profile.seeQuestion($index)">
+		<button class="btn btn-default">{{question.query}}</button>
+		<button class="btn btn-default">{{question.swipeLeft.votes}}</button class="btn btn-default">
+		<button class="btn btn-default">{{question.swipeLeft.option}}</button>
+		<button class="btn btn-default">{{question.swipeRight.votes}}</button class="btn btn-default">
+		<button class="btn btn-default">{{question.swipeRight.option}}</button>
 	</div>
+	<button class="btn btn-default">See all past votes</button>
 </div>
