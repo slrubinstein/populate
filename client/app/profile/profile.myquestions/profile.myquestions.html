@@ -31,8 +31,10 @@
 
 <div class="bottom-row">
 	<button class="btn btn-default btn-lg"
+					ng-hide="myquestions.index === 0"
 					ng-click="myquestions.previous()">Previous</button>
 	<button class="btn btn-default btn-lg"
+					ng-hide="myquestions.index === myquestions.myQuestionsCurrent.length - 1"
 					ng-click="myquestions.next()">Next</button>
 </div>
 

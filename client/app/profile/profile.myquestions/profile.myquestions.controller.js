@@ -8,8 +8,8 @@ ProfileMyquestionsCtrl.$inject = ['$stateParams', 'highcharts', 'userQuestionSer
 function ProfileMyquestionsCtrl($stateParams, highcharts, userQuestionService, Auth) {
 	
   var vm = this;
-  var index = $stateParams.index.value || 0;
-  console.log($stateParams.index)
+  
+  vm.index = $stateParams.index.value || 0;
   vm.next = next;
   vm.previous = previous;
 
@@ -20,16 +20,19 @@ function ProfileMyquestionsCtrl($stateParams, highcharts, userQuestionService, A
     .then(function() {
     	vm.myQuestionsCurrent = userQuestionService.myQuestionsCurrent;
       vm.myQuestionsOld = userQuestionService.myQuestionsOld;
-      vm.currentQuestion = vm.myQuestionsCurrent[index];
+      vm.currentQuestion = vm.myQuestionsCurrent[vm.index];
       console.log(vm.currentQuestion)
+      console.log(vm.myQuestionsCurrent)
     })
   }
 
   function next() {
-    vm.currentQuestion = vm.myQuestionsCurrent[index++];
+    vm.index++;
+    vm.currentQuestion = vm.myQuestionsCurrent[vm.index];
   }
 
   function previous() {
-    vm.currentQuestion = vm.myQuestionsCurrent[index--];
+    vm.index--;
+    vm.currentQuestion = vm.myQuestionsCurrent[vm.index];
   }
 }
