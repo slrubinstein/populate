@@ -61,8 +61,9 @@ function ProfileCtrl(Auth, dataService, $state, highcharts,
     }
   }
 
-  function seeMyQuestions() {
-    $state.go('profile.myquestions');
+  function seeMyQuestions(index) {
+    index = index || 0;
+    $state.go('profile.myquestions', {index: {value: index}});
   }
 
   function seePastQuestions() {

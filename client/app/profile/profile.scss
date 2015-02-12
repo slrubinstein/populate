@@ -66,8 +66,24 @@
 	.btn {
 		margin: 10px;
 	}
+
 }
 
 .center {
 	text-align: center;
+}
+
+.bottom-row {	
+	position: relative;
+
+	.btn-lg:first-child {
+		bottom: -128px;
+		left: 10px;
+		position: absolute;;
+	}
+	.btn-lg:last-child {
+		bottom: -128px;
+		right: 10px;
+		position: absolute;;
+	}
 }

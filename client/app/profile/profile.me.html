@@ -23,7 +23,7 @@
 <div ng-if="profile.myQuestionsCurrent.length" 
 		 class="container question-list">
 	<h4>Active</h4>
-	<div ng-repeat="question in profile.myQuestionsCurrent | limitTo: 2" ng-click="profile.seeQuestion($index)">
+	<div ng-repeat="question in profile.myQuestionsCurrent | limitTo: 2" ng-click="profile.seeMyQuestions($index)">
 
 		<button class="btn btn-default">{{question.query}}</button>
 		<button class="btn btn-default">{{question.swipeLeft.votes}}</button class="btn btn-default">
