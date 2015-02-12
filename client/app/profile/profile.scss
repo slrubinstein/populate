@@ -28,7 +28,7 @@
 
 		.btn {
 			overflow: hidden;
-			padding: 2px;
+			/*padding: 2px;*/
 			text-align: left;
 			text-overflow: ellipsis;
 			width: 20%;
@@ -36,7 +36,8 @@
 			&:first-child {
 				border: solid 1px #ccc;
 				float: left;
-				width: 44%;
+				/*width: 44%;*/
+				width: 90%;
 			}
 
 			&:nth-child(even) {
@@ -77,12 +78,12 @@
 	position: relative;
 
 	.btn-lg:first-child {
-		bottom: -128px;
+		bottom: -100px;
 		left: 10px;
 		position: absolute;;
 	}
 	.btn-lg:last-child {
-		bottom: -128px;
+		bottom: -100px;
 		right: 10px;
 		position: absolute;;
 	}

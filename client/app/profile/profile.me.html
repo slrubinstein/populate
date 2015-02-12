@@ -1,5 +1,5 @@
 <div class="container profile-view">
-  <button class="btn btn-default" ng-click="profile.seeMyQuestions()">
+  <button class="btn btn-default" ng-click="profile.seeMyQuestions(0, 'myQuestionsCurrent')">
   	{{profile.myQuestionsCurrent.length + profile.myQuestionsOld.length}} questions asked.
   </button>
 
@@ -23,25 +23,29 @@
 <div ng-if="profile.myQuestionsCurrent.length" 
 		 class="container question-list">
 	<h4>Active</h4>
-	<div ng-repeat="question in profile.myQuestionsCurrent | limitTo: 2" ng-click="profile.seeMyQuestions($index)">
+	<div ng-repeat="question in profile.myQuestionsCurrent | limitTo: 2" 
+			 ng-click="profile.seeMyQuestions($index, 'myQuestionsCurrent')">
 
 		<button class="btn btn-default">{{question.query}}</button>
-		<button class="btn btn-default">{{question.swipeLeft.votes}}</button class="btn btn-default">
+<!-- 		<button class="btn btn-default">{{question.swipeLeft.votes}}</button class="btn btn-default">
 		<button class="btn btn-default">{{question.swipeLeft.option}}</button>
 		<button class="btn btn-default">{{question.swipeRight.votes}}</button class="btn btn-default">
-		<button class="btn btn-default">{{question.swipeRight.option}}</button>
+		<button class="btn btn-default">{{question.swipeRight.option}}</button> -->
 	</div>
-	<button class="btn btn-default">See all active votes</button>
+	<button class="btn btn-default"
+					ng-click="profile.seeMyQuestions(0, 'myQuestionsCurrent')">See all active votes</button>
 </div>
 
 <div class="container question-list">
 	<h4>Past</h4>
-	<div ng-repeat="question in profile.myQuestionsOld | limitTo: 2" ng-click="profile.seeQuestion($index)">
+	<div ng-repeat="question in profile.myQuestionsOld | limitTo: 2" 
+			 ng-click="profile.seeMyQuestions($index, 'myQuestionsOld')">
 		<button class="btn btn-default">{{question.query}}</button>
-		<button class="btn btn-default">{{question.swipeLeft.votes}}</button class="btn btn-default">
+<!-- 		<button class="btn btn-default">{{question.swipeLeft.votes}}</button class="btn btn-default">
 		<button class="btn btn-default">{{question.swipeLeft.option}}</button>
 		<button class="btn btn-default">{{question.swipeRight.votes}}</button class="btn btn-default">
-		<button class="btn btn-default">{{question.swipeRight.option}}</button>
+		<button class="btn btn-default">{{question.swipeRight.option}}</button> -->
 	</div>
-	<button class="btn btn-default">See all past votes</button>
+	<button class="btn btn-default"
+					ng-click="profile.seeMyQuestions(0, 'myQuestionsOld')">See all past votes</button>
 </div>
