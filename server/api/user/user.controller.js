@@ -195,7 +195,8 @@ exports.pastQuestions = function(req, res, next) {
  * Get all questions
  */
 exports.getAllQuestions = function(req, res, next) {
-  var userId = req.user._id;
+  var userId = req.params.id;
+  console.log(userId, '=============')
   User.findOne({
     _id: userId
   }, function(err, user) {

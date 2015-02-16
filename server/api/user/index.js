@@ -16,7 +16,7 @@ router.put('/:id/addquestion', auth.isAuthenticated(), controller.addQuestion);
 router.put('/:id/vote/:questionid', auth.isAuthenticated(), controller.vote);
 router.get('/:id', auth.isAuthenticated(), controller.show);
 router.get('/:id/loadquestionqueue', auth.isAuthenticated(), controller.loadQuestionQueue);
-router.get('/:id/getallquestions', auth.isAuthenticated(), controller.getAllQuestions);
+router.get('/:id/getallquestions', controller.getAllQuestions);
 router.get('/:id/pastquestions', auth.isAuthenticated(), controller.pastQuestions);
 router.get('/:id/getuserfriends', auth.isAuthenticated(), controller.getUserFriends);
 router.post('/', controller.create);

@@ -15,9 +15,12 @@ var errorHandler = require('errorhandler');
 var path = require('path');
 var config = require('./environment');
 var passport = require('passport');
+var cors = require('cors');
 
 module.exports = function(app) {
   var env = app.get('env');
+
+  app.use(cors());
 
   app.set('views', config.root + '/server/views');
   app.engine('html', require('ejs').renderFile);
