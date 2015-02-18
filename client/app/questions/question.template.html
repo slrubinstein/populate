@@ -1,0 +1,52 @@
+<div class="asker-row">
+	<img src="https://graph.facebook.com/4201092/picture">
+	<p><b>{{ask.user.given_name + ' ' + ask.user.family_name[0] + '.'}} asks:</b></p>
+  <div class="item-input-inset">
+	  <label class="item-input-wrapper">
+	    <input type="text" placeholder="Enter question..." maxlength="140">
+	  </label>
+	</div>
+</div>
+
+<div class="row options-row">
+	<div class="card col">
+		<label class="item item-input">
+		    <textarea placeholder="Second Option" maxlength="80"></textarea>
+	  </label>
+	</div>
+
+	<div class="card col">
+		<label class="item item-input">
+	    <textarea placeholder="Second Option" maxlength="80"></textarea>
+	  </label>
+	</div>
+</div>
+
+<div class="row voters-row">
+	<div class="col col-75">
+		<button class="button button-block button-balanced">
+		  Select Voters
+		</button>
+	</div>
+	<div class="col">
+		<button class="button button-block button-positive">
+		  Enable Comments
+		</button>
+	</div>
+</div>
+
+<div class="row voters-row">
+	<div class="col col-75">
+	  <div class="range range-balanced">
+		<i class="icon ion-clock"></i>
+	    <input type="range" name="timer" min="0" max="7" value="2">
+	  </div>
+	</div>
+	<div class="col">
+		Timer
+	</div>
+</div>
+
+<button class="ask-button button button-large button-balanced" ng-click="ask.getQs()">
+  Ask!
+</button>
