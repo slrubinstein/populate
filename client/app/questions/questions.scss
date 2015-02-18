@@ -1,0 +1,90 @@
+.question-template {
+	background-color: $yellow;
+	color: $positive;
+}
+
+
+.asker-row {
+
+	margin-bottom: 10px;
+
+	img {
+		float: left;
+		margin: 5px 10px;
+	}
+
+	.item-input-inset {
+		margin-top: -15px;
+		padding-left: 0;
+		text-overflow: ellipsis;
+	}
+
+	input {
+		border-radius: 4px;
+		background-color: #f2f2f2;
+		border: none;
+		height: 2em;
+		padding: 10px;
+		font-weight: normal;
+		width: 75%;
+	}
+}
+
+.options-row {
+	height: 120px;
+
+	.card {
+	}
+
+	div {
+		margin: 10px;
+		width: 40%;
+	}
+
+	textarea {
+		background-color: $yellow;
+		border: 3px solid #c2c2c2;
+		border-radius: 2px;
+		box-shadow: none;
+		height: 100%;
+		padding: 10px;
+		resize: none; /*seems to break sass */
+
+	}
+
+	::-webkit-input-placeholder {
+   color: $positive;
+	}
+
+	:-moz-placeholder { /* Firefox 18- */
+	   color: $positive;  
+	}
+
+	::-moz-placeholder {  /* Firefox 19+ */
+	   color: $positive;  
+	}
+
+	:-ms-input-placeholder {  
+	   color: $positive;  
+	}
+}
+
+.voters-row {
+	.button {
+		height: 48px;
+		margin: 10px;
+		width: 100%;
+
+		&.comments-button {
+			font-size: 10px;
+			line-height: 12px;
+			padding: 0;
+		}
+	}
+}
+
+.ask-button {
+	border-radius: 6px;
+	height: 100px;
+	width: 100%;
+}

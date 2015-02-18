@@ -8,6 +8,10 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
  * App-wide Styles
  */
 
+$balanced:                        #33ff33 !default;
+$positive:                        #3399ff !default;
+$yellow:													#ffffcc !default;
+
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;
@@ -23,5 +27,6 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 @import 'ask/templates/ask.scss';
 @import 'main/main.scss';
 @import 'profile/profile.scss';
+@import 'questions/questions.scss';
 @import 'modal/modal.scss';
 // endinjector
