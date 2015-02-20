@@ -26,12 +26,20 @@ function AnswerCtrl($scope, dataService, Auth, $state,
 console.log(vm.user)
 	function activate() {
 
+
+		Auth.isLoggedInAsync(function(loggedIn) {
+			if (loggedIn) {
+
 		userQuestionService.getAllQuestions(vm.user._id)
 			.then(function() {
 				vm.friendQuestionsCurrent = userQuestionService.friendQuestionsCurrent;
 				console.log(vm.friendQuestionsCurrent)
+				console.log(vm.currentQuestion)
 				setNextQuestion(index);
 			})
+				
+			}
+		})
 			
 	}
 
@@ -41,6 +49,7 @@ console.log(vm.user)
 	}
 
 	function setNextQuestion(index) {
+		console.log('next q')
 		if (vm.friendQuestionsCurrent[index]) {
 			vm.currentQuestion = vm.friendQuestionsCurrent[index];
 		} else {
@@ -49,6 +58,7 @@ console.log(vm.user)
 	}
 
 	function vote(swipeDir) {
+		console.log('vote')
 		vm.currentQuestion[swipeDir].votes++;
 		dataService.vote(vm.currentQuestion, vm.user._id);
 		index++;
