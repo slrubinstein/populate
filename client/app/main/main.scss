@@ -1,3 +1,7 @@
+html {
+  background-color: $yellow;
+}
+
 body {
     font-family: 'Helvetica Neue', Roboto, sans-serif;
 }
@@ -14,20 +18,23 @@ body {
 }
 
 .footer {
+  background-color: #fafafa;
   bottom: 0;
   height: 10%;
+  padding-top: 10px;
   position: fixed;
   width: 100%;
 
   .footer-tab {
     
     display: inline-block;
-    margin: 20px 0;
     text-align: center;
-    width: 18%;
+    width: 32%;
 
     img {
       height: 25px;
+      margin-left: 33%;
+      margin-right: 33%;
     }
 
     &:hover {
