@@ -21,35 +21,32 @@
 
 	input {
 		border-radius: 4px;
-		background-color: #f2f2f2;
+		background-color: $yellow;
 		border: none;
 		height: 2em;
 		padding: 10px;
 		font-weight: normal;
-		width: 75%;
+		width: 68%;
 	}
 }
 
 .options-row {
 	height: 120px;
-
-	.card {
-	}
-
-	div {
-		margin: 10px;
-		width: 40%;
-	}
+	margin-left: auto;
+	margin-right: auto;
+	width: 92%;
 
 	textarea {
 		background-color: $yellow;
 		border: 3px solid #c2c2c2;
 		border-radius: 2px;
 		box-shadow: none;
+		display: inline;
 		height: 100%;
+		margin: 2px;
 		padding: 10px;
 		resize: none; /*seems to break sass */
-
+		width: 45%;
 	}
 
 	::-webkit-input-placeholder {
@@ -70,21 +67,57 @@
 }
 
 .voters-row {
+
+	margin-left: auto;
+	margin-right: auto;
+	width: 92%;
+
 	.button {
-		height: 48px;
-		margin: 10px;
-		width: 100%;
+		background-color: $balanced;
+		border: none;
+		border-radius: 8px;
+		color: #fff;
+		display: inline-block;
+		font-size: 1.1em;
+		height: 40px;
+		margin: 10px 0 10px 2px;
+		vertical-align: bottom;
+		width: 72%;
 
 		&.comments-button {
+			background-color: $positive;
 			font-size: 10px;
 			line-height: 12px;
 			padding: 0;
+			margin-left: -4px;
+			width: 20%;
 		}
+	}
+
+	input {
+		display: inline-block;
+		height: 36px;
+		margin: 2px;
+		width: 72%;
+	}
+	p {
+		display: inline-block;
+		vertical-align: bottom;
 	}
 }
 
+.bottom-row {
+	margin-left: auto;
+	margin-right: auto;
+	width: 92%;
+}
+
 .ask-button {
+	background-color: $balanced;
+	border: none;
 	border-radius: 6px;
-	height: 100px;
-	width: 100%;
+	color: white;
+	font-size: 1.2em;
+	height: 90px;
+	width: 92%;
 }

@@ -4,43 +4,29 @@
 		<p><b>{{ask.user.given_name + ' ' + ask.user.family_name[0] + '.'}} asks:</b></p>
 		<input type="text" placeholder="Enter question..." maxlength="140">
 	</div>
+	<div class="clearfix"></div>
 
 	<div class="row options-row">
-		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-			<textarea placeholder="Second Option" maxlength="50"></textarea>
-		</div>
-
-		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-		  <textarea placeholder="Second Option" maxlength="50"></textarea>
-		</div>
+		<textarea placeholder="Answer" maxlength="50"></textarea>
+	  <textarea placeholder="Answer" maxlength="50"></textarea>
 	</div>
 
-	<div class="container row voters-row">
-
+	<div class="voters-row">
 		<button class="button">
-		  Select Voters
+		  SELECT VOTERS
 		</button>
-
-
 		<button class="comments-button button">
 		  Enable Comments
 		</button>
+		
+		<input type="range" name="timer" min="0" max="7" value="2">
 
+		<p>Timer</p>
 	</div>
 
-	<div class="row voters-row">
-		<div class="col col-75">
-		  <div class="range range-balanced">
-			<i class="icon ion-clock"></i>
-		    <input type="range" name="timer" min="0" max="7" value="2">
-		  </div>
-		</div>
-		<div class="col">
-			Timer
-		</div>
+	<div class="bottom-row">
+		<button class="ask-button button" ng-click="ask.getQs()">
+		  ASK!
+		</button>
 	</div>
-
-	<button class="ask-button button" ng-click="ask.getQs()">
-	  Ask!
-	</button>
 </div>
