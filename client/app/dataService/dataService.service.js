@@ -39,13 +39,13 @@ function dataService($http) {
     return $http.get('/api/users/' + userId + '/getallquestions');
   }
 
-  function post(questionOptions, selectedFriends) {
-    return $http.post('/api/questions', questionOptions)
-      .then(function(result) {
-        $http.put('/api/users/' + questionOptions.askerId +
-          '/addquestion', {questionId: result.data._id,
-                           selectedFriends: selectedFriends})
-      });
+  function post(newQuestion, selectedFriends) {
+    return $http.post('/api/questions', newQuestion)
+      // .then(function(result) {
+      //   $http.put('/api/users/' + newQuestion.askerId +
+      //     '/addquestion', {questionId: result.data._id,
+      //                      selectedFriends: selectedFriends})
+      // });
   }
 
   function seePastQuestions(userId) {

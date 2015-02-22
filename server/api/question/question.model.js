@@ -9,21 +9,51 @@ var QuestionSchema = new Schema({
   askerName: String,
   askerPic: String,
   query: String,
-  swipeLeft: {
+  answer1: {
   	option: String,
-  	votes: Number,
+  	votes: { type: Number, default: 0 },
   	image: String,
     voters: Array
   },
-  swipeRight: {
+  answer2: {
   	option: String,
-  	votes: Number,
+  	votes: { type: Number, default: 0 },
   	image: String,
     voters: Array
   },
   isActive: { type: Boolean, default: true },
   timeCreated: { type: Date, default: new Date , index: {unique: true } },
-  closesAt: { type: Date, index: { unique: true } }
+  closesAt: { type: Date, index: { unique: false } }
 });
+
+QuestionSchema.methods = {
+
+  addToUserActiveQuestions: function() {
+    var User = require('../user/user.model'),
+        question = this;
+
+    User.findById(question.askerId, function(err, user) {
+      if (err) throw err;
+      user.myQuestionsActive.push(question._id);
+      user.save();
+      return;
+    });
+  },
+
+  assignQuestionToFriends: function() {
+    var User = require('../user/user.model'),
+        question = this;
+
+    question.voters.forEach(function(voter) {
+      User.findById(voter, function(err, user) {
+        if (err) throw err;
+        user.friendQuestionsActive.push(question._id);
+        user.save();
+        return;
+      });
+    });
+  }
+
+}
 
 module.exports = mongoose.model('Question', QuestionSchema);

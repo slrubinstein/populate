@@ -2,13 +2,21 @@
 	<div class="asker-row">
 		<img src="https://graph.facebook.com/4201092/picture">
 		<p><b>{{qctrl.user.name}} asks:</b></p>
-		<textarea placeholder="Enter question..." maxlength="100"></textarea>
+		<textarea ng-model="qctrl.question.query"
+							placeholder="Enter question..."
+							maxlength="100"></textarea>
 	</div>
 	<div class="clearfix"></div>
 
 	<div class="row options-row">
-		<textarea placeholder="Answer" maxlength="50"></textarea>
-	  <textarea placeholder="Answer" maxlength="50"></textarea>
+		<textarea ng-model="qctrl.question.answer1.option" 
+							placeholder="Answer" 
+							maxlength="50">
+		</textarea>
+	  <textarea ng-model="qctrl.question.answer2.option" 
+	  					placeholder="Answer" 
+	  					maxlength="50">
+	  </textarea>
 	</div>
 
 	<div class="voters-row">
@@ -19,13 +27,13 @@
 		  Enable Comments
 		</button>
 		
-		<input type="range" name="timer" min="0" max="7" value="2">
+		<input type="range" name="timer" min="0" max="6" ng-model="qctrl.timerIndex">
 
-		<p>Timer</p>
+		<p>{{qctrl.timerOptions[qctrl.timerIndex]}}</p>
 	</div>
 
 	<div class="bottom-row">
-		<button class="ask-button button" ng-click="ask.getQs()">
+		<button class="ask-button button" ng-click="qctrl.askQuestion()">
 		  ASK!
 		</button>
 	</div>
