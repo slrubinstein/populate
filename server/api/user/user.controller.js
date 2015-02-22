@@ -155,6 +155,10 @@ exports.me = function(req, res, next) {
   }, '-salt -hashedPassword', function(err, user) { // don't ever give out the password or salt
     if (err) return next(err);
     if (!user) return res.json(401);
+  })
+  .populate('myQuestionsCurrent myQuestionsOld friendQuestionsCurrent friendQuestionsOld')
+  .exec(function(err, user) {
+    if (err) return next(err);
     res.json(user);
   });
 };

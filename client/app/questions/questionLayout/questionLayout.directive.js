@@ -9,7 +9,7 @@ function questionLayout() {
 		scope: {
 			question: '=question'
 		},
-		controller: 'AnswerCtrl as answer',
+		controller: 'QuestionCtrl as qctrl',
 		restrict: 'E',
 		link: function(scope, elem, attr) {
 			scope.$watch(attr.question, function(newQuestion) {

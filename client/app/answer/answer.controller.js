@@ -23,7 +23,7 @@ function AnswerCtrl($scope, dataService, Auth, $state,
 	vm.vote = vote;
 
 	activate();
-console.log(vm.user)
+
 	function activate() {
 
 
