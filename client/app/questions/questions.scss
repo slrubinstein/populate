@@ -19,13 +19,14 @@
 		text-overflow: ellipsis;
 	}
 
-	input {
+	textarea {
 		border-radius: 4px;
 		background-color: $yellow;
 		border: none;
-		height: 2em;
-		padding: 10px;
 		font-weight: normal;
+		height: 88px;
+		padding: 10px;
+		resize: none;
 		width: 68%;
 	}
 
@@ -49,7 +50,7 @@
 		height: 100%;
 		margin: 2px;
 		padding: 10px;
-		resize: none; /*seems to break sass */
+		resize: none;
 		width: 45%;
 	}
 
@@ -168,14 +169,13 @@
 		border: none;
 		height: 44px;
 	}
-}
-
-.ask-button {
-	background-color: $balanced;
-	border: none;
-	border-radius: 6px;
-	color: white;
-	font-size: 1.2em;
-	height: 90px;
-	width: 92%;
+	.ask-button {
+		background-color: $balanced;
+		border: none;
+		border-radius: 6px;
+		color: white;
+		font-size: 1.2em;
+		height: 90px;
+		width: 92%;
+	}
 }

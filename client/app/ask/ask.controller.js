@@ -23,7 +23,7 @@ function AskCtrl($scope, $state, Auth, dataService,
 	vm.timerIndex = 1;
 	vm.timerOptions = ['10 minutes', '30 minutes', '1 hour', '12 hours', '24 hours', '2 days', '7 days'];
 	vm.user = Auth.getCurrentUser();
-
+console.log(vm.user)
 	// vm.profilePic = 'https://graph.facebook.com/' +
  //                   vm.user.facebook.id + '/picture' || null;
 
