@@ -1,8 +1,7 @@
 .question-template {
 	background-color: $yellow;
-	color: $positive;
+	color: #444;
 }
-
 
 .asker-row {
 
@@ -11,6 +10,7 @@
 	img {
 		float: left;
 		margin: 5px 10px;
+		border-radius: 50%;
 	}
 
 	.item-input-inset {
@@ -27,6 +27,10 @@
 		padding: 10px;
 		font-weight: normal;
 		width: 68%;
+	}
+
+	p {
+		width: 92%;
 	}
 }
 
@@ -64,6 +68,15 @@
 	:-ms-input-placeholder {  
 	   color: $positive;  
 	}
+
+	.pop-option {
+		border: 3px solid #c2c2c2;
+		display: inline-block;
+		height: 118px;
+		margin: 2px 10px;
+		text-align: center;
+		width: 40%;
+	}
 }
 
 .voters-row {
@@ -100,16 +113,61 @@
 		margin: 2px;
 		width: 72%;
 	}
+
 	p {
 		display: inline-block;
 		vertical-align: bottom;
 	}
+	
+	.pop-option-voters {
+		background-color: $balanced;
+		display: inline-block;
+		height: 19px;
+		margin: 2px 10px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		vertical-align: bottom;
+		width: 40%;
+	}
+
+	img {
+		height: 40px;
+	}
+}
+
+.comments-row {
+	margin-left: auto;
+	margin-right: auto;
+	width: 82%;
+	height: 140px;
+	background-color: #ddd;
+	overflow-y: scroll;
+
+	li {
+		list-style: none;
+		margin-left: -28px;
+		line-height: 1.7em;
+	}
+
 }
 
 .bottom-row {
-	margin-left: 6%;
+	margin-left: auto;
 	margin-right: auto;
-	width: 94%;
+	text-align: center;
+	width: 92%;
+
+	img {
+		height: 40px;
+		margin: 30px 12px 0 12px;
+	}
+
+	.button {
+		width: 46%;
+		border-radius: 6px;
+		border: none;
+		height: 44px;
+	}
 }
 
 .ask-button {
