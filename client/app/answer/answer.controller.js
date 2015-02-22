@@ -34,8 +34,9 @@ console.log(vm.user)
 			.then(function() {
 				vm.friendQuestionsCurrent = userQuestionService.friendQuestionsCurrent;
 				console.log(vm.friendQuestionsCurrent)
-				console.log(vm.currentQuestion)
 				setNextQuestion(index);
+
+				console.log(vm.currentQuestion)
 			})
 				
 			}
