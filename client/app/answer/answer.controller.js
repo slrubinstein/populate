@@ -4,65 +4,43 @@ angular.module('populateApp')
   .controller('AnswerCtrl', AnswerCtrl);
 
 AnswerCtrl.$inject = ['$scope', 'dataService', 'Auth', '$state',
-											'userQuestionService']
+											'userQuestionService', '$stateParams']
 
 function AnswerCtrl($scope, dataService, Auth, $state,
-										userQuestionService) {
+										userQuestionService, $stateParams) {
 
 	var vm = this;
 
-	var index = 0;
-
-	vm.createDateString = createDateString;
-	vm.currentQuestion = {};
-	vm.end = false;
-	vm.friends;
-	vm.questions = [];
+	vm.currentQuestion = $stateParams.question;
+	vm.currentQuestions = [];
+	vm.loadQuestion = loadQuestion;
+	vm.open = true;
+	vm.openOrClosed = 'active';
+	vm.questionsByGroup = {};
+	vm.typeSelection = typeSelection;
 	vm.user = Auth.getCurrentUser();
-	vm.userFromDB;
-	vm.vote = vote;
 
-	// activate();
+	activate();
 
-	// function activate() {
-
-
-	// 	Auth.isLoggedInAsync(function(loggedIn) {
-	// 		if (loggedIn) {
-
-	// 	userQuestionService.getAllQuestions(vm.user._id)
-	// 		.then(function() {
-	// 			vm.friendQuestionsCurrent = userQuestionService.friendQuestionsCurrent;
-	// 			console.log(vm.friendQuestionsCurrent)
-	// 			setNextQuestion(index);
-
-	// 			console.log(vm.currentQuestion)
-	// 		})
-				
-	// 		}
-	// 	})
-			
-	// }
-
-	function createDateString(date) {
-		var d = new Date(date);
-		return d.toDateString() + ', ' + d.toLocaleTimeString();
+	function activate() {
+		vm.questionsByGroup.active = _.sortBy(vm.user.friendQuestionsActive, function(q) {
+			return q.closesAt;
+		});
+		vm.questionsByGroup.old = _.sortBy(vm.user.friendQuestionsOld, function(q) {
+			return q.closesAt;
+		});
+		vm.currentQuestions = vm.questionsByGroup['active'];
+		console.log(vm.questionsByGroup)
 	}
 
-	function setNextQuestion(index) {
-		console.log('next q')
-		if (vm.friendQuestionsCurrent[index]) {
-			vm.currentQuestion = vm.friendQuestionsCurrent[index];
-		} else {
-			$state.go('answer.end');
-		}
+	function loadQuestion(index) {
+		vm.currentQuestion = vm.currentQuestions[index];
+		$state.go('answer.questions', {question: vm.currentQuestion})
+		console.log(vm.currentQuestion)
 	}
 
-	function vote(swipeDir) {
-		console.log('vote')
-		vm.currentQuestion[swipeDir].votes++;
-		dataService.vote(vm.currentQuestion, vm.user._id);
-		index++;
-		setNextQuestion(index);
+	function typeSelection(group) {
+		vm.currentQuestions = vm.questionsByGroup[group];
 	}
+
 }

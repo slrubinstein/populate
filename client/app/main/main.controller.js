@@ -24,8 +24,8 @@ function MainCtrl($scope, $http, $state, facebookFriends,
     Auth.isLoggedInAsync(function(loggedIn) {
       if (loggedIn) {
         vm.user = Auth.getCurrentUser();
-        userQuestionService.getAllQuestions(vm.user._id);
-        $state.go('answer.questions');
+        // userQuestionService.getAllQuestions(vm.user._id);
+        $state.go('answer');
       }
     });
   }

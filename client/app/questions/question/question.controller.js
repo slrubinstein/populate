@@ -3,9 +3,9 @@
 angular.module('populateApp')
   .controller('QuestionCtrl', QuestionCtrl)
 
-QuestionCtrl.$inject = ['Auth', 'userQuestionService', 'dataService'];
+QuestionCtrl.$inject = ['Auth', 'userQuestionService', 'dataService', '$stateParams'];
 
-function QuestionCtrl(Auth, userQuestionService, dataService) {
+function QuestionCtrl(Auth, userQuestionService, dataService, $stateParams) {
 
 	var vm = this;
 
@@ -14,6 +14,7 @@ function QuestionCtrl(Auth, userQuestionService, dataService) {
   									 2 * 24 * 60 * 60 * 1000, 7 * 24 * 60 * 60 * 1000];
 
 	vm.askQuestion = askQuestion;
+	vm.index = $stateParams.index;
 	vm.question = {};
 	vm.timerIndex = 2;
 	vm.timerOptions = ['10 minutes', '30 minutes', '1 hour', '12 hours', '24 hours', '2 days', '7 days'];

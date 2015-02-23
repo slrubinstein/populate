@@ -1,35 +1,35 @@
-.no-more-questions {
-	a {
-		color: yellow;
+.profile-row {
+
+	.third-col {
+		display: inline-block;
+		width: 40%;
+	
+		&:first-child {
+			text-align: right;
+		}
+
+		&:nth-child(2) {
+			height: 100px;
+			vertical-align: bottom;
+			width: 50px;
+		}
+	
+		img {
+			border-radius: 50%;
+		}
+
 	}
+
 }
 
-.query {
-	font-size: 1.2em;
-	margin: -10px 0 10px 100px;
-}
+.open-closed-row {
 
-.vote-count {
-	font-size: 1.1em;
-	height: 50px;
 	text-align: center;
 
-	p {
-		border: 3px solid #ccc;
+	button {
 		display: inline-block;
-		margin: 5px;
-		padding: 1px;
-		width: 45%;
-	}
-}
-
-.center-buttons {
-	margin-left: auto;
-	margin-right: auto;
-	width: 80%;
-
-	.btn {
-		margin-top: 20px;
-		width: 100%;
+		width: 130px;
+		height: 30px;
+		margin: 0px -4px;
 	}
 }

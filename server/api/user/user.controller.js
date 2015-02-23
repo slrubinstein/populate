@@ -156,8 +156,9 @@ exports.me = function(req, res, next) {
     if (err) return next(err);
     if (!user) return res.json(401);
   })
-  .populate('myQuestionsCurrent myQuestionsOld friendQuestionsCurrent friendQuestionsOld')
+  .populate('myQuestionsActive myQuestionsOld friendQuestionsActive friendQuestionsOld')
   .exec(function(err, user) {
+    console.log(user)
     if (err) return next(err);
     res.json(user);
   });

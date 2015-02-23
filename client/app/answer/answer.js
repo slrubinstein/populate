@@ -13,11 +13,12 @@ angular.module('populateApp')
       	url: '/questions',
       	templateUrl: 'app/answer/templates/answer.questions.html',
       	controller: 'AnswerCtrl',
-      	controllerAs: 'answer'
+      	controllerAs: 'answer',
+        params: { question: {} }
       })
-      .state('answer.end', {
-        url: '/end',
-        templateUrl: 'app/answer/templates/answer.end.html',
+      .state('answer.home', {
+        url: '/home',
+        templateUrl: 'app/answer/templates/answer.home.html',
         controller: 'AnswerCtrl',
         controllerAs: 'answer'
       });

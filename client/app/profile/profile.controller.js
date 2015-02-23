@@ -3,77 +3,41 @@
 angular.module('populateApp')
   .controller('ProfileCtrl', ProfileCtrl);
 
-ProfileCtrl.$inject = ['Auth', 'dataService', '$state', 'highcharts',
+ProfileCtrl.$inject = ['Auth', 'dataService', '$state', '$stateParams',
                        'userQuestionService'];
 
-function ProfileCtrl(Auth, dataService, $state, highcharts,
+function ProfileCtrl(Auth, dataService, $state, $stateParams,
                      userQuestionService) {
 
   var vm = this;
 
-
-  vm.loggedIn = false;
-  vm.friendQuestionsCurrent = [];
-  vm.friendQuestionsOld = [];
-  vm.myQuestionsCurrent = [];
-  vm.myQuestionsOld = [];
-  vm.nextQuestion = nextQuestion;
-  vm.profilePage = true;
-  vm.seeMyQuestions = seeMyQuestions;
-  vm.seePastQuestions = seePastQuestions;
-  vm.seeQuestion = seeQuestion;
-  vm.user = userQuestionService.user;
-
-  var myIndex = 0;
-  var friendIndex = 0;
+  vm.currentQuestion = $stateParams.question;
+  vm.currentQuestions = [];
+  vm.loadQuestion = loadQuestion;
+  vm.open = true;
+  vm.openOrClosed = 'active';
+  vm.questionsByGroup = {};
+  vm.typeSelection = typeSelection;
+  vm.user = Auth.getCurrentUser();
 
   activate();
 
   function activate() {
-
-    vm.user = Auth.getCurrentUser();
-
-    userQuestionService.getAllQuestions(vm.user._id)
-      .then(function() {
-        vm.myQuestionsCurrent = userQuestionService.myQuestionsCurrent;
-        vm.myQuestionsOld = userQuestionService.myQuestionsOld;
-        vm.friendQuestionsCurrent = userQuestionService.friendQuestionsCurrent;
-        vm.friendQuestionsOld = userQuestionService.friendQuestionsOld;
-        console.log(vm.myQuestionsCurrent)
-      }, function(err) {
-        console.log(err);
-      });
+    vm.questionsByGroup.active = vm.user.myQuestionsActive;
+    vm.questionsByGroup.old = vm.user.myQuestionsOld;
+    vm.currentQuestions = vm.questionsByGroup['active'];
+    console.log(vm.user)
+    console.log(vm.questionsByGroup)
   }
 
-  function nextQuestion(type) {
-    if (type === 'me') {
-      myIndex++;
-
-      if (vm.myQuestions[myIndex]) {
-        createChart(vm.myQuestions[myIndex]);
-      }
-
-    } else if (type === 'friend') {
-      friendIndex++;
-      if (vm.friendQuestionArchive[friendIndex]) {
-        createChart(vm.friendQuestionArchive[friendIndex]);
-      }
-    }
+  function loadQuestion(index) {
+    vm.currentQuestion = vm.currentQuestions[index];
+    $state.go('profile.questions', {question: vm.currentQuestion})
+    console.log(vm.currentQuestion)
   }
 
-  function seeMyQuestions(index, list) {
-    $state.go('profile.myquestions', {options: {index: index,
-                                                list: list}});
+  function typeSelection(group) {
+    vm.currentQuestions = vm.questionsByGroup[group];
   }
 
-  function seePastQuestions() {
-    $state.go('profile.questionsanswered');
-    if (vm.friendQuestionArchive[friendIndex]) {
-      createChart(vm.friendQuestionArchive[friendIndex]);
-    }
-  }
-
-  function seeQuestion(index) {
-    $state.go('profile.myquestions', {question: vm.myQuestions[index]});
-  }
 }
