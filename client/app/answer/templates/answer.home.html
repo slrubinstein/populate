@@ -17,18 +17,18 @@
 		</div>
 	</div>
 
-	<div class="container">
 		<div class="open-closed-row">
 			<button ng-click="answer.typeSelection('active')">OPEN</button>
 			<button ng-click="answer.typeSelection('old')">CLOSED</button>
 		</div>
-	</div>
 
-	<div class="question-block"
-			 ng-repeat="question in answer.currentQuestions"
-			 ng-click="answer.loadQuestion($index)">
-		<h4>{{question.query}}</h4>
+	<div class="container">
+		<div class="question-block"
+				 ng-repeat="question in answer.currentQuestions"
+				 ng-click="answer.loadQuestion($index)">
+			<h4>{{question.query}}</h4>
 
+		</div>
 	</div>
 
 

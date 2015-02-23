@@ -5,7 +5,7 @@
 
 .asker-row {
 
-	margin-bottom: 10px;
+	margin-bottom: 0;
 
 	img {
 		float: left;
@@ -25,7 +25,7 @@
 		border: none;
 		font-weight: normal;
 		height: 88px;
-		padding: 10px;
+		padding: 4px;
 		resize: none;
 		width: 68%;
 	}
@@ -176,6 +176,7 @@
 		color: white;
 		font-size: 1.2em;
 		height: 90px;
+		margin-top: 26px;
 		width: 92%;
 	}
 }

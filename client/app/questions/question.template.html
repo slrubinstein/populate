@@ -20,12 +20,13 @@
 	</div>
 
 	<div class="voters-row">
-		<button class="button">
+		<button class="button" ng-click="qctrl.openVotersPopup()">
 		  SELECT VOTERS
 		</button>
 		<button class="comments-button button">
 		  Enable Comments
 		</button>
+		<choose-voters ng-if="qctrl.votersOpen"></choose-voters>
 		
 		<input type="range" name="timer" min="0" max="6" ng-model="qctrl.timerIndex">
 

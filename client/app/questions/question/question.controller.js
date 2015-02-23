@@ -3,9 +3,11 @@
 angular.module('populateApp')
   .controller('QuestionCtrl', QuestionCtrl)
 
-QuestionCtrl.$inject = ['Auth', 'userQuestionService', 'dataService', '$stateParams'];
+QuestionCtrl.$inject = ['Auth', 'userQuestionService', 'dataService', 
+												'$state', '$stateParams'];
 
-function QuestionCtrl(Auth, userQuestionService, dataService, $stateParams) {
+function QuestionCtrl(Auth, userQuestionService, dataService, 
+											$state, $stateParams) {
 
 	var vm = this;
 
@@ -15,9 +17,11 @@ function QuestionCtrl(Auth, userQuestionService, dataService, $stateParams) {
 
 	vm.askQuestion = askQuestion;
 	vm.index = $stateParams.index;
+	vm.openVotersPopup = openVotersPopup;
 	vm.question = {};
 	vm.timerIndex = 2;
 	vm.timerOptions = ['10 minutes', '30 minutes', '1 hour', '12 hours', '24 hours', '2 days', '7 days'];
+	vm.votersOpen = false;
 	vm.user;
 
 	activate();
@@ -40,6 +44,12 @@ function QuestionCtrl(Auth, userQuestionService, dataService, $stateParams) {
 		vm.question.closesAt = new Date (date.getTime() + timerMillis[vm.timerIndex]);
 
 		dataService.post(vm.question)
+		// changing state will empty the ng-model values
+		$state.go('answer.home');
+	}
+
+	function openVotersPopup() {
+		vm.votersOpen = !vm.votersOpen;
 	}
 
 

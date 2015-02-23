@@ -13,7 +13,6 @@ function questionLayout() {
 		restrict: 'E',
 		link: function(scope, elem, attr) {
 			scope.$watch(attr.question, function(newQuestion) {
-				console.log(attr.question)
 				scope.question = newQuestion;
 			});
 		},
