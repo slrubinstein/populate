@@ -22,27 +22,27 @@ function AnswerCtrl($scope, dataService, Auth, $state,
 	vm.userFromDB;
 	vm.vote = vote;
 
-	activate();
+	// activate();
 
-	function activate() {
+	// function activate() {
 
 
-		Auth.isLoggedInAsync(function(loggedIn) {
-			if (loggedIn) {
+	// 	Auth.isLoggedInAsync(function(loggedIn) {
+	// 		if (loggedIn) {
 
-		userQuestionService.getAllQuestions(vm.user._id)
-			.then(function() {
-				vm.friendQuestionsCurrent = userQuestionService.friendQuestionsCurrent;
-				console.log(vm.friendQuestionsCurrent)
-				setNextQuestion(index);
+	// 	userQuestionService.getAllQuestions(vm.user._id)
+	// 		.then(function() {
+	// 			vm.friendQuestionsCurrent = userQuestionService.friendQuestionsCurrent;
+	// 			console.log(vm.friendQuestionsCurrent)
+	// 			setNextQuestion(index);
 
-				console.log(vm.currentQuestion)
-			})
+	// 			console.log(vm.currentQuestion)
+	// 		})
 				
-			}
-		})
+	// 		}
+	// 	})
 			
-	}
+	// }
 
 	function createDateString(date) {
 		var d = new Date(date);
