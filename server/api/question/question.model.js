@@ -36,6 +36,8 @@ QuestionSchema.methods = {
       if (err) throw err;
       user.myQuestionsActive.push(question._id);
       user.save();
+      console.log('pushing', question._id)
+      console.log('user', user)
       return;
     });
   },

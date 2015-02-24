@@ -12,6 +12,7 @@ function questionLayout() {
 		controller: 'QuestionCtrl as qctrl',
 		restrict: 'E',
 		link: function(scope, elem, attr) {
+			// do i want to use $observe here instead?
 			scope.$watch(attr.question, function(newQuestion) {
 				scope.question = newQuestion;
 			});
