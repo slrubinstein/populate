@@ -54,6 +54,20 @@ QuestionSchema.methods = {
         return;
       });
     });
+  },
+
+  moveQuestionFromActiveToOld: function(voterId) {
+    var User = require('../user/user.model'),
+        question = this;
+
+    User.findById(voterId, function(err, user) {
+      if (err) throw err;
+      var index = user.friendQuestionsActive.indexOf(question._id);
+      user.friendQuestionsActive.splice(index, 1);
+      user.friendQuestionsOld.push(question._id);
+      user.save();
+      return;
+    });
   }
 
 }

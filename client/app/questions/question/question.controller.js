@@ -21,6 +21,7 @@ function QuestionCtrl(Auth, userQuestionService, dataService,
 	vm.question = {};
 	vm.timerIndex = 2;
 	vm.timerOptions = ['10 minutes', '30 minutes', '1 hour', '12 hours', '24 hours', '2 days', '7 days'];
+	vm.vote = vote;
 	vm.votersOpen = false;
 	vm.user;
 
@@ -52,5 +53,9 @@ function QuestionCtrl(Auth, userQuestionService, dataService,
 		vm.votersOpen = !vm.votersOpen;
 	}
 
+	function vote(question, answer) {
+		console.log(question, answer, vm.user)
+		dataService.vote(question, answer, vm.user._id)
+	}
 
 }

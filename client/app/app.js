@@ -5,8 +5,7 @@ angular.module('populateApp', [
   'ngResource',
   'ngSanitize',
   'ui.router',
-  'ui.bootstrap',
-  'highcharts-ng'
+  'ui.bootstrap'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

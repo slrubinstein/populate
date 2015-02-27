@@ -7,15 +7,17 @@ function questionLayout() {
 
 	return {
 		scope: {
-			question: '@question'
+			question: '=question'
 		},
 		controller: 'QuestionCtrl as qctrl',
 		restrict: 'E',
 		link: function(scope, elem, attr) {
 			// do i want to use $observe here instead?
-			scope.$watch(attr.question, function(newQuestion) {
-				scope.question = newQuestion;
-			});
+			// scope.$watch(attr.question, function(newQuestion) {
+			// 	scope.question = newQuestion;
+			// });
+		console.log('scope question', scope.question)
+		// scope.vote = qctrl.vote;
 		},
 		templateUrl: function(elem, attr) {
 			if (attr.question)
