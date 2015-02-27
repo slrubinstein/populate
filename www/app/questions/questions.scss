@@ -1,0 +1,182 @@
+.question-template {
+	background-color: $yellow;
+	color: #444;
+}
+
+.asker-row {
+
+	margin-bottom: 0;
+
+	img {
+		float: left;
+		margin: 5px 10px;
+		border-radius: 50%;
+	}
+
+	.item-input-inset {
+		margin-top: -15px;
+		padding-left: 0;
+		text-overflow: ellipsis;
+	}
+
+	textarea {
+		border-radius: 4px;
+		background-color: $yellow;
+		border: none;
+		font-weight: normal;
+		height: 88px;
+		padding: 4px;
+		resize: none;
+		width: 68%;
+	}
+
+	p {
+		width: 92%;
+	}
+}
+
+.options-row {
+	height: 120px;
+	margin-left: 6%;
+	margin-right: auto;
+	width: 94%;
+
+	textarea {
+		background-color: $yellow;
+		border: 3px solid #c2c2c2;
+		border-radius: 2px;
+		box-shadow: none;
+		display: inline;
+		height: 100%;
+		margin: 2px;
+		padding: 10px;
+		resize: none;
+		width: 45%;
+	}
+
+	::-webkit-input-placeholder {
+   color: $positive;
+	}
+
+	:-moz-placeholder { /* Firefox 18- */
+	   color: $positive;  
+	}
+
+	::-moz-placeholder {  /* Firefox 19+ */
+	   color: $positive;  
+	}
+
+	:-ms-input-placeholder {  
+	   color: $positive;  
+	}
+
+	.pop-option {
+		border: 3px solid #c2c2c2;
+		display: inline-block;
+		height: 118px;
+		margin: 2px 10px;
+		text-align: center;
+		width: 40%;
+	}
+}
+
+.voters-row {
+
+	margin-left: 6%;
+	margin-right: auto;
+	width: 94%;
+
+	.button {
+		background-color: $balanced;
+		border: none;
+		border-radius: 8px;
+		color: #fff;
+		display: inline-block;
+		font-size: 1.1em;
+		height: 40px;
+		margin: 10px 0 10px 2px;
+		vertical-align: bottom;
+		width: 72%;
+
+		&.comments-button {
+			background-color: $positive;
+			font-size: 10px;
+			line-height: 12px;
+			padding: 0;
+			margin-left: -4px;
+			width: 20%;
+		}
+	}
+
+	input {
+		display: inline-block;
+		height: 36px;
+		margin: 2px;
+		width: 72%;
+	}
+
+	p {
+		display: inline-block;
+		vertical-align: bottom;
+	}
+	
+	.pop-option-voters {
+		background-color: $balanced;
+		display: inline-block;
+		height: 19px;
+		margin: 2px 10px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		vertical-align: bottom;
+		width: 40%;
+	}
+
+	img {
+		height: 40px;
+	}
+}
+
+.comments-row {
+	margin-left: auto;
+	margin-right: auto;
+	width: 82%;
+	height: 140px;
+	background-color: #ddd;
+	overflow-y: scroll;
+
+	li {
+		list-style: none;
+		margin-left: -28px;
+		line-height: 1.7em;
+	}
+
+}
+
+.bottom-row {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	width: 92%;
+
+	img {
+		height: 40px;
+		margin: 30px 12px 0 12px;
+	}
+
+	.button {
+		width: 46%;
+		border-radius: 6px;
+		border: none;
+		height: 44px;
+	}
+	.ask-button {
+		background-color: $balanced;
+		border: none;
+		border-radius: 6px;
+		color: white;
+		font-size: 1.2em;
+		height: 90px;
+		margin-top: 26px;
+		width: 92%;
+	}
+}

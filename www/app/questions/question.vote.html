@@ -1,0 +1,56 @@
+<div class="question-template">
+	<div class="asker-row">
+		<img ng-src="{{question.askerPic}}">
+		<p>{{question.askerName}} asks:</p>
+		<p><b>{{question.query}}</b></p>
+	</div>
+	<div class="clearfix"></div>
+
+	<div class="row options-row">
+		<div class="pop-option" ng-click="qctrl.vote('swipeLeft')">{{question.swipeLeft.option}}
+		</div>
+
+		<div class="pop-option" ng-click="qctrl.vote('swipeRight')">{{question.swipeRight.option}}
+
+		</div>
+	</div>
+	<div class="voters-row">
+		<div class="pop-option-voters">
+			<span>adam</span>
+			<span>jordan</span>
+		</div>
+		<div class="pop-option-voters">
+			<span>andrew</span>
+			<span>brian</span>
+			<span>mike</span>
+			<span>rebecca</span>
+		</div>
+		<div ng-if="question.isActive" class="time-voters-remaining">
+			<img src="assets/images/noun_77811_cc.png">
+			<div class="pop-option-voters">alex, ben, charlie</div>
+		</div>
+	</div>
+	<div class="comments-row">
+		<ul>
+			<li>speaker: comment</li>
+			<li>speaker: comment</li>
+			<li>speaker: comment</li>
+			<li>speaker: comment</li>
+			<li>speaker: comment</li>
+			<li ng-click="">...add a comment!</li>
+		</ul>
+	</div>
+
+	<div class="bottom-row">
+		<div ng-if="!question.isActive" class="inactive-question-buttons">
+			<img src="assets/images/noun_6507_cc.png">
+			<img src="assets/images/noun_38558_cc.png">
+			<img src="assets/images/noun_6508_cc.png">
+		</div>
+		<div ng-if="question.isActive" class="active-question-buttons">
+			<button class="button">ANSWER!</button>
+			<img src="assets/images/noun_6508_cc.png">
+			<img src="assets/images/noun_38558_cc.png">
+		</div>
+	</div>
+</div>

@@ -1,0 +1,34 @@
+<div class="question-template">
+	<div class="profile-row">
+		<div class="third-col">
+			<p>{{profile.user.name}}</p>
+			<br>
+			<p>{{profile.user.location}}</p>
+			<br>
+			<p><a href="#">Invite Friends</a></p>
+		</div>
+		<div class="third-col">
+			<img src="https://graph.facebook.com/4201092/picture">
+		</div>
+		<div class="third-col">
+			<p>Populating since...</p>
+			<br>
+			<p><a ui-sref="profile.me">Edit Profile</a></p>
+		</div>
+	</div>
+
+	<div class="open-closed-row">
+		<button ng-click="profile.typeSelection('active')">OPEN</button>
+		<button ng-click="profile.typeSelection('old')">CLOSED</button>
+	</div>
+
+	<div class="container">
+		<div class="question-block"
+				 ng-repeat="question in profile.currentQuestions track by $index"
+				 ng-click="profile.loadQuestion($index)">
+			<h4>{{question.query}}</h4>
+		</div>
+	</div>
+
+
+</div>

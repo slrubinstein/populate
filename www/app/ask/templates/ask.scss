@@ -1,0 +1,57 @@
+.swipe-option {
+	width: 45%;
+	display: inline-flex;
+	float: left;
+	margin: 20px 0;
+}
+
+.who-should-answer p {
+	text-align: left;
+}
+
+.friend-zone {
+	text-align: left;
+	margin: 10px;
+
+	li {
+		list-style-type: none;
+	}
+}
+
+.top-row {
+	min-height: 80px;
+
+	.question-box {
+		width: 78%;
+	}
+}
+
+.lead img {
+	float: left;
+	margin: 10px;
+}
+
+.mid-row {
+
+	.swipe-option {
+		width: 50%;
+		height: 100px;
+		margin-bottom: -1px;
+		margin-top: 0px;
+	}
+
+	.btn {
+		width: 49%;
+	}
+}
+
+/*.bottom-row {
+	border-bottom: 1px solid;
+}*/
+
+#ask-button {
+  width: 100%;
+  background-color: #F55858;
+  border-radius: 0;
+  border: 0;
+}

@@ -1,0 +1,40 @@
+<div class="top-row" ng-if="!myquestions.end">
+  <p class="lead">You asked
+    <img ng-src={{myquestions.currentQuestion.askerPic}}>
+    <p class="query">{{myquestions.currentQuestion.query}}</p>
+  </p>
+</div>
+<div class="clearfix"></div>
+<div ng-if="!myquestions.end" class="mid-row">
+
+  <div class="form-control swipe-option"
+       ng-click="myquestions.vote('swipeLeft')">
+    {{myquestions.currentQuestion.swipeLeft.option}}
+  </div>
+
+  <div class="form-control swipe-option"
+       ng-click="myquestions.vote('swipeRight')">
+    {{myquestions.currentQuestion.swipeRight.option}}
+  </div>
+  <div class="clearfix"></div>
+
+	<div class="vote-count">
+	  <p>{{myquestions.currentQuestion.swipeLeft.votes}}</p>
+	  <p>{{myquestions.currentQuestion.swipeRight.votes}}</p>
+	</div>
+  <div class="container">
+    <p>This Vote closes at</p>
+    <p>{{myquestions.createDateString(myquestions.currentQuestion.closesAt)}}</p>
+    <p>List of people who voted for each?</p>
+  </div>
+</div>
+
+<div class="bottom-row">
+	<button class="btn btn-default btn-lg"
+					ng-hide="myquestions.index === 0"
+					ng-click="myquestions.previous()">Previous</button>
+	<button class="btn btn-default btn-lg"
+					ng-hide="myquestions.endOfList"
+					ng-click="myquestions.next()">Next</button>
+</div>
+

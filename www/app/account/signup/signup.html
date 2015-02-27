@@ -1,0 +1,26 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Sign up</h1>
+    </div>
+    <div class="col-sm-12">
+      <form class="form" name="form" ng-submit="register(form)" novalidate>
+
+          <a class="btn btn-default btn-lg btn-register" href="/login">
+            Login
+          </a>
+        </div>
+
+        <hr>
+        <div>
+          <a class="btn btn-facebook" href="" ng-click="loginOauth('facebook')">
+            <i class="fa fa-facebook"></i> Connect with Facebook
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+  <hr>
+</div>

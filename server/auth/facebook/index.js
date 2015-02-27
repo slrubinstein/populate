@@ -14,6 +14,8 @@ router
   }))
 
   .get('/callback', passport.authenticate('facebook', {
+    // successRedirect for remote client
+    successRedirect: 'http://192.168.1.4:9100/#/answer/home',
     failureRedirect: '/signup',
     session: false
   }), auth.setTokenCookie);

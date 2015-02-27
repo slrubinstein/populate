@@ -1,0 +1,35 @@
+.profile-row {
+
+	.third-col {
+		display: inline-block;
+		width: 40%;
+	
+		&:first-child {
+			text-align: right;
+		}
+
+		&:nth-child(2) {
+			height: 100px;
+			vertical-align: bottom;
+			width: 50px;
+		}
+	
+		img {
+			border-radius: 50%;
+		}
+
+	}
+
+}
+
+.open-closed-row {
+
+	text-align: center;
+
+	button {
+		display: inline-block;
+		width: 130px;
+		height: 30px;
+		margin: 0px -4px;
+	}
+}

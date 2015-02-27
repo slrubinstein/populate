@@ -1,0 +1,41 @@
+<div class="question-template">
+	<div class="asker-row">
+		<img src="https://graph.facebook.com/4201092/picture">
+		<p><b>{{qctrl.user.name}} asks:</b></p>
+		<textarea ng-model="qctrl.question.query"
+							placeholder="Enter question..."
+							maxlength="100"></textarea>
+	</div>
+	<div class="clearfix"></div>
+
+	<div class="row options-row">
+		<textarea ng-model="qctrl.question.answer1.option" 
+							placeholder="Answer" 
+							maxlength="50">
+		</textarea>
+	  <textarea ng-model="qctrl.question.answer2.option" 
+	  					placeholder="Answer" 
+	  					maxlength="50">
+	  </textarea>
+	</div>
+
+	<div class="voters-row">
+		<button class="button" ng-click="qctrl.openVotersPopup()">
+		  SELECT VOTERS
+		</button>
+		<button class="comments-button button">
+		  Enable Comments
+		</button>
+		<choose-voters ng-if="qctrl.votersOpen"></choose-voters>
+		
+		<input type="range" name="timer" min="0" max="6" ng-model="qctrl.timerIndex">
+
+		<p>{{qctrl.timerOptions[qctrl.timerIndex]}}</p>
+	</div>
+
+	<div class="bottom-row">
+		<button class="ask-button button" ng-click="qctrl.askQuestion()">
+		  ASK!
+		</button>
+	</div>
+</div>
