@@ -11,36 +11,54 @@ function AnswerCtrl($scope, dataService, Auth, $state,
 
 	var vm = this;
 
-	vm.currentQuestion = $stateParams.question;
+	// vm.currentQuestion = $stateParams.question;
 	vm.currentQuestions = [];
+	vm.group;
+	vm.index = 0;
 	vm.loadQuestion = loadQuestion;
+	vm.nextQ = nextQ;
 	vm.open = true;
 	vm.openOrClosed = 'active';
 	vm.questionsByGroup = {};
 	vm.typeSelection = typeSelection;
-	vm.user = Auth.getCurrentUser();
+	vm.user;
 
 	activate();
 
 	function activate() {
-		vm.questionsByGroup.active = _.sortBy(vm.user.friendQuestionsActive, function(q) {
-			return q.closesAt;
-		});
-		vm.questionsByGroup.old = _.sortBy(vm.user.friendQuestionsOld, function(q) {
-			return q.closesAt;
-		});
-		vm.currentQuestions = vm.questionsByGroup['active'];
-		console.log(vm.questionsByGroup)
+		vm.user = userQuestionService.getUser()
+			.then(function(user) {
+				vm.user = user;
+				vm.questionsByGroup.active = _.sortBy(vm.user.friendQuestionsActive, function(q) {
+					return q.closesAt;
+				});
+				vm.questionsByGroup.old = _.sortBy(vm.user.friendQuestionsOld, function(q) {
+					return q.closesAt;
+				});
+				vm.currentQuestions = userQuestionService.getUser().friendQuestionsActive;
+			});
 	}
 
 	function loadQuestion(index) {
-		vm.currentQuestion = vm.currentQuestions[index];
+		vm.index = index;
+		vm.currentQuestion = vm.currentQuestions[vm.index];
 		$state.go('answer.questions', {question: vm.currentQuestion})
 		console.log(vm.currentQuestion)
 	}
 
+	function nextQ() {
+		console.log('next!')
+		vm.index++;
+		if (vm.questionsByGroup[vm.group][vm.index]) {
+			vm.currentQuestion = vm.questionsByGroup[vm.group][vm.index];
+		}
+	}
+
 	function typeSelection(group) {
-		vm.currentQuestions = vm.questionsByGroup[group];
+		userQuestionService.getUser()
+			.then(function(user) {
+				vm.currentQuestions = user[group];
+			});
 	}
 
 }

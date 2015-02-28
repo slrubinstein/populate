@@ -3,99 +3,44 @@
 angular.module('populateApp')
   .factory('userQuestionService', userQuestionService);
 
-userQuestionService.$inject = ['$q', 'dataService'];
+userQuestionService.$inject = ['$q', 'dataService', 'Auth'];
 
-function userQuestionService($q, dataService) {
+function userQuestionService($q, dataService, Auth) {
 
-  var myQuestions = [],
-      myQuestionsActive = [],
-      myQuestionsInactive = [],
-      friendQuestionArchive = [],
-      currentQuestion,
-      myIndex = 0,
-      friendIndex = 0;
-
-  var userFromDB = {},
-      myQuestionsCurrent = [],
-      myQuestionsOld = [],
-      friendQuestionsCurrent = [],
-      friendQuestionsOld = [];
+  var currentQuestion,
+      index,
+      user = {};
 
   return {
-    getQuestions: getQuestions,
-    getAllQuestions: getAllQuestions,
-    myQuestions: myQuestions,
-    myQuestionsActive: myQuestionsActive,
-    myQuestionsInactive: myQuestionsInactive,
-    friendQuestionArchive: friendQuestionArchive,
     currentQuestion: currentQuestion,
-    myIndex: myIndex,
-    friendIndex: friendIndex,
-
-    myQuestionsCurrent: myQuestionsCurrent,
-    myQuestionsOld: myQuestionsOld,
-    friendQuestionsCurrent: friendQuestionsCurrent,
-    friendQuestionsOld: friendQuestionsOld
+    getUser: getUser,
+    index: index,
+    user: user
   };
 
-
-  function getAllQuestions(userId) {
+  function getUser() {
     var deferred = $q.defer();
 
-    if (!_.isEmpty(userFromDB)) {
-      deferred.resolve(userFromDB);
-      return deferred.promise;
+    if (_.isEmpty(user)) {
+      user = Auth.isLoggedInAsync(function(loggedIn) {
+        if (loggedIn) {
+          user = Auth.getCurrentUser();
+          user.friendQuestionsActive = _.sortBy(user.friendQuestionsActive, function(q) {
+            return q.closesat;
+          });
+          user.friendQuestionsOld = _.sortBy(user.friendQuestionsOld, function(q) {
+            return q.closesat;
+          });
+          
+          deferred.resolve(user);
+        }
+        else {
+          console.log('user is not logged in');
+        }
+      })
+    } else {
+      deferred.resolve(user);
     }
-
-    dataService.getAllQuestions(userId)
-      .then(function(result) {
-
-          angular.copy(result.data.myQuestionsCurrent, myQuestionsCurrent);
-          angular.copy(result.data.myQuestionsOld, myQuestionsOld);
-          angular.copy(result.data.friendQuestionsCurrent, friendQuestionsCurrent);
-          angular.copy(result.data.friendQuestionsOld, friendQuestionsOld);
-          angular.copy(result.data, userFromDB);
-        deferred.resolve(result.data);
-      });
-
     return deferred.promise;
-  }
-
-
-  function getQuestions(userId) {
-
-    var deferred = $q.defer();
-
-    dataService.seePastQuestions(userId)
-      .then(function(result) {
-        var organizedQs = organizeMyQuestions(result.data);
-
-          angular.copy(organizedQs.myQuestions, myQuestions);
-          angular.copy(organizedQs.myQuestionsActive, myQuestionsActive);
-          angular.copy(organizedQs.myQuestionsInactive, myQuestionsInactive);
-          angular.copy(organizedQs.friendQuestionArchive, friendQuestionArchive);
-
-        deferred.resolve(organizedQs);
-      });
-
-    return deferred.promise;
-  }
-
-  function organizeMyQuestions(user) {
-    var myQuestions = user.myQuestions,
-        friendQuestionArchive = user.questionsAnswered,
-        myQuestionsActive = _.filter(myQuestions, function(q) {
-      return q.isActive;
-    }),
-        myQuestionsInactive = _.filter(myQuestions, function(q) {
-      return !q.isActive;
-    });
-    
-    return {
-          myQuestions: myQuestions,
-          myQuestionsActive: myQuestionsActive,
-          myQuestionsInactive: myQuestionsInactive,
-          friendQuestionArchive: friendQuestionArchive,
-    }
   }
 }

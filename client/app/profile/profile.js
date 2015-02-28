@@ -24,8 +24,9 @@ angular.module('populateApp')
       })
       .state('profile.questionsanswered', {
       	url: '/questionsanswered',
-      	templateUrl: 'app/profile/profile.questionsanswered.html'
-      	// controller: 'ProfileCtrl',
-      	// controllerAs: 'profile'
+      	templateUrl: 'app/profile/profile.questionsanswered.html',
+        params: { question: {} },
+      	controller: 'ProfileCtrl',
+      	controllerAs: 'profile'
       });
   });

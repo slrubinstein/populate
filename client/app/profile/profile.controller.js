@@ -32,7 +32,7 @@ function ProfileCtrl(Auth, dataService, $state, $stateParams,
 
   function loadQuestion(index) {
     vm.currentQuestion = vm.currentQuestions[index];
-    $state.go('profile.questions', {question: vm.currentQuestion})
+    $state.go('profile.questionsanswered', {question: vm.currentQuestion})
     console.log(vm.currentQuestion)
   }
 
