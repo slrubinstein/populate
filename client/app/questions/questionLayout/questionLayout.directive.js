@@ -20,15 +20,13 @@ function questionLayout(userQuestionService) {
 			// scope.$watch(attr.question, function(newQuestion) {
 			// 	scope.question = newQuestion;
 			// });
-			console.log('scope question', scope.question)
+			// console.log('scope question', scope.question)
 			// scope.vote = qctrl.vote;
-			scope.nextQ = function() {
-				scope.loadNextQuestion();
-			}
+
 		},
 
 		templateUrl: function(elem, attr) {
-			if (attr.question)
+			if (attr.context = 'answer')
 				return 'app/questions/question.vote.html';
 			else
 				return 'app/questions/question.template.html';

@@ -16,7 +16,7 @@ function AnswerCtrl($scope, dataService, Auth, $state,
 	vm.group;
 	vm.index = 0;
 	vm.loadQuestion = loadQuestion;
-	vm.nextQ = nextQ;
+	// vm.nextQ = nextQ;
 	vm.open = true;
 	vm.openOrClosed = 'active';
 	vm.questionsByGroup = {};
@@ -40,21 +40,20 @@ function AnswerCtrl($scope, dataService, Auth, $state,
 	}
 
 	function loadQuestion(index) {
-		vm.index = index;
-		vm.currentQuestion = vm.currentQuestions[vm.index];
+		userQuestionService.loadQuestion(index, vm.group)
 		$state.go('answer.questions', {question: vm.currentQuestion})
-		console.log(vm.currentQuestion)
 	}
 
-	function nextQ() {
-		console.log('next!')
-		vm.index++;
-		if (vm.questionsByGroup[vm.group][vm.index]) {
-			vm.currentQuestion = vm.questionsByGroup[vm.group][vm.index];
-		}
-	}
+	// function nextQ() {
+	// 	console.log('next!')
+	// 	vm.index++;
+	// 	if (vm.questionsByGroup[vm.group][vm.index]) {
+	// 		vm.currentQuestion = vm.questionsByGroup[vm.group][vm.index];
+	// 	}
+	// }
 
 	function typeSelection(group) {
+		vm.group = group;
 		userQuestionService.getUser()
 			.then(function(user) {
 				vm.currentQuestions = user[group];

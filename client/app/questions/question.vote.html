@@ -1,30 +1,31 @@
 <div class="question-template">
 	<div class="asker-row">
-		<img ng-src="{{question.askerPic}}">
-		<p>{{question.askerName}} asks:</p>
-		<p><b>{{question.query}}</b></p>
+		<img ng-src="{{qctrl.currentQuestion.askerPic}}">
+		<p>{{qctrl.currentQuestion.askerName}} asks:</p>
+		<p><b>{{qctrl.currentQuestion.query}}</b></p>
 	</div>
 	<div class="clearfix"></div>
 
 	<div class="row options-row">
-		<div class="pop-option" ng-click="qctrl.vote(question, 'answer1')">{{question.answer1.option}}
+		<div class="pop-option" ng-click="qctrl.vote(question, 'answer1')">{{qctrl.currentQuestion.answer1.option}}
 		</div>
 
-		<div class="pop-option" ng-click="qctrl.vote(question, 'answer2')">{{question.answer2.option}}
+		<div class="pop-option" ng-click="qctrl.vote(question, 'answer2')">{{qctrl.currentQuestion.answer2.option}}
 
 		</div>
 	</div>
 	<div class="voters-row">
 		<div class="pop-option-voters">
-			<span>adam</span>
-			<span>jordan</span>
+			<span ng-repeat="voter in qctrl.currentQuestion.answer1.voters">
+				{{voter.name}}<span ng-if="!$last">, </span>
+			</span>
 		</div>
 		<div class="pop-option-voters">
-			<span>andrew</span>
-			<span>brian</span>
-			<span>mike</span>
-			<span>rebecca</span>
+			<span ng-repeat="voter in qctrl.currentQuestion.answer2.voters">
+				{{voter.name}}<span ng-if="!$last">, </span>
+			</span>
 		</div>
+
 		<div ng-if="question.isActive" class="time-voters-remaining">
 			<img src="assets/images/noun_77811_cc.png">
 			<div class="pop-option-voters">alex, ben, charlie</div>
@@ -32,12 +33,10 @@
 	</div>
 	<div class="comments-row">
 		<ul>
-			<li>speaker: comment</li>
-			<li>speaker: comment</li>
-			<li>speaker: comment</li>
-			<li>speaker: comment</li>
-			<li>speaker: comment</li>
-			<li ng-click="nextQ()">...add a comment!</li>
+			<li ng-repeat="comment in qctrl.currentQuestion.comments">
+				{{comment.name}}: {{comment.comment}}
+			</li>
+			<a href="#" ng-click="qctrl.addComment()"><li>...add a comment!</li></a>
 		</ul>
 	</div>
 
@@ -45,7 +44,8 @@
 		<div ng-if="!question.isActive" class="inactive-question-buttons">
 			<img src="assets/images/noun_6507_cc.png">
 			<img src="assets/images/noun_38558_cc.png">
-			<img src="assets/images/noun_6508_cc.png">
+			<a href="#"><img ng-click="qctrl.nextQuestion()"
+					 src="assets/images/noun_6508_cc.png"></a>
 		</div>
 		<div ng-if="question.isActive" class="active-question-buttons">
 			<button class="button">ANSWER!</button>

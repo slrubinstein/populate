@@ -13,17 +13,18 @@ var QuestionSchema = new Schema({
   	option: String,
   	votes: { type: Number, default: 0 },
   	image: String,
-    voters: Array
+    voters: [ { _id: { type: Schema.Types.ObjectId, ref: 'User'}, name: String } ]
   },
   answer2: {
   	option: String,
   	votes: { type: Number, default: 0 },
   	image: String,
-    voters: Array
+    voters: [ { _id: { type: Schema.Types.ObjectId, ref: 'User'}, name: String } ]
   },
   isActive: { type: Boolean, default: true },
   timeCreated: { type: Date, default: new Date , index: {unique: true } },
-  closesAt: { type: Date, index: { unique: false } }
+  closesAt: { type: Date, index: { unique: false } },
+  comments: [ { _id: { type: Schema.Types.ObjectId, ref: 'User'}, name: String, comment: String } ]
 });
 
 QuestionSchema.methods = {

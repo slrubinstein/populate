@@ -15,8 +15,11 @@ function QuestionCtrl(Auth, userQuestionService, dataService,
   									 12 * 60 * 60 * 1000, 24 * 60 * 60 * 1000,
   									 2 * 24 * 60 * 60 * 1000, 7 * 24 * 60 * 60 * 1000];
 
+  vm.addComment = addComment;
 	vm.askQuestion = askQuestion;
+	vm.currentQuestion = userQuestionService.currentQuestion;
 	vm.index = $stateParams.index;
+	vm.nextQuestion = nextQuestion
 	vm.openVotersPopup = openVotersPopup;
 	vm.question = {};
 	vm.timerIndex = 2;
@@ -36,6 +39,10 @@ function QuestionCtrl(Auth, userQuestionService, dataService,
 		});
 	}
 
+	function addComment() {
+		console.log('add comment')
+	}
+
 	function askQuestion() {
 		var date = new Date;
 		vm.question.askerId = vm.user._id;
@@ -47,6 +54,12 @@ function QuestionCtrl(Auth, userQuestionService, dataService,
 		dataService.post(vm.question)
 		// changing state will empty the ng-model values
 		$state.go('answer.home');
+	}
+
+	function nextQuestion() {
+		if (!userQuestionService.nextQuestion()) {
+			console.log('no more questions')
+		}
 	}
 
 	function openVotersPopup() {
