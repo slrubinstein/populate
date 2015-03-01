@@ -28,8 +28,14 @@
 
 	button {
 		display: inline-block;
-		width: 130px;
+		width: 51%;
 		height: 30px;
 		margin: 0px -4px;
+
+		&.selected {
+			background-color: black;
+			border: none;
+			color: white;
+		}
 	}
 }

@@ -7,22 +7,22 @@
 	<div class="clearfix"></div>
 
 	<div class="row options-row">
-		<div class="pop-option" ng-click="qctrl.vote(question, 'answer1')">{{qctrl.currentQuestion.answer1.option}}
+		<div class="pop-option" ng-click="qctrl.select('answer1', $event)">{{qctrl.currentQuestion.answer1.option}}
 		</div>
 
-		<div class="pop-option" ng-click="qctrl.vote(question, 'answer2')">{{qctrl.currentQuestion.answer2.option}}
+		<div class="pop-option" ng-click="qctrl.select('answer2', $event)">{{qctrl.currentQuestion.answer2.option}}
 
 		</div>
 	</div>
 	<div class="voters-row">
 		<div class="pop-option-voters">
 			<span ng-repeat="voter in qctrl.currentQuestion.answer1.voters">
-				{{voter.name}}<span ng-if="!$last">, </span>
+				{{voter.voterName}}<span ng-if="!$last">, </span>
 			</span>
 		</div>
 		<div class="pop-option-voters">
 			<span ng-repeat="voter in qctrl.currentQuestion.answer2.voters">
-				{{voter.name}}<span ng-if="!$last">, </span>
+				{{voter.voterName}}<span ng-if="!$last">, </span>
 			</span>
 		</div>
 
@@ -41,15 +41,16 @@
 	</div>
 
 	<div class="bottom-row">
-		<div ng-if="!question.isActive" class="inactive-question-buttons">
+		<div ng-if="!qctrl.currentQuestion.isActive" class="inactive-question-buttons">
 			<img src="assets/images/noun_6507_cc.png">
 			<img src="assets/images/noun_38558_cc.png">
 			<a href="#"><img ng-click="qctrl.nextQuestion()"
 					 src="assets/images/noun_6508_cc.png"></a>
 		</div>
-		<div ng-if="question.isActive" class="active-question-buttons">
-			<button class="button">ANSWER!</button>
-			<img src="assets/images/noun_6508_cc.png">
+		<div ng-if="qctrl.currentQuestion.isActive" class="active-question-buttons">
+			<button class="button" ng-click="qctrl.vote()">ANSWER!</button>
+			<a href="#"><img ng-click="qctrl.nextQuestion()"
+					 src="assets/images/noun_6508_cc.png"></a>
 			<img src="assets/images/noun_38558_cc.png">
 		</div>
 	</div>

@@ -18,7 +18,8 @@ function userQuestionService($q, dataService, Auth) {
     // index: index,
     loadQuestion: loadQuestion,
     nextQuestion: nextQuestion,
-    user: user
+    user: user,
+    vote: vote
   };
 
   function getUser() {
@@ -61,5 +62,14 @@ function userQuestionService($q, dataService, Auth) {
     } else {
       return false;
     }
+  }
+
+  function vote(question, answer, voter) {
+    dataService.vote(question, answer, voter)
+      .then(function(response) {
+        user.friendQuestionsActive.splice(currentIndex, 1);
+        user.friendQuestionsOld.unshift(response.data);    
+        nextQuestion();
+      });
   }
 }

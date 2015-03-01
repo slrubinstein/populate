@@ -10,16 +10,16 @@ var QuestionSchema = new Schema({
   askerPic: String,
   query: String,
   answer1: {
-  	option: String,
+  	option: { type: String, default: ''},
   	votes: { type: Number, default: 0 },
   	image: String,
-    voters: [ { _id: { type: Schema.Types.ObjectId, ref: 'User'}, name: String } ]
+    voters: [ { voterId: { type: Schema.Types.ObjectId, ref: 'User'}, voterName: String } ]
   },
   answer2: {
-  	option: String,
+  	option: { type: String, default: ''},
   	votes: { type: Number, default: 0 },
   	image: String,
-    voters: [ { _id: { type: Schema.Types.ObjectId, ref: 'User'}, name: String } ]
+    voters: [ { voterId: { type: Schema.Types.ObjectId, ref: 'User'}, voterName: String } ]
   },
   isActive: { type: Boolean, default: true },
   timeCreated: { type: Date, default: new Date , index: {unique: true } },
@@ -37,8 +37,6 @@ QuestionSchema.methods = {
       if (err) throw err;
       user.myQuestionsActive.push(question._id);
       user.save();
-      console.log('pushing', question._id)
-      console.log('user', user)
       return;
     });
   },

@@ -17,17 +17,24 @@
 		</div>
 	</div>
 
-		<div class="open-closed-row">
-			<button ng-click="answer.typeSelection('friendQuestionsActive')">OPEN</button>
-			<button ng-click="answer.typeSelection('friendQuestionsOld')">CLOSED</button>
-		</div>
+	<div class="open-closed-row">
+		<button ng-click="answer.typeSelection('friendQuestionsActive', $event)">OPEN</button>
+		<button ng-click="answer.typeSelection('friendQuestionsOld', $event)">CLOSED</button>
+	</div>
 
 	<div class="container">
 		<div class="question-block"
-				 ng-repeat="question in answer.currentQuestions"
+				 ng-repeat="question in answer.currentQuestions | limitTo: 2"
 				 ng-click="answer.loadQuestion($index)">
-			<h4>{{question.query}}</h4>
+			<h6>{{question.query}}</h6>
+				<div class="row options-row">
+					<div class="pop-option" ng-click="qctrl.vote('answer1')">{{question.answer1.option}}
+					</div>
 
+					<div class="pop-option" ng-click="qctrl.vote('answer2')">{{question.answer2.option}}
+
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

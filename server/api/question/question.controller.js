@@ -29,12 +29,12 @@ exports.create = function(req, res) {
   });
 };
 
-// Updates an existing question in the DB.
+// Vote on a Question
 exports.update = function(req, res) {
   if(req.body._id) { delete req.body._id; }
-
   var answer = req.body.answer,
-      voterId = req.body.voterId,
+      voterId = req.body.voter._id,
+      name = req.body.voter.name,
       questionId = req.body.questionId;
 
   Question.findById(questionId, function (err, question) {
@@ -43,9 +43,14 @@ exports.update = function(req, res) {
     // give vote a plus 1
     question[answer].option.votes++;
     // add voter to array of voters for this option
-    question[answer].voters.push(voterId);
+    question[answer].voters.push({
+      voterId: voterId,
+      voterName: name
+    });
     // move question from Active to Old for voter
     question.moveQuestionFromActiveToOld(voterId);
+    // update question active status
+    question.isActive = false;
     question.save(function(err) {
       if (err) { return handleError(res, err); }
       return res.json(200, question);
@@ -66,5 +71,6 @@ exports.destroy = function(req, res) {
 };
 
 function handleError(res, err) {
+  console.log(err)
   return res.send(500, err);
 }

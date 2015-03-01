@@ -17,11 +17,12 @@ function QuestionCtrl(Auth, userQuestionService, dataService,
 
   vm.addComment = addComment;
 	vm.askQuestion = askQuestion;
+	vm.choice;
 	vm.currentQuestion = userQuestionService.currentQuestion;
-	vm.index = $stateParams.index;
-	vm.nextQuestion = nextQuestion
+	vm.nextQuestion = nextQuestion;
 	vm.openVotersPopup = openVotersPopup;
 	vm.question = {};
+	vm.select = select;
 	vm.timerIndex = 2;
 	vm.timerOptions = ['10 minutes', '30 minutes', '1 hour', '12 hours', '24 hours', '2 days', '7 days'];
 	vm.vote = vote;
@@ -34,7 +35,8 @@ function QuestionCtrl(Auth, userQuestionService, dataService,
 		Auth.isLoggedInAsync(function(loggedIn) {
 			if (loggedIn) {
 				vm.user = Auth.getCurrentUser();
-				console.log(vm.user)				
+				console.log(vm.user)
+				console.log('question', vm.currentQuestion)		
 			}
 		});
 	}
@@ -66,9 +68,15 @@ function QuestionCtrl(Auth, userQuestionService, dataService,
 		vm.votersOpen = !vm.votersOpen;
 	}
 
-	function vote(question, answer) {
-		console.log(question, answer, vm.user)
-		dataService.vote(question, answer, vm.user._id)
+	function select(choice, event) {
+		vm.choice = choice;
+		$('.choice').removeClass('choice');
+		event.target.classList.add('choice');
+	}
+
+	function vote() {
+		console.log(vm.currentQuestion, vm.choice, vm.user)
+		userQuestionService.vote(vm.currentQuestion, vm.choice, vm.user);
 	}
 
 }
