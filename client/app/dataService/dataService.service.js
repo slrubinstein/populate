@@ -8,32 +8,28 @@ dataService.$inject = ['$http'];
 function dataService($http) {
 
   return {
-  //   addFriend: addFriend,
-  //   getAllQuestions: getAllQuestions,
-  //   getFriendsFromDB: getFriendsFromDB,
-  //   getUserFriends: getUserFriends,
-  //   loadQuestionQueue: loadQuestionQueue,
+    addComment: addComment,
     post: post,
-    // seePastQuestions: seePastQuestions,
     vote: vote
+  }
+
+  function addComment(question, voter, comment) {
+    return $http.put('/api/question/' + question._id + '/comment',
+      {_id: voter._id,
+        name: voter.name,
+        comment: comment
+      });
   }
 
   function post(newQuestion, selectedFriends) {
     return $http.post('/api/questions', newQuestion)
-      // .then(function(result) {
-      //   $http.put('/api/users/' + newQuestion.askerId +
-      //     '/addquestion', {questionId: result.data._id,
-      //                      selectedFriends: selectedFriends})
-      // });
   }
 
-  // function seePastQuestions(userId) {
-  //   return $http.get('/api/users/' + userId + '/pastquestions');
-  // }
-
   function vote(question, answer, voter) {
-    return $http.put('/api/questions/' + question._id, {questionId: question._id,
-                                                answer: answer,
-                                                voter: voter});
+    return $http.put('/api/questions/' + question._id,
+      {questionId: question._id,
+        answer: answer,
+        voter: voter
+      });
   }
 }

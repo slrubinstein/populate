@@ -21,7 +21,15 @@ function QuestionCtrl(Auth, userQuestionService, dataService,
 	vm.currentQuestion = userQuestionService.currentQuestion;
 	vm.nextQuestion = nextQuestion;
 	vm.openVotersPopup = openVotersPopup;
-	vm.question = {};
+	vm.question = {
+		query: '',
+		answer1: {
+			option: ''
+		},
+		answer2: {
+			option: ''
+		}
+	};
 	vm.select = select;
 	vm.timerIndex = 2;
 	vm.timerOptions = ['10 minutes', '30 minutes', '1 hour', '12 hours', '24 hours', '2 days', '7 days'];
@@ -46,6 +54,9 @@ function QuestionCtrl(Auth, userQuestionService, dataService,
 	}
 
 	function askQuestion() {
+		if (!vm.question.query.length || !vm.question.answer1.option.length || !vm.question.answer2.option.length) {
+			return;
+		}
 		var date = new Date;
 		vm.question.askerId = vm.user._id;
 		vm.question.askerName = vm.user.name;

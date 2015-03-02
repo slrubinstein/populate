@@ -11,33 +11,36 @@ function ProfileCtrl(Auth, dataService, $state, $stateParams,
 
   var vm = this;
 
-  vm.currentQuestion = $stateParams.question;
   vm.currentQuestions = [];
   vm.loadQuestion = loadQuestion;
-  vm.open = true;
-  vm.openOrClosed = 'active';
+  vm.group = 'myQuestionsActive';
   vm.questionsByGroup = {};
   vm.typeSelection = typeSelection;
-  vm.user = Auth.getCurrentUser();
+  vm.user = {};
 
   activate();
 
   function activate() {
-    vm.questionsByGroup.active = vm.user.myQuestionsActive;
-    vm.questionsByGroup.old = vm.user.myQuestionsOld;
-    vm.currentQuestions = vm.questionsByGroup['active'];
-    console.log(vm.user)
-    console.log(vm.questionsByGroup)
+    userQuestionService.getUser()
+      .then(function(user) {
+        vm.user = user;
+        vm.currentQuestions = vm.user.myQuestionsActive;
+      });
   }
 
   function loadQuestion(index) {
-    vm.currentQuestion = vm.currentQuestions[index];
-    $state.go('profile.questionsanswered', {question: vm.currentQuestion})
-    console.log(vm.currentQuestion)
+    userQuestionService.loadQuestion(index, vm.group);
+    $state.go('profile.questionsanswered')
   }
 
   function typeSelection(group) {
-    vm.currentQuestions = vm.questionsByGroup[group];
+    vm.group = group;
+    userQuestionService.getUser()
+      .then(function(user) {
+        vm.currentQuestions = user[group];
+      })
+    $('.selected').removeClass('selected');
+    event.target.classList.add('selected');
   }
 
 }

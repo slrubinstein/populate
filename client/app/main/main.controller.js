@@ -11,9 +11,12 @@ function MainCtrl($scope, $http, $state, facebookFriends,
 
   var vm = this;
 
+  vm.errors = {};
   vm.loggedIn = false;
+  vm.loginLocal = loginLocal;
   vm.loginOauth = loginOauth;
-  vm.user;
+  vm.submitted
+  vm.user = {};
 
   activate();
 
@@ -31,5 +34,22 @@ function MainCtrl($scope, $http, $state, facebookFriends,
 
   function loginOauth(provider) {
     $window.location.href = '/auth/' + provider;
+  };
+  
+  function loginLocal(form) {
+    vm.submitted = true;
+
+    if(form.$valid) {
+      Auth.login({
+        email: vm.user.email,
+        password: vm.user.password
+      })
+      .then( function() {
+        $state.go('answer.home')
+      })
+      .catch( function(err) {
+        vm.errors.other = err.message;
+      });
+    }
   };
 }

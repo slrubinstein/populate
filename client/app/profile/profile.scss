@@ -1,7 +1,20 @@
 .question-block {
 	background-color: #eee;
 
-	h4 {
-		padding: 10px;
+	h5 {
+		text-align: center;
+	}
+
+	.pop-option {
+		background-color: white;
+		display: inline-block;
+		height: 120px;
+		width: 120px;
+		vertical-align: top;
+	}
+
+	.pop-voters {
+		display: inline-block;
+		width: 120px;
 	}
 }

@@ -11,18 +11,17 @@ function AnswerCtrl($scope, dataService, Auth, $state,
 
 	var vm = this;
 
+	vm.errors = {};
 	vm.group = 'friendQuestionsActive';
 	vm.loadQuestion = loadQuestion;
-	vm.open = true;
-	vm.openOrClosed = 'active';
 	vm.questionsByGroup = {};
 	vm.typeSelection = typeSelection;
-	vm.user;
+	vm.user = {};
 
 	activate();
 
 	function activate() {
-		vm.user = userQuestionService.getUser()
+		userQuestionService.getUser()
 			.then(function(user) {
 				vm.user = user;
 				vm.currentQuestions = vm.user.friendQuestionsActive;
@@ -30,8 +29,8 @@ function AnswerCtrl($scope, dataService, Auth, $state,
 	}
 
 	function loadQuestion(index) {
-		userQuestionService.loadQuestion(index, vm.group)
-		$state.go('answer.questions')
+		userQuestionService.loadQuestion(index, vm.group);
+		$state.go('answer.questions');
 	}
 
 	function typeSelection(group, event) {
@@ -41,7 +40,7 @@ function AnswerCtrl($scope, dataService, Auth, $state,
 				vm.currentQuestions = user[group];
 			});
 		$('.selected').removeClass('selected');
-		event.target.className = 'selected';
+		event.target.classList.add('selected');
 	}
 
 }

@@ -18,17 +18,33 @@
 	</div>
 
 	<div class="open-closed-row">
-		<button ng-click="profile.typeSelection('active')">OPEN</button>
-		<button ng-click="profile.typeSelection('old')">CLOSED</button>
+		<button ng-click="profile.typeSelection('myQuestionsActive')">OPEN</button>
+		<button ng-click="profile.typeSelection('myQuestionsOld')">CLOSED</button>
 	</div>
 
-	<div class="container">
-		<div class="question-block"
-				 ng-repeat="question in profile.currentQuestions track by $index"
+	<div class="container question-block">
+		<div ng-repeat="question in profile.currentQuestions track by $index | limitTo: 2"
 				 ng-click="profile.loadQuestion($index)">
-			<h4>{{question.query}}</h4>
+			<h5>{{question.query}}</h5>
+			<div class="pop-option">{{question.answer1.option}}</div>
+			<div class="pop-option">{{question.answer2.option}}</div>
+			<div class="pop-voters">
+				<p>
+					<span>{{question.answer1.voters[0].name}}</span>
+					<span ng-if="question.answer1.voters.length > 1">, {{question.answer1.voters[1].name}}</span>
+					<span ng-if="question.answer1.voters.length > 2">, and {{question.answer.voters.length - 2}} others</span>
+				</p>
+			</div>
+			<div class="pop-voters">
+				<p>
+					<span>{{question.answer2.voters[0].name}}</span>
+					<span ng-if="question.answer2.voters.length > 1">, {{question.answer2.voters[1].name}}</span>
+					<span ng-if="question.answer2.voters.length > 2">, and {{question.answer2.voters.length - 2}} others</span>
+				</p>
+			</div>
+			
+<!-- 			<div class="pop-option">{{question.answer2.option}}</div>
+			<div ng-repeat="comment in question.comments">{{comment.comment}}</div> -->
 		</div>
 	</div>
-
-
 </div>
