@@ -8,9 +8,10 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
  * App-wide Styles
  */
 
-$balanced:                        rgb(111, 244, 103) !default;
-$positive:                        rgb(27, 154, 247) !default;
-$yellow:													rgb(255, 255, 191) !default;
+$balanced:                        rgb(0, 204, 102) !default;
+$positive:                        rgb(0, 0, 255) !default;
+$yellow:													rgb(255, 255, 153) !default;
+$grey:														rgb(204, 204, 204) !default;
 
 .browsehappy {
     margin: 0.2em 0;
