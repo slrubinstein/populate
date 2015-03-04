@@ -18,10 +18,10 @@
 	</div>
 
 	<div class="open-closed-row">
-		<button ng-class="{selected: answer.group === 'friendQuestionsActive'}"
-						ng-click="answer.typeSelection('friendQuestionsActive', $index)">OPEN</button>
-		<button ng-class="{selected: answer.group === 'friendQuestionsOld'}"
-						ng-click="answer.typeSelection('friendQuestionsOld', $index)">CLOSED</button>
+		<button ng-class="{active: answer.group === 'friendQuestionsActive'}"
+						ng-click="answer.typeSelection('friendQuestionsActive')">OPEN</button>
+		<button ng-class="{active: answer.group === 'friendQuestionsOld'}"
+						ng-click="answer.typeSelection('friendQuestionsOld')">CLOSED</button>
 	</div>
 
 	<div class="container">

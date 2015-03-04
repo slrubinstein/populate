@@ -7,10 +7,12 @@
 	<div class="clearfix"></div>
 
 	<div class="row options-row">
-		<div class="pop-option" ng-click="qctrl.select('answer1', $event)">{{qctrl.currentQuestion.answer1.option}}
+		<div class="pop-option" 
+				 ng-class="{active: qctrl.choice === 'answer1'}" ng-click="qctrl.select('answer1')">{{qctrl.currentQuestion.answer1.option}}
 		</div>
 
-		<div class="pop-option" ng-click="qctrl.select('answer2', $event)">{{qctrl.currentQuestion.answer2.option}}
+		<div class="pop-option" 
+				 ng-class="{active: qctrl.choice === 'answer2'}" ng-click="qctrl.select('answer2')">{{qctrl.currentQuestion.answer2.option}}
 
 		</div>
 	</div>
@@ -47,7 +49,9 @@
 			<a href="#"><img ng-click="qctrl.nextQuestion()"
 					 src="assets/images/noun_6508_cc.png"></a>
 		</div>
-		<div ng-if="qctrl.currentQuestion.isActive" class="active-question-buttons">
+		<div ng-if="qctrl.currentQuestion.isActive &&
+								qctrl.user._id !== qctrl.currentQuestion.askerId" 
+				 class="active-question-buttons">
 			<button class="button" ng-click="qctrl.vote()">ANSWER!</button>
 			<a href="#"><img ng-click="qctrl.nextQuestion()"
 					 src="assets/images/noun_6508_cc.png"></a>

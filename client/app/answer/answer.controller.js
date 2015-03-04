@@ -15,7 +15,6 @@ function AnswerCtrl($scope, dataService, Auth, $state,
 	vm.group = 'friendQuestionsActive';
 	vm.loadQuestion = loadQuestion;
 	vm.questionsByGroup = {};
-	vm.selectedIndex;
 	vm.typeSelection = typeSelection;
 	vm.user = {};
 
@@ -34,9 +33,8 @@ function AnswerCtrl($scope, dataService, Auth, $state,
 		$state.go('answer.questions');
 	}
 
-	function typeSelection(group, index) {
+	function typeSelection(group) {
 		vm.group = group;
-		vm.selectedIndex = index;
 		userQuestionService.getUser()
 			.then(function(user) {
 				vm.currentQuestions = user[group];

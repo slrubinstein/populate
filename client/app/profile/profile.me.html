@@ -18,8 +18,10 @@
 	</div>
 
 	<div class="open-closed-row">
-		<button ng-click="profile.typeSelection('myQuestionsActive')">OPEN</button>
-		<button ng-click="profile.typeSelection('myQuestionsOld')">CLOSED</button>
+		<button ng-class="{active: profile.group === 'myQuestionsActive'}"
+						ng-click="profile.typeSelection('myQuestionsActive')">OPEN</button>
+		<button ng-class="{active: profile.group === 'myQuestionsOld'}"
+						ng-click="profile.typeSelection('myQuestionsOld')">CLOSED</button>
 	</div>
 
 	<div class="container question-block">

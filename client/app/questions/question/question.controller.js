@@ -79,15 +79,14 @@ function QuestionCtrl(Auth, userQuestionService, dataService,
 		vm.votersOpen = !vm.votersOpen;
 	}
 
-	function select(choice, event) {
+	function select(choice) {
 		vm.choice = choice;
-		$('.choice').removeClass('choice');
-		event.target.classList.add('choice');
 	}
 
 	function vote() {
 		console.log(vm.currentQuestion, vm.choice, vm.user)
 		userQuestionService.vote(vm.currentQuestion, vm.choice, vm.user);
+		vm.choice = null;
 	}
 
 }
