@@ -13,13 +13,13 @@ var QuestionSchema = new Schema({
   	option: { type: String, default: ''},
   	votes: { type: Number, default: 0 },
   	image: String,
-    voters: [ { voterId: { type: Schema.Types.ObjectId, ref: 'User'}, voterName: String } ]
+    voters: [ { _id: { type: Schema.Types.ObjectId, ref: 'User'}, voterName: String } ]
   },
   answer2: {
   	option: { type: String, default: ''},
   	votes: { type: Number, default: 0 },
   	image: String,
-    voters: [ { voterId: { type: Schema.Types.ObjectId, ref: 'User'}, voterName: String } ]
+    voters: [ { _id: { type: Schema.Types.ObjectId, ref: 'User'}, voterName: String } ]
   },
   isActive: { type: Boolean, default: true },
   timeCreated: { type: Date, default: new Date , index: {unique: true } },

@@ -44,7 +44,7 @@ exports.update = function(req, res) {
     question[answer].option.votes++;
     // add voter to array of voters for this option
     question[answer].voters.push({
-      voterId: voterId,
+      _id: voterId,
       voterName: name
     });
     // move question from Active to Old for voter
