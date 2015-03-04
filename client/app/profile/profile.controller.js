@@ -14,6 +14,7 @@ function ProfileCtrl(Auth, dataService, $state, $stateParams,
   vm.currentQuestions = [];
   vm.loadQuestion = loadQuestion;
   vm.group = 'myQuestionsActive';
+  vm.logout = logout;
   vm.questionsByGroup = {};
   vm.typeSelection = typeSelection;
   vm.user = {};
@@ -32,6 +33,12 @@ function ProfileCtrl(Auth, dataService, $state, $stateParams,
     userQuestionService.loadQuestion(index, vm.group);
     $state.go('profile.questionsanswered')
   }
+
+  function logout() {
+      Auth.logout();
+      // $location.path('/login');
+      $state.go('main');
+    };
 
   function typeSelection(group) {
     vm.group = group;
