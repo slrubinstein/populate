@@ -64,7 +64,7 @@ function QuestionCtrl(Auth, userQuestionService, dataService,
 		vm.question.timeCreated = date;
 		vm.question.closesAt = new Date (date.getTime() + timerMillis[vm.timerIndex]);
 
-		dataService.post(vm.question)
+		userQuestionService.postQuestion(vm.question)
 		// changing state will empty the ng-model values
 		$state.go('answer.home');
 	}

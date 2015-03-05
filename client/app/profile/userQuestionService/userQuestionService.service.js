@@ -15,9 +15,9 @@ function userQuestionService($q, dataService, Auth) {
   return {
     currentQuestion: currentQuestion,
     getUser: getUser,
-    // index: index,
     loadQuestion: loadQuestion,
     nextQuestion: nextQuestion,
+    postQuestion: postQuestion,
     user: user,
     vote: vote
   };
@@ -62,6 +62,13 @@ function userQuestionService($q, dataService, Auth) {
     } else {
       return false;
     }
+  }
+
+  function postQuestion(question) {
+    dataService.post(question)
+      .then(function(response) {
+        user.myQuestionsActive.unshift(response.data);
+      });
   }
 
   function vote(question, answer, voter) {
