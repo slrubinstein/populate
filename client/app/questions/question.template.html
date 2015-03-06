@@ -1,6 +1,6 @@
 <div class="question-template">
 	<div class="asker-row">
-		<img src="https://graph.facebook.com/4201092/picture">
+		<img ng-src="{{qctrl.pic}}">
 		<p><b>{{qctrl.user.name}} asks:</b></p>
 		<textarea ng-model="qctrl.question.query"
 							placeholder="Enter question..."

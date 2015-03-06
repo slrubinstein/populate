@@ -21,6 +21,7 @@ function QuestionCtrl(Auth, userQuestionService, dataService,
 	vm.currentQuestion = userQuestionService.currentQuestion;
 	vm.nextQuestion = nextQuestion;
 	vm.openVotersPopup = openVotersPopup;
+	vm.pic = '';
 	vm.question = {
 		query: '',
 		answer1: {
@@ -43,6 +44,8 @@ function QuestionCtrl(Auth, userQuestionService, dataService,
 		Auth.isLoggedInAsync(function(loggedIn) {
 			if (loggedIn) {
 				vm.user = Auth.getCurrentUser();
+        vm.pic = vm.user.facebook ? 'https://graph.facebook.com/' +
+          vm.user.facebook.id + '/picture' : '';
 				console.log(vm.user)
 				console.log('question', vm.currentQuestion)		
 			}

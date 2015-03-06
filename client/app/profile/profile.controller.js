@@ -15,6 +15,7 @@ function ProfileCtrl(Auth, dataService, $state, $stateParams,
   vm.loadQuestion = loadQuestion;
   vm.group = 'myQuestionsActive';
   vm.logout = logout;
+  vm.pic = '';
   vm.questionsByGroup = {};
   vm.typeSelection = typeSelection;
   vm.user = {};
@@ -25,6 +26,8 @@ function ProfileCtrl(Auth, dataService, $state, $stateParams,
     userQuestionService.getUser()
       .then(function(user) {
         vm.user = user;
+        vm.pic = vm.user.facebook ? 'https://graph.facebook.com/' +
+                  vm.user.facebook.id + '/picture' : '';
         vm.currentQuestions = vm.user.myQuestionsActive;
       });
   }
