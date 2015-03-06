@@ -58,6 +58,22 @@ exports.update = function(req, res) {
   });
 };
 
+// Comment on a Question
+exports.addComment = function(req, res) {
+  Question.findById(req.params.id, function (err, question) {
+    if (err) { return handleError(res, err); }
+    if(!question) { return res.send(404); }
+
+    question.comments.push(req.body);
+
+    question.save(function(err) {
+      if (err) { return handleError(res, err); }
+      return res.json(200, question);
+    });
+  });
+};
+
+
 // Deletes a question from the DB.
 exports.destroy = function(req, res) {
   Question.findById(req.params.id, function (err, question) {

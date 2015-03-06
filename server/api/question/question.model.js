@@ -24,6 +24,7 @@ var QuestionSchema = new Schema({
   isActive: { type: Boolean, default: true },
   timeCreated: { type: Date, default: new Date , index: {unique: true } },
   closesAt: { type: Date, index: { unique: false } },
+  commentsAllowed: Boolean,
   comments: [ { _id: { type: Schema.Types.ObjectId, ref: 'User'}, name: String, comment: String } ]
 });
 

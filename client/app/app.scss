@@ -24,6 +24,7 @@ $grey:														rgb(204, 204, 204) !default;
 // injector
 @import 'account/login/login.scss';
 @import 'admin/admin.scss';
+@import 'answer/addComment/addComment.scss';
 @import 'answer/templates/answer.scss';
 @import 'ask/chooseVoters/chooseVoters.scss';
 @import 'ask/templates/ask.scss';

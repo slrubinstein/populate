@@ -38,8 +38,14 @@
 			<li ng-repeat="comment in qctrl.currentQuestion.comments">
 				{{comment.name}}: {{comment.comment}}
 			</li>
-			<a href="#" ng-click="qctrl.addComment()"><li>...add a comment!</li></a>
+			<!-- have to add ng-if comments allowed -->
+			<a href="#" ng-click="qctrl.openCommentsPopup()">
+				<li>...add a comment!</li>
+			</a>
 		</ul>
+	<add-comment ng-if="qctrl.commentsOpen" 
+		add-new-comment="qctrl.addNewComment()"
+		comment="qctrl.comment"></add-comment>
 	</div>
 
 	<div class="bottom-row">

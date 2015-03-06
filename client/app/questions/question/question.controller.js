@@ -15,11 +15,16 @@ function QuestionCtrl(Auth, userQuestionService, dataService,
   									 12 * 60 * 60 * 1000, 24 * 60 * 60 * 1000,
   									 2 * 24 * 60 * 60 * 1000, 7 * 24 * 60 * 60 * 1000];
 
-  vm.addComment = addComment;
+  vm.addNewComment = addNewComment;
 	vm.askQuestion = askQuestion;
 	vm.choice;
 	vm.currentQuestion = userQuestionService.currentQuestion;
+	vm.comment = '';
+	vm.commentsAllowed = false;
+	vm.commentsOpen = false;
+	vm.enableComments = enableComments;
 	vm.nextQuestion = nextQuestion;
+	vm.openCommentsPopup = openCommentsPopup;
 	vm.openVotersPopup = openVotersPopup;
 	vm.pic = '';
 	vm.question = {
@@ -52,8 +57,14 @@ function QuestionCtrl(Auth, userQuestionService, dataService,
 		});
 	}
 
-	function addComment() {
-		console.log('add comment')
+	function addNewComment() {
+		dataService.addComment(vm.currentQuestion._id, {_id: vm.user._id,
+																							      name: vm.user.name,
+																							      comment: vm.comment
+    })
+    	.then(function(response) {
+    		vm.currentQuestion = response.data;
+    	});
 	}
 
 	function askQuestion() {
@@ -64,12 +75,17 @@ function QuestionCtrl(Auth, userQuestionService, dataService,
 		vm.question.askerId = vm.user._id;
 		vm.question.askerName = vm.user.name;
 		vm.question.askerPic = 'https://graph.facebook.com/' + vm.user.facebook.id + '/picture';
+		vm.question.commentsAllowed = vm.commentsAllowed;
 		vm.question.timeCreated = date;
 		vm.question.closesAt = new Date (date.getTime() + timerMillis[vm.timerIndex]);
 
 		userQuestionService.postQuestion(vm.question)
 		// changing state will empty the ng-model values
 		$state.go('answer.home');
+	}
+
+	function enableComments() {
+		vm.commentsAllowed = !vm.commentsAllowed;
 	}
 
 	function nextQuestion() {
@@ -80,6 +96,10 @@ function QuestionCtrl(Auth, userQuestionService, dataService,
 
 	function openVotersPopup() {
 		vm.votersOpen = !vm.votersOpen;
+	}
+
+	function openCommentsPopup() {
+		vm.commentsOpen = !vm.commentsOpen;
 	}
 
 	function select(choice) {

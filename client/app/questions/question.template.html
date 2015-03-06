@@ -23,8 +23,11 @@
 		<button class="button" ng-click="qctrl.openVotersPopup()">
 		  SELECT VOTERS
 		</button>
-		<button class="comments-button button">
-		  Enable Comments
+		<button class="comments-button button"
+						ng-class="{enabled: qctrl.commentsAllowed}"
+						ng-click="qctrl.enableComments()">
+		  <p ng-if="qctrl.commentsAllowed">Comments On</p>
+		  <p ng-if="!qctrl.commentsAllowed">Comments Off</p>
 		</button>
 		<choose-voters ng-if="qctrl.votersOpen"></choose-voters>
 		
