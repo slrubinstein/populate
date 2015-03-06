@@ -27,6 +27,7 @@
 	<div class="container question-block">
 		<div ng-repeat="question in profile.currentQuestions track by $index | limitTo: 2"
 				 ng-click="profile.loadQuestion($index)">
+			<img class="clock" src="assets/images/noun_77811_cc.png">
 			<h5>{{question.query}}</h5>
 			<div class="pop-option">{{question.answer1.option}}</div>
 			<div class="pop-option">{{question.answer2.option}}</div>
