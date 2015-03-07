@@ -87,5 +87,9 @@
     "test": "grunt test",
     "update-webdriver": "node node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update"
   },
-  "private": true
+  "private": true,
+  "cordovaPlugins": [
+    "org.apache.cordova.splashscreen",
+    "org.apache.cordova.statusbar"
+  ]
 }

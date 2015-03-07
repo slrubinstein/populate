@@ -1,0 +1,101 @@
+2015-03-07 11:55:15.065 blank[13749:172938] Apache Cordova native platform version 3.7.0 is starting.
+2015-03-07 11:55:15.067 blank[13749:172938] Multi-tasking -> Device: YES, App: YES
+2015-03-07 11:55:15.121 blank[13749:172938] Unlimited access to network resources
+2015-03-07 11:55:16.589 blank[13749:172938] [CDVTimer][keyboard] 0.106990ms
+2015-03-07 11:55:17.365 blank[13749:172938] [CDVTimer][splashscreen] 776.543975ms
+2015-03-07 11:55:17.373 blank[13749:172938] [CDVTimer][statusbar] 7.385015ms
+2015-03-07 11:55:17.373 blank[13749:172938] [CDVTimer][TotalPluginStartup] 785.464048ms
+2015-03-07 11:55:18.277 blank[13749:172938] Resetting plugins due to page load.
+2015-03-07 11:55:19.413 blank[13749:172938] Finished load of: file:///Users/steve/Library/Developer/CoreSimulator/Devices/BBB82177-0974-4C36-B526-CF51811EE9D0/data/Containers/Bundle/Application/C5D79CE6-06F4-43D8-AE80-3E7439D05538/blank.app/www/index.html
+2015-03-07 11:55:19.546 blank[13749:172938] THREAD WARNING: ['Device'] took '29.800781' ms. Plugin should use a background thread.
+2015-03-07 11:55:31.036 blank[13749:173016] Terminating since there is no system app.
+2015-03-07 11:58:47.570 blank[14541:175338] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/steve/Library/Developer/CoreSimulator/Devices/BBB82177-0974-4C36-B526-CF51811EE9D0/data/Containers/Data/Application/FAE6F258-6C3E-4EC5-B55E-375757FEE155/Library/Cookies/Cookies.binarycookies
+2015-03-07 11:58:48.334 blank[14541:175338] Apache Cordova native platform version 3.7.0 is starting.
+2015-03-07 11:58:48.335 blank[14541:175338] Multi-tasking -> Device: YES, App: YES
+2015-03-07 11:58:48.337 blank[14541:175338] Unlimited access to network resources
+2015-03-07 11:58:48.775 blank[14541:175338] [CDVTimer][keyboard] 0.447989ms
+2015-03-07 11:58:49.213 blank[14541:175338] [CDVTimer][splashscreen] 438.537002ms
+2015-03-07 11:58:49.220 blank[14541:175338] [CDVTimer][statusbar] 6.094038ms
+2015-03-07 11:58:49.220 blank[14541:175338] [CDVTimer][TotalPluginStartup] 445.779979ms
+2015-03-07 11:58:51.456 blank[14541:175338] Resetting plugins due to page load.
+2015-03-07 11:58:52.882 blank[14541:175338] Finished load of: file:///Users/steve/Library/Developer/CoreSimulator/Devices/BBB82177-0974-4C36-B526-CF51811EE9D0/data/Containers/Bundle/Application/05D0F2EF-0962-4F37-B407-1E8E39D0CE57/blank.app/www/index.html
+2015-03-07 12:01:11.760 blank[14541:175941] Terminating since there is no system app.
+2015-03-07 13:51:34.967 blank[16678:191103] Apache Cordova native platform version 3.7.0 is starting.
+2015-03-07 13:51:34.998 blank[16678:191103] Multi-tasking -> Device: YES, App: YES
+2015-03-07 13:51:35.024 blank[16678:191103] Unlimited access to network resources
+2015-03-07 13:51:36.313 blank[16678:191103] [CDVTimer][keyboard] 20.829976ms
+2015-03-07 13:51:37.204 blank[16678:191103] [CDVTimer][splashscreen] 890.684009ms
+2015-03-07 13:51:37.212 blank[16678:191103] [CDVTimer][statusbar] 7.638991ms
+2015-03-07 13:51:37.212 blank[16678:191103] [CDVTimer][TotalPluginStartup] 920.051992ms
+2015-03-07 13:51:38.277 blank[16678:191103] Resetting plugins due to page load.
+2015-03-07 13:51:40.226 blank[16678:191103] Finished load of: file:///Users/steve/Library/Developer/CoreSimulator/Devices/BBB82177-0974-4C36-B526-CF51811EE9D0/data/Containers/Bundle/Application/52FC91F3-0BA0-440D-9728-48A3FF3F585B/blank.app/www/index.html
+2015-03-07 14:58:30.227 blank[18273:204040] Apache Cordova native platform version 3.7.0 is starting.
+2015-03-07 14:58:30.228 blank[18273:204040] Multi-tasking -> Device: YES, App: YES
+2015-03-07 14:58:30.269 blank[18273:204040] Unlimited access to network resources
+2015-03-07 14:58:31.736 blank[18273:204040] [CDVTimer][keyboard] 0.580013ms
+2015-03-07 14:58:32.593 blank[18273:204040] [CDVTimer][splashscreen] 855.946004ms
+2015-03-07 14:58:32.610 blank[18273:204040] [CDVTimer][statusbar] 17.046034ms
+2015-03-07 14:58:32.610 blank[18273:204040] [CDVTimer][TotalPluginStartup] 875.537992ms
+2015-03-07 14:58:33.840 blank[18273:204040] Resetting plugins due to page load.
+2015-03-07 14:58:35.306 blank[18273:204040] Finished load of: file:///Users/steve/Library/Developer/CoreSimulator/Devices/BBB82177-0974-4C36-B526-CF51811EE9D0/data/Containers/Bundle/Application/1D226EBF-ACE0-4A44-A795-BBD2F2F902BD/blank.app/www/index.html
+2015-03-07 14:58:35.460 blank[18273:204040] THREAD WARNING: ['Device'] took '29.087158' ms. Plugin should use a background thread.
+2015-03-07 15:39:09.555 blank[19971:216443] Apache Cordova native platform version 3.7.0 is starting.
+2015-03-07 15:39:09.586 blank[19971:216443] Multi-tasking -> Device: YES, App: YES
+2015-03-07 15:39:09.698 blank[19971:216443] Unlimited access to network resources
+2015-03-07 15:39:11.550 blank[19971:216443] [CDVTimer][keyboard] 0.115991ms
+2015-03-07 15:39:12.371 blank[19971:216443] [CDVTimer][splashscreen] 820.450008ms
+2015-03-07 15:39:12.377 blank[19971:216443] [CDVTimer][statusbar] 6.053984ms
+2015-03-07 15:39:12.377 blank[19971:216443] [CDVTimer][TotalPluginStartup] 828.155994ms
+2015-03-07 15:39:14.018 blank[19971:216443] Resetting plugins due to page load.
+2015-03-07 15:39:15.585 blank[19971:216443] Finished load of: file:///Users/steve/Library/Developer/CoreSimulator/Devices/BBB82177-0974-4C36-B526-CF51811EE9D0/data/Containers/Bundle/Application/EB187EE6-7EBF-4C29-8737-308BDAAB3D94/blank.app/www/index.html#/
+2015-03-07 15:39:16.883 blank[19971:216443] THREAD WARNING: ['Device'] took '14.846191' ms. Plugin should use a background thread.
+2015-03-07 15:40:24.083 blank[19971:216443] Resetting plugins due to page load.
+2015-03-07 15:40:24.673 blank[19971:216443] Failed to load webpage with error: Could not connect to the server.
+2015-03-07 15:40:29.534 blank[19971:216443] Resetting plugins due to page load.
+2015-03-07 15:40:29.552 blank[19971:216443] Failed to load webpage with error: Could not connect to the server.
+2015-03-07 15:42:33.831 blank[19971:216443] Resetting plugins due to page load.
+2015-03-07 15:42:36.325 blank[19971:216443] Finished load of: https://m.facebook.com/login.php?skip_api_login=1&api_key=776373095733502&signed_next=1&next=https%3A%2F%2Fm.facebook.com%2Fv2.2%2Fdialog%2Foauth%3Fredirect_uri%3Dhttp%253A%252F%252F192.168.1.4%253A9000%252Fauth%252Ffacebook%252Fcallback%26scope%3Demail%252Cpublic_profile%252Cuser_friends%26response_type%3Dcode%26client_id%3D776373095733502%26ret%3Dlogin&cancel_uri=http%3A%2F%2F192.168.1.4%3A9000%2Fauth%2Ffacebook%2Fcallback%3Ferror%3Daccess_denied%26error_code%3D200%26error_description%3DPermissions%2Berror%26error_reason%3Duser_denied%23_%3D_&display=touch&_rdr
+2015-03-07 15:42:54.920 blank[19971:216443] Resetting plugins due to page load.
+2015-03-07 15:42:57.850 blank[19971:216443] Finished load of: https://m.facebook.com/checkpoint/?next=https%3A%2F%2Fm.facebook.com%2Fv2.2%2Fdialog%2Foauth%3Fredirect_uri%3Dhttp%253A%252F%252F192.168.1.4%253A9000%252Fauth%252Ffacebook%252Fcallback%26scope%3Demail%252Cpublic_profile%252Cuser_friends%26response_type%3Dcode%26client_id%3D776373095733502%26ret%3Dlogin&refid=9&_rdr
+2015-03-07 15:43:30.084 blank[19971:216443] Can't find keyplane that supports type 5 for keyboard iPhone-PortraitChoco-PhonePad; using 2470951658_PortraitChoco_iPhone-Complex-Pad_Default
+2015-03-07 15:43:37.310 blank[19971:216443] Resetting plugins due to page load.
+2015-03-07 15:43:37.470 blank[19971:216443] Finished load of: https://m.facebook.com/login/checkpoint/?next=https%3A%2F%2Fm.facebook.com%2Fv2.2%2Fdialog%2Foauth%3Fredirect_uri%3Dhttp%253A%252F%252F192.168.1.4%253A9000%252Fauth%252Ffacebook%252Fcallback%26scope%3Demail%252Cpublic_profile%252Cuser_friends%26response_type%3Dcode%26client_id%3D776373095733502%26ret%3Dlogin
+2015-03-07 15:52:50.032 blank[20776:222031] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/steve/Library/Developer/CoreSimulator/Devices/BBB82177-0974-4C36-B526-CF51811EE9D0/data/Containers/Data/Application/5ACED7E0-194D-4D85-A99A-1DA02F8C263F/Library/Cookies/Cookies.binarycookies
+2015-03-07 15:52:52.738 blank[20776:222031] Apache Cordova native platform version 3.7.0 is starting.
+2015-03-07 15:52:52.739 blank[20776:222031] Multi-tasking -> Device: YES, App: YES
+2015-03-07 15:52:52.779 blank[20776:222031] Unlimited access to network resources
+2015-03-07 15:52:54.622 blank[20776:222031] [CDVTimer][keyboard] 6.426990ms
+2015-03-07 15:52:55.787 blank[20776:222031] [CDVTimer][splashscreen] 1165.305972ms
+2015-03-07 15:52:55.794 blank[20776:222031] [CDVTimer][statusbar] 6.841958ms
+2015-03-07 15:52:55.795 blank[20776:222031] [CDVTimer][TotalPluginStartup] 1179.304004ms
+2015-03-07 15:52:58.910 blank[20776:222031] Resetting plugins due to page load.
+2015-03-07 15:53:00.494 blank[20776:222031] Finished load of: file:///Users/steve/Library/Developer/CoreSimulator/Devices/BBB82177-0974-4C36-B526-CF51811EE9D0/data/Containers/Bundle/Application/1D067803-2384-4A9A-9F60-E1CDA05A9C56/blank.app/www/index.html#/
+2015-03-07 15:53:00.952 blank[20776:222031] THREAD WARNING: ['Device'] took '42.072998' ms. Plugin should use a background thread.
+2015-03-07 16:02:22.818 blank[22340:227296] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/steve/Library/Developer/CoreSimulator/Devices/BBB82177-0974-4C36-B526-CF51811EE9D0/data/Containers/Data/Application/124D5406-4402-4176-925F-65A9B1FDE326/Library/Cookies/Cookies.binarycookies
+2015-03-07 16:02:25.414 blank[22340:227296] Apache Cordova native platform version 3.7.0 is starting.
+2015-03-07 16:02:25.414 blank[22340:227296] Multi-tasking -> Device: YES, App: YES
+2015-03-07 16:02:25.467 blank[22340:227296] Unlimited access to network resources
+2015-03-07 16:02:29.492 blank[22340:227296] [CDVTimer][keyboard] 0.552952ms
+2015-03-07 16:02:30.494 blank[22340:227296] [CDVTimer][splashscreen] 1001.367986ms
+2015-03-07 16:02:30.572 blank[22340:227296] [CDVTimer][statusbar] 77.594042ms
+2015-03-07 16:02:30.572 blank[22340:227296] [CDVTimer][TotalPluginStartup] 1099.495053ms
+2015-03-07 16:02:32.739 blank[22340:227296] Resetting plugins due to page load.
+2015-03-07 16:02:35.463 blank[22340:227296] Finished load of: file:///Users/steve/Library/Developer/CoreSimulator/Devices/BBB82177-0974-4C36-B526-CF51811EE9D0/data/Containers/Bundle/Application/7375CA74-EAA5-4DAB-99B4-92072C631B2D/blank.app/www/index.html#/
+2015-03-07 16:02:46.938 blank[22340:227296] THREAD WARNING: ['Keyboard'] took '22.358154' ms. Plugin should use a background thread.
+2015-03-07 16:02:49.126 blank[22340:227296] Resetting plugins due to page load.
+2015-03-07 16:02:49.228 blank[22340:227296] Failed to load webpage with error: The requested URL was not found on this server.
+2015-03-07 16:03:09.674 blank[22340:227296] Resetting plugins due to page load.
+2015-03-07 16:03:09.711 blank[22340:227296] Failed to load webpage with error: The requested URL was not found on this server.
+2015-03-07 16:03:27.590 blank[22340:227296] Resetting plugins due to page load.
+2015-03-07 16:03:29.852 blank[22340:227296] Finished load of: https://m.facebook.com/v2.2/dialog/oauth?redirect_uri=http%3A%2F%2F192.168.1.4%3A9000%2Fauth%2Ffacebook%2Fcallback&scope=email%2Cpublic_profile%2Cuser_friends&response_type=code&client_id=776373095733502
+2015-03-07 17:07:25.689 blank[23908:238722] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/steve/Library/Developer/CoreSimulator/Devices/BBB82177-0974-4C36-B526-CF51811EE9D0/data/Containers/Data/Application/EB9346FC-359B-41D6-9238-B1205049D73E/Library/Cookies/Cookies.binarycookies
+2015-03-07 17:07:27.664 blank[23908:238722] Apache Cordova native platform version 3.7.0 is starting.
+2015-03-07 17:07:27.665 blank[23908:238722] Multi-tasking -> Device: YES, App: YES
+2015-03-07 17:07:27.699 blank[23908:238722] Unlimited access to network resources
+2015-03-07 17:07:29.543 blank[23908:238722] [CDVTimer][keyboard] 0.542998ms
+2015-03-07 17:07:30.559 blank[23908:238722] [CDVTimer][splashscreen] 1015.688002ms
+2015-03-07 17:07:30.580 blank[23908:238722] [CDVTimer][statusbar] 21.275997ms
+2015-03-07 17:07:30.581 blank[23908:238722] [CDVTimer][TotalPluginStartup] 1058.788002ms
+2015-03-07 17:07:33.299 blank[23908:238722] Resetting plugins due to page load.
+2015-03-07 17:07:36.158 blank[23908:238722] Finished load of: file:///Users/steve/Library/Developer/CoreSimulator/Devices/BBB82177-0974-4C36-B526-CF51811EE9D0/data/Containers/Bundle/Application/8A8DFEA4-731A-412D-9FA7-3438BE7AFAE9/blank.app/www/index.html#/
+2015-03-07 17:07:37.521 blank[23908:238722] THREAD WARNING: ['Device'] took '78.635986' ms. Plugin should use a background thread.

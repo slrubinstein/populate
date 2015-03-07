@@ -1,0 +1,52 @@
+html {
+  background-color: $yellow;
+}
+
+body {
+    font-family: 'Helvetica Neue', Roboto, sans-serif;
+}
+
+
+#banner {
+    background-color: $balanced;
+    border-bottom: 1px solid #ccc;
+    margin-top: -20px;
+    position: relative;
+    padding: 15px 15px 0 15px;
+    color: #444;
+    text-align: center;
+}
+
+.footer {
+  background-color: #fafafa;
+  bottom: 0;
+  height: 10%;
+  padding-top: 10px;
+  position: fixed;
+  width: 100%;
+
+  .footer-tab {
+    
+    display: inline-block;
+    text-align: center;
+    width: 32%;
+
+    img {
+      height: 25px;
+      margin-left: 33%;
+      margin-right: 33%;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+  }
+}
+
+.navbar {
+  margin-bottom: -1px;
+}
+
+.footer .container .btn-group .btn {
+    padding: 6px 10px;
+}
