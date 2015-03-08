@@ -1,0 +1,12 @@
+<div class="file-upload">
+	<button class="cancel"
+					ng-click="cancelPic()">X</button>
+	<img class="camera" src="assets/images/noun_476_cc.png"
+			 ng-click="uploadPic()">
+	<input class="upload"
+				 type="file"
+				 accept="image/*"
+				 ng-model="fileInput"
+				 onchange="angular.element(this).scope().uploadPic(this)"/>
+<img class="preview" ng-if ="picPreview" ng-src="{{picPreview}}">
+</div>

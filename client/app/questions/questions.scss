@@ -54,6 +54,16 @@
 		width: 45%;
 	}
 
+	.option-input {
+		display: inline-block;
+	  vertical-align: top;
+	  border: 3px solid #c2c2c2;
+	  min-height: 120px;
+	  margin-top: 2px;
+	  min-width: 140px;
+	  text-align: center;
+	}
+
 	::-webkit-input-placeholder {
    color: $positive;
 	}

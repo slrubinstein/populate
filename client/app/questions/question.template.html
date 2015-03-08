@@ -13,20 +13,14 @@
 							placeholder="Answer" 
 							maxlength="50">
 		</textarea>
-	  <textarea ng-model="qctrl.question.answer2.option" 
+<!-- 	  <textarea ng-model="qctrl.question.answer2.option" 
 	  					placeholder="Answer" 
 	  					maxlength="50">
-	  </textarea>
-
+	  </textarea> -->
+	  <div class="option-input">
+			<image-uploader></image-uploader>
+		</div>
 	</div>
-	  <input id="file-upload-1" 
-	  			 type="file"
-	  			 accept="image/*"
-	  			 placeholder="placeholder text"/>
-	  <button ng-click="qctrl.uploadPic()">upload</button>
-	 	<input id="file-upload-1" 
-	  			 type="file"/>
-	  <button ng-click="qctrl.uploadPic()">upload</button>
 
 	<div class="voters-row">
 		<button class="button" ng-click="qctrl.openVotersPopup()">
