@@ -29,6 +29,16 @@ exports.create = function(req, res) {
   });
 };
 
+// Creates a new picture in the DB.
+exports.picture = function(req, res) {
+  console.log(req.body, '===========================')
+  // Question.create(req.body, function(err, question) {
+  //   if(err) { return handleError(res, err); }
+  //   question.addToUserActiveQuestions();
+  //   return res.json(201, question);
+  // });
+};
+
 // Vote on a Question
 exports.update = function(req, res) {
   if(req.body._id) { delete req.body._id; }

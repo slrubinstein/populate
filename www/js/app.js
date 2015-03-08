@@ -15,6 +15,6 @@ angular.module('starter', ['ionic', 'populateApp', 'ngCordova'])
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
-    $cordovaSplashscreen.hide()
+    // $cordovaSplashscreen.hide()
   });
 })
