@@ -5,6 +5,9 @@ angular.module('populateApp')
 
 function imageUploader() {
   return {
+  	scope: {
+  		picPreview: '=pic'
+  	},
     templateUrl: 'app/ask/imageUploader/imageUploader.html',
     restrict: 'EA',
     link: link
@@ -14,24 +17,21 @@ function imageUploader() {
   		
   	scope.cancelPic = function() {
   		scope.picPreview = '';
+  		// clear out .files property of nearest $('.upload') ??
   	}
-
-  	scope.fileInput;
 
   	scope.picPreview = '';
 
-		scope.uploadPic = function() {
+		scope.uploadPic = function(element) {
 
-			var file = $('.upload')[0].files[0];
+			var file = element.files[0];
 
 			if (!file) {
 				return;
 			}
-			
+
 			var reader = new FileReader();
 		  reader.onload = function () {
-		    // vm.question.answer1.image = this.result;
-		    var newPicData = this.result;
 		    scope.picPreview = this.result;
 		    scope.$apply();
 		  }

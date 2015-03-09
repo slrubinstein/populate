@@ -70,7 +70,11 @@ function QuestionCtrl(Auth, userQuestionService, dataService,
 	}
 
 	function askQuestion() {
-		if (!vm.question.query.length || !vm.question.answer1.option.length || !vm.question.answer2.option.length) {
+		// make sure question and answer fields are filled
+		if (!vm.question.query.length ||
+				(!vm.question.answer1.option.length && !vm.question.answer1.image.length) ||
+				(!vm.question.answer2.option.length && !vm.question.answer2.image.length))
+		{
 			return;
 		}
 		var date = new Date;

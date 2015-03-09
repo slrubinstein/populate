@@ -7,14 +7,17 @@
 	<div class="clearfix"></div>
 
 	<div class="row options-row">
-		<img ng-src="{{qctrl.currentQuestion.answer1.image}}">
 		<div class="pop-option" 
-				 ng-class="{active: qctrl.choice === 'answer1'}" ng-click="qctrl.select('answer1')">{{qctrl.currentQuestion.answer1.option}}
+				 ng-class="{active: qctrl.choice === 'answer1'}" ng-click="qctrl.select('answer1')">
+				 <p ng-if="!qctrl.currentQuestion.answer1.image">{{qctrl.currentQuestion.answer1.option}}</p>
+				 <img ng-if="qctrl.currentQuestion.answer1.image"
+				 			ng-src="{{qctrl.currentQuestion.answer1.image}}">
 		</div>
 
 		<div class="pop-option" 
-				 ng-class="{active: qctrl.choice === 'answer2'}" ng-click="qctrl.select('answer2')">{{qctrl.currentQuestion.answer2.option}}
-
+				 ng-class="{active: qctrl.choice === 'answer2'}" ng-click="qctrl.select('answer2')">
+				 <p ng-if="!qctrl.currentQuestion.answer2.image">{{qctrl.currentQuestion.answer2.option}}</p>
+				 <img  ng-if="qctrl.currentQuestion.answer2.image" ng-src="{{qctrl.currentQuestion.answer2.image}}">
 		</div>
 	</div>
 	<div class="voters-row">
