@@ -24,7 +24,7 @@
 		background-color: $yellow;
 		border: none;
 		font-weight: normal;
-		height: 88px;
+		height: 44px;
 		padding: 4px;
 		resize: none;
 		width: 68%;
@@ -42,7 +42,8 @@
 	width: 94%;
 
 	img {
-		width: 100px;
+		max-height: 120px;
+		max-width: 120px;
 	}
 
 	textarea {
