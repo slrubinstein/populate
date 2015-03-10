@@ -1,12 +1,8 @@
 <h1>INVITE</h1>
-{{invite.friends}}
-<ul class="list">
+<ul class="list friend-list">
     <li class="item"
     		ng-repeat="friend in invite.friends">
     	{{friend.name}}
-    	<img ng-src="https://graph.facebook.com/ +
-          {{friend.id}} + /picture">
+    	<img ng-src="https://graph.facebook.com/{{friend.id}}/picture">
     </li>
 </ul>
-here:<p>{{invite.test}}</p>
-here:<p>{{profile.user}}</p>
