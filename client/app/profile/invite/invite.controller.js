@@ -9,6 +9,7 @@ function InviteCtrl (facebookFriends, userQuestionService) {
 	var vm = this;
 
 	vm.friends = [];
+  vm.test = 'test'
 
 	activate();
 
@@ -25,8 +26,9 @@ function InviteCtrl (facebookFriends, userQuestionService) {
     .then(function() {
       
       facebookFriends.getFriends()
-      .then(function(friends) {
-      	vm.friends = friends;
+      .then(function(response) {
+      	angular.copy(response, vm.friends);
+        console.log(vm.friends)
       });
     })
 	}

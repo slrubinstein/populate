@@ -18,18 +18,16 @@ angular.module('populateApp')
       	templateUrl: 'app/profile/profile.myquestions/profile.myquestions.html',
       })
       .state('profile.edit', {
-        url: 'edit',
+        url: '/edit',
         templateUrl: 'app/profile/profile.edit.html'
       })
       .state('profile.invite', {
-        url: 'invite',
+        url: '/invite',
         templateUrl: 'app/profile/invite/profile.invite.html',
         controller: 'InviteCtrl',
         controllerAs: 'invite'
       })
       .state('profile.questionsanswered', {
       	url: '/questionsanswered',
-      	templateUrl: 'app/profile/profile.questionsanswered.html',
-        params: { question: {} },
       });
   });

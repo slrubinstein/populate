@@ -15,7 +15,6 @@ angular.module('populateApp')
       })
       .state('ask.confirmation', {
         url: '/confirmation',
-        templateUrl: 'app/ask/templates/ask.confirmation.html',
-        params: { newQuestion: {} }
+        templateUrl: 'app/ask/templates/ask.confirmation.html'
       });
   });

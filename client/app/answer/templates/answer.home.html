@@ -2,10 +2,11 @@
 	<div class="profile-row">
 		<div class="third-col">
 			<p>{{answer.user.name}}</p>
+			<p>{{answer.test}}</p>
 			<br>
 			<p>{{answer.user.location}}</p>
 			<br>
-			<p><a href="#">Invite Friends</a></p>
+			<p><a ui-sref="profile.invite">Invite Friends</a></p>
 		</div>
 		<div class="third-col">
 			<img ng-src="{{answer.pic}}">
