@@ -14,6 +14,7 @@ function AnswerCtrl($scope, dataService, Auth, $state,
 	vm.errors = {};
 	vm.group = 'friendQuestionsActive';
 	vm.loadQuestion = loadQuestion;
+	vm.pic = '';
 	vm.questionsByGroup = {};
 	vm.typeSelection = typeSelection;
 	vm.user = {};
