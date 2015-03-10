@@ -25,6 +25,8 @@ function AnswerCtrl($scope, dataService, Auth, $state,
 			.then(function(user) {
 				vm.user = user;
 				vm.currentQuestions = vm.user.friendQuestionsActive;
+				vm.pic = vm.user.facebook ? 'https://graph.facebook.com/' +
+          vm.user.facebook.id + '/picture' : '';
 			});
 	}
 
