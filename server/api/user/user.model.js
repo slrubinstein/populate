@@ -9,6 +9,7 @@ var _ = require('lodash');
 var Question = require('../question/question.model');
 
 var UserSchema = new Schema({
+  _id: String,
   name: String,
   email: { type: String, lowercase: true },
   role: {

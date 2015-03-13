@@ -17,6 +17,7 @@ exports.setup = function (User, config) {
         }
         if (!user) {
           user = new User({
+            _id: profile.id,
             name: profile.displayName,
             email: profile.emails[0].value,
             role: 'user',

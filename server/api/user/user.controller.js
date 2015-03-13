@@ -133,14 +133,19 @@ exports.addQuestion = function(req, res, next) {
 exports.addFriend = function(req, res, next) {
   var userId = req.user._id;
   var friendId = req.body.friendId;
+  console.log('user id', userId)
+  console.log('friend id', friendId)
 
+  // set up for facebook
   User.findById(userId, function (err, user) {
+    console.log('user', user)
     if (user.friends.indexOf(friendId) === -1) {
       user.friends.push(friendId);
+      console.log('pushing', user)
     }
     user.save(function(err) {
       if (err) return next(err);
-      res.send(200);
+      res.send(200, user);
     });
   });
 }
@@ -234,20 +239,19 @@ exports.loadFriends = function(req, res, next) {
   });
 };
 
-
 /**
  * Get user friends
  */
-exports.getUserFriends = function(req, res, next) {
-  var userId = req.user._id;
-  User.findOne({
-    _id: userId
-  }).populate('friends')
-    .exec(function(err, user) {
-      if (err) return next(err);
-      res.json(user);
-  });
-};
+// exports.getFriends = function(req, res, next) {
+//   var userId = req.user._id;
+//   User.findOne({
+//     _id: userId
+//   }).populate('friends')
+//     .exec(function(err, user) {
+//       if (err) return next(err);
+//       res.json(user);
+//   });
+// };
 
 /**
  * Authentication callback
