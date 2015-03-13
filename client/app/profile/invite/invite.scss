@@ -1,7 +1,17 @@
 .friend-list {
+	overflow: hidden;
+
 	img {
-		float: right;
+		float: left;
+		margin-right: 4px;
 	}
 
-	overflow: hidden
+	button {
+		float	: right;
+	}
+
+}
+
+.friend-list div {
+	display: inline-block;
 }

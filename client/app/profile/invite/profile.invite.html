@@ -2,9 +2,13 @@
 <ul class="list friend-list">
     <li class="item"
     		ng-repeat="friend in invite.facebookFriends">
-    	{{friend.name}}
-    	<img ng-src="https://graph.facebook.com/{{friend.id}}/picture">
-    	<button ng-if="invite.notFriends($index)"
-    					ng-click="invite.addFriend($index)">Add!</button>
+    	<div class="col-90">
+    		<img ng-src="https://graph.facebook.com/{{friend.id}}/picture">
+    		<p>{{friend.name}}</p>
+    	</div>
+
+  		<button ng-if="invite.notFriends($index)"
+  						ng-click="invite.addFriend($index)">+</button>
+
     </li>
 </ul>

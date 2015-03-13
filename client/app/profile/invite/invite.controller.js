@@ -25,7 +25,6 @@ function InviteCtrl (facebookFriends, userQuestionService, dataService) {
                 vm.user.facebook.id + '/picture' : '';
       angular.copy(vm.user.friends, vm.currentFriends);
       console.log('current', vm.currentFriends);
-      compareFriends();
     });
 
     facebookFriends.activate()
@@ -35,7 +34,6 @@ function InviteCtrl (facebookFriends, userQuestionService, dataService) {
       .then(function(response) {
       	angular.copy(response, vm.facebookFriends);
         console.log('fbook', vm.facebookFriends)
-        compareFriends();
       });
     }, function(err) {
       console.log('facebook friends not found. Err:', err);
