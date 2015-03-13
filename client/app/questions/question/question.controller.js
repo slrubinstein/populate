@@ -22,12 +22,14 @@ function QuestionCtrl(Auth, userQuestionService, dataService,
 	vm.comment = '';
 	vm.commentsAllowed = false;
 	vm.commentsOpen = false;
-	vm.file1 = '';
 	vm.enableComments = enableComments;
+	vm.file1 = '';
+	vm.friends = [];
 	vm.nextQuestion = nextQuestion;
 	vm.openCommentsPopup = openCommentsPopup;
 	vm.openVotersPopup = openVotersPopup;
 	vm.pic = '';
+	vm.processVoters = processVoters;
 	vm.question = {
 		query: '',
 		answer1: {
@@ -83,10 +85,23 @@ function QuestionCtrl(Auth, userQuestionService, dataService,
 		vm.question.commentsAllowed = vm.commentsAllowed;
 		vm.question.timeCreated = date;
 		vm.question.closesAt = new Date (date.getTime() + timerMillis[vm.timerIndex]);
+		vm.question.voters = vm.voters.map(function(v) {
+			return {
+				_id: v._id,
+				voterName: v.name
+			}
+		});
 
 		userQuestionService.postQuestion(vm.question)
 		// changing state will empty the ng-model values
 		$state.go('answer.home');
+	}
+
+	function processVoters() {
+		vm.voters = _.filter(vm.user.friends, function(f, i) {
+			return vm.friends[i];
+		});
+		openVotersPopup();
 	}
 
 	function enableComments() {

@@ -29,7 +29,8 @@
 
 	<div class="voters-row">
 		<button class="button" ng-click="qctrl.openVotersPopup()">
-		  SELECT VOTERS
+		  <span ng-if="!qctrl.voters.length">SELECT VOTERS</span>
+		  <span ng-if="qctrl.voters.length">{{qctrl.voters.length}} selected</span>
 		</button>
 		<button class="comments-button button"
 						ng-class="{enabled: qctrl.commentsAllowed}"

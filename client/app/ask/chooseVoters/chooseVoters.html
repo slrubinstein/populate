@@ -1,6 +1,6 @@
 <div class="choose-voters-popup">
 	<div class="triangle"></div>
-	<input type="search" class="search-box" placeholder="search">
+	<input type="search" class="search-box" placeholder="search"><button id="x-box" ng-click="qctrl.openVotersPopup()">X</button>
 	
 	<!-- <div class="tab-group">
 		<div class="tab">Friends</div>
@@ -8,15 +8,18 @@
 		<div class="tab">Groups</div>
 	</div>
 	 -->
+	<div class="voter-list">
+		<ul class="list">
+		 	<li class="item item-checkbox"
+		 			ng-repeat="friend in qctrl.user.friends">
+		 		{{friend.name}}
+		 		<label class="checkbox">
+	      	<input type="checkbox" ng-model="qctrl.friends[$index]">
+	    	</label>
+		 	</li>
+		</ul>
+	</div>
 
-	 <ul class="list voter-list">
-	 	<li class="item"
-	 			ng-repeat="friend in qctrl.user.friends">
-	 		<p>{{friend.name}}</p>
-	 		<input type="checkbox" ng-model="qctrl.voters[$index]">
-	 	</li>
-	 </ul>
-
-	<button ng-click="openVotersPopup()">&#10003;</button>
+	<button ng-click="qctrl.processVoters()">&#10003;</button>
 
 </div>

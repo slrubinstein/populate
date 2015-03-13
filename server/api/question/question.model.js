@@ -5,7 +5,7 @@ var mongoose = require('mongoose'),
 
 var QuestionSchema = new Schema({
   // maybe refactor asker into an object
-  askerId: {type: Schema.Types.ObjectId, ref: 'User'},
+  askerId: {type: String, ref: 'User'},
   askerName: String,
   askerPic: String,
   query: String,
@@ -13,19 +13,20 @@ var QuestionSchema = new Schema({
   	option: { type: String, default: ''},
   	votes: { type: Number, default: 0 },
   	image: String,
-    voters: [ { _id: { type: Schema.Types.ObjectId, ref: 'User'}, voterName: String } ]
+    voters: [ { _id: { type: String, ref: 'User'}, voterName: String } ]
   },
   answer2: {
   	option: { type: String, default: ''},
   	votes: { type: Number, default: 0 },
   	image: String,
-    voters: [ { _id: { type: Schema.Types.ObjectId, ref: 'User'}, voterName: String } ]
+    voters: [ { _id: { type: String, ref: 'User'}, voterName: String } ]
   },
   isActive: { type: Boolean, default: true },
   timeCreated: { type: Date, default: new Date , index: {unique: true } },
   closesAt: { type: Date, index: { unique: false } },
   commentsAllowed: Boolean,
-  comments: [ { _id: { type: Schema.Types.ObjectId, ref: 'User'}, name: String, comment: String } ]
+  comments: [ { _id: { type: String, ref: 'User'}, name: String, comment: String } ],
+  voters: [ { _id: { type: String, ref: 'User'}, voterName: String } ]
 });
 
 QuestionSchema.methods = {
@@ -47,7 +48,7 @@ QuestionSchema.methods = {
         question = this;
 
     question.voters.forEach(function(voter) {
-      User.findById(voter, function(err, user) {
+      User.findById(voter._id, function(err, user) {
         if (err) throw err;
         user.friendQuestionsActive.push(question._id);
         user.save();

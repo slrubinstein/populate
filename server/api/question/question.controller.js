@@ -25,6 +25,7 @@ exports.create = function(req, res) {
   Question.create(req.body, function(err, question) {
     if(err) { return handleError(res, err); }
     question.addToUserActiveQuestions();
+    question.assignQuestionToFriends();
     return res.json(201, question);
   });
 };

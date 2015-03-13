@@ -1,3 +1,16 @@
+#x-box {
+	width: 26px;
+  border: none;
+  background-color: white;
+  color: #00cc66;
+  float: right;
+  margin: 8px;
+}
+
+.voter-list {
+	height: 83%;
+}
+
 .choose-voters-popup {
 	box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 	position: absolute;
@@ -11,12 +24,13 @@
 
 
 	.search-box {
-		width: 90%;
+		width: 75%;
 		border: none;
 		margin-left: 5%;
 		margin-right: auto;
 		height: 20px;
 		margin-top: 10px;
+		margin-bottom: 10px;
 	}
 
 	.tab-group {
@@ -31,14 +45,15 @@
 		margin: 0 -3px;
 	}
 
-	table {
-		margin-left: 13px;
+	.item.item-checkbox {
+		padding-left: 10px;
+  	font-size: 1.1em;
 	}
 
-	td {
-		background-color: white;
-		padding: 1px 8px;
-		width: 100px;
+	input[type='checkbox'] {
+	  float: right;
+	  margin: -5px;
+	  width: 15%;
 	}
 
 	button {
