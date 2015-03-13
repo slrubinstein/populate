@@ -29,7 +29,6 @@ function InviteCtrl (facebookFriends, userQuestionService, dataService) {
 
     facebookFriends.activate()
     .then(function() {
-      
       facebookFriends.getFriends()
       .then(function(response) {
       	angular.copy(response, vm.facebookFriends);

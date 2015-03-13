@@ -21,8 +21,9 @@ function facebookFriends($q) {
     // returns a promise so friends will not be requested
     // before facebook api has loaded
     var deferred = $q.defer();
+    console.log('initializing facebook')
 
-     window.fbAsyncInit = function() {
+    window.fbAsyncInit = function() {
       FB.init({
         // appId      : '777210872316391', // h
         appId      : '776373095733502', // l
@@ -47,10 +48,12 @@ function facebookFriends($q) {
   function getFriends() {
     var deferred = $q.defer();
     if (!FB) {
+      console.log('facebook initializing failed')
       return;
     }
-
+    console.log('requesting facebook friends')
     FB.getLoginStatus(function(response) {
+      console.log('facebook responded', response)
       if (response.status === 'connected') {
 
         FB.api(

@@ -133,15 +133,11 @@ exports.addQuestion = function(req, res, next) {
 exports.addFriend = function(req, res, next) {
   var userId = req.user._id;
   var friendId = req.body.friendId;
-  console.log('user id', userId)
-  console.log('friend id', friendId)
 
   // set up for facebook
   User.findById(userId, function (err, user) {
-    console.log('user', user)
     if (user.friends.indexOf(friendId) === -1) {
       user.friends.push(friendId);
-      console.log('pushing', user)
     }
     user.save(function(err) {
       if (err) return next(err);
@@ -161,7 +157,7 @@ exports.me = function(req, res, next) {
     if (err) return next(err);
     if (!user) return res.json(401);
   })
-  .populate('myQuestionsActive myQuestionsOld friendQuestionsActive friendQuestionsOld')
+  .populate('myQuestionsActive myQuestionsOld friendQuestionsActive friendQuestionsOld friends')
   .exec(function(err, user) {
     if (err) return next(err);
     res.json(user);

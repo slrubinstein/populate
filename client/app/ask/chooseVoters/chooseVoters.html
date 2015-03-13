@@ -2,26 +2,21 @@
 	<div class="triangle"></div>
 	<input type="search" class="search-box" placeholder="search">
 	
-	<div class="tab-group">
+	<!-- <div class="tab-group">
 		<div class="tab">Friends</div>
 		<div class="tab">Recent</div>
 		<div class="tab">Groups</div>
 	</div>
-	<table>
-		<tr>
-			<td>1</td>
-			<td>2</td>
-		</tr>
-		<tr>
-			<td>3</td>
-			<td>4</td>
-		</tr>
-		<tr>
-			<td>1</td>
-			<td>2</td>
-		</tr>
-	</table>
+	 -->
 
-	<button>&#10003;</button>
+	 <ul class="list voter-list">
+	 	<li class="item"
+	 			ng-repeat="friend in qctrl.user.friends">
+	 		<p>{{friend.name}}</p>
+	 		<input type="checkbox" ng-model="qctrl.voters[$index]">
+	 	</li>
+	 </ul>
+
+	<button ng-click="openVotersPopup()">&#10003;</button>
 
 </div>

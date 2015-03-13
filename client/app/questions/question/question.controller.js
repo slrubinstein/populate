@@ -40,22 +40,21 @@ function QuestionCtrl(Auth, userQuestionService, dataService,
 	vm.select = select;
 	vm.timerIndex = 2;
 	vm.timerOptions = ['10 minutes', '30 minutes', '1 hour', '12 hours', '24 hours', '2 days', '7 days'];
-	// vm.uploadPic = uploadPic;
 	vm.vote = vote;
+	vm.voters = [];
 	vm.votersOpen = false;
 	vm.user;
 
 	activate();
 
 	function activate() {
-		Auth.isLoggedInAsync(function(loggedIn) {
-			if (loggedIn) {
-				vm.user = Auth.getCurrentUser();
-        vm.pic = vm.user.facebook ? 'https://graph.facebook.com/' +
-          vm.user.facebook.id + '/picture' : '';
-				console.log(vm.user)
-				console.log('question', vm.currentQuestion)		
-			}
+		userQuestionService.resetUser()
+		.then(function(response) {
+			vm.user = response;
+      vm.pic = vm.user.facebook ? 'https://graph.facebook.com/' +
+        vm.user.facebook.id + '/picture' : '';
+			console.log(vm.user)
+			console.log('question', vm.currentQuestion)		
 		});
 	}
 
@@ -117,16 +116,5 @@ function QuestionCtrl(Auth, userQuestionService, dataService,
 		userQuestionService.vote(vm.currentQuestion, vm.choice, vm.user);
 		vm.choice = null;
 	}
-
-	// function uploadPic() {
-	// 	var file = $('#file-upload-1')[0].files[0];
-	// 	// var file = vm.file1.files[0];
-	// 	var reader = new FileReader();
- //    reader.onload = function () {
- //      vm.question.answer1.image = this.result;
- //      // dataService.uploadPic(data);
- //    }
-	// 	reader.readAsDataURL(file);
-	// }
 
 }

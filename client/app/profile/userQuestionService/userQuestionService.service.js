@@ -18,6 +18,7 @@ function userQuestionService($q, dataService, Auth) {
     loadQuestion: loadQuestion,
     nextQuestion: nextQuestion,
     postQuestion: postQuestion,
+    resetUser: resetUser,
     user: user,
     vote: vote
   };
@@ -69,6 +70,11 @@ function userQuestionService($q, dataService, Auth) {
       .then(function(response) {
         user.myQuestionsActive.unshift(response.data);
       });
+  }
+
+  function resetUser() {
+    user = {};
+    return getUser();
   }
 
   function vote(question, answer, voter) {
