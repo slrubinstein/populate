@@ -41,11 +41,6 @@
 	margin-right: auto;
 	width: 94%;
 
-	img {
-		max-height: 120px;
-		max-width: 120px;
-	}
-
 	textarea {
 		background-color: $yellow;
 		border: none;
@@ -94,7 +89,12 @@
 			border: 3px solid $balanced;
 			box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 		}
+
 	}
+}
+.img-thumbs {
+  max-height: 100%;
+	max-width: 100%;
 }
 
 .voters-row {

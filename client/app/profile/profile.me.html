@@ -29,8 +29,18 @@
 				 ng-click="profile.loadQuestion($index)">
 			<img class="clock" src="assets/images/noun_77811_cc.png">
 			<h5>{{question.query}}</h5>
-			<div class="pop-option">{{question.answer1.option}}</div>
-			<div class="pop-option">{{question.answer2.option}}</div>
+			<div class="pop-option">
+				<p ng-if="!question.answer1.image">{{question.answer1.option}}</p>
+				<img class="img-thumbs"
+							ng-if="question.answer1.image"
+				 			ng-src="{{question.answer1.image}}">
+			</div>
+			<div class="pop-option">
+				<p ng-if="!question.answer2.image">{{question.answer2.option}}</p>
+				<img class="img-thumbs"
+							ng-if="question.answer2.image"
+				 			ng-src="{{question.answer2.image}}">
+			</div>
 			<div class="pop-voters">
 				<p>
 					<span>{{question.answer1.voters[0].name}}</span>
