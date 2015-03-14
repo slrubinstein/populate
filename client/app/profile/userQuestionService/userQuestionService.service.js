@@ -13,6 +13,7 @@ function userQuestionService($q, dataService, Auth) {
       user = {};
 
   return {
+    addFriend: addFriend,
     currentQuestion: currentQuestion,
     getUser: getUser,
     loadQuestion: loadQuestion,
@@ -23,13 +24,21 @@ function userQuestionService($q, dataService, Auth) {
     vote: vote
   };
 
+  function addFriend(userId, friend) {
+    dataService.addFriend(userId, friend.id)
+    user.friends.push({
+      _id: friend.id,
+      name: friend.name
+    })
+  }
+
   function getUser() {
     var deferred = $q.defer();
 
     if (_.isEmpty(user)) {
-      user = Auth.isLoggedInAsync(function(loggedIn) {
+      Auth.isLoggedInAsync(function(loggedIn) {
         if (loggedIn) {
-          user = Auth.getCurrentUser();
+          angular.copy(Auth.getCurrentUser(), user);
           user.friendQuestionsActive = _.sortBy(user.friendQuestionsActive, function(q) {
             return q.closesat;
           });

@@ -50,7 +50,7 @@ function QuestionCtrl(Auth, userQuestionService, dataService,
 	activate();
 
 	function activate() {
-		userQuestionService.resetUser()
+		userQuestionService.getUser()
 		.then(function(response) {
 			vm.user = response;
       vm.pic = vm.user.facebook ? 'https://graph.facebook.com/' +

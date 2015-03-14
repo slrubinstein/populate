@@ -40,13 +40,14 @@ function InviteCtrl (facebookFriends, userQuestionService, dataService) {
 	}
 
   function addFriend(index) {
-    dataService.addFriend(vm.user._id, vm.facebookFriends[index].id)
-    .then(function(response) {
-      angular.copy(response.data.friends, vm.currentFriends);
-    });
+    userQuestionService.addFriend(vm.user._id, vm.facebookFriends[index]);
+    vm.currentFriends.push(vm.facebookFriends[index]);
   }
 
   function notFriends(index) {
-    return vm.currentFriends.indexOf(vm.facebookFriends[index].id) < 0;
+    var ids = vm.currentFriends.map(function(f) {
+      return f._id || f.id;
+    });
+    return ids.indexOf(vm.facebookFriends[index].id) < 0;
   }
 }

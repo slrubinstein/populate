@@ -8,20 +8,28 @@ facebookFriends.$inject = ['$q']
 function facebookFriends($q) {
 
   var facebookFriends = [];
-  var facebookLogin = false;
+  var facebookLoaded = false;
 
   return {
     activate: activate,
     facebookFriends: facebookFriends,
     getFriends: getFriends,
-    facebookLogin: facebookLogin
+    facebookLoaded: facebookLoaded
   }
 
   function activate() {
     // returns a promise so friends will not be requested
     // before facebook api has loaded
-    var deferred = $q.defer();
-    console.log('initializing facebook')
+    var deferred = $q.defer(),
+        svc = this;
+
+    if (svc.facebookLoaded) {
+      console.log('facebook already loaded. returning...')
+      deferred.resolve(true);
+      return deferred.promise;
+    }
+
+    console.log('facebook not found. initializing facebook...')
 
     window.fbAsyncInit = function() {
       FB.init({
@@ -31,6 +39,8 @@ function facebookFriends($q) {
         version    : 'v2.1',
         status     : true
       });
+      svc.facebookLoaded = true;
+      console.log('facebook loaded');
       deferred.resolve(true);
     };
 

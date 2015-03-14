@@ -2,19 +2,23 @@ html {
   background-color: $yellow;
 }
 
+.yellow {
+  background-color: $yellow;
+}
+
 body {
-    font-family: 'Helvetica Neue', Roboto, sans-serif;
+  font-family: 'Helvetica Neue', Roboto, sans-serif;
 }
 
 
 #banner {
-    background-color: $balanced;
-    border-bottom: 1px solid #ccc;
-    margin-top: -20px;
-    position: relative;
-    padding: 15px 15px 0 15px;
-    color: #444;
-    text-align: center;
+  background-color: $balanced;
+  border-bottom: 1px solid #ccc;
+  margin-top: -20px;
+  position: relative;
+  padding: 15px 15px 0 15px;
+  color: #444;
+  text-align: center;
 }
 
 .footer {

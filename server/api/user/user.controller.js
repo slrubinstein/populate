@@ -82,17 +82,17 @@ exports.changePassword = function(req, res, next) {
 /**
  * Add a question to a User's questions
  */
-exports.addQuestion = function(req, res, next) {
-  var userId = req.user._id;
-  var questionId = req.body.questionId;
-  User.findById(userId, function (err, user) {
-    user.myQuestions.push(questionId);
-    user.save(function(err) {
-      if (err) return next(err);
-      res.send(200);
-    });
-  });
-}
+// exports.addQuestion = function(req, res, next) {
+//   var userId = req.user._id;
+//   var questionId = req.body.questionId;
+//   User.findById(userId, function (err, user) {
+//     user.myQuestions.push(questionId);
+//     user.save(function(err) {
+//       if (err) return next(err);
+//       res.send(200);
+//     });
+//   });
+// }
 
 /**
  * Vote on a question
@@ -139,7 +139,7 @@ exports.addFriend = function(req, res, next) {
     if (user.friends.indexOf(friendId) === -1) {
       user.friends.push(friendId);
     }
-    user.save(function(err) {
+    user.save(function(err, user) {
       if (err) return next(err);
       res.send(200, user);
     });
@@ -157,7 +157,8 @@ exports.me = function(req, res, next) {
     if (err) return next(err);
     if (!user) return res.json(401);
   })
-  .populate('myQuestionsActive myQuestionsOld friendQuestionsActive friendQuestionsOld friends')
+  .populate('myQuestionsActive myQuestionsOld friendQuestionsActive friendQuestionsOld')
+  .populate('friends', 'name')
   .exec(function(err, user) {
     if (err) return next(err);
     res.json(user);
