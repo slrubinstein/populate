@@ -29,5 +29,6 @@ angular.module('populateApp')
       })
       .state('profile.questionsanswered', {
       	url: '/questionsanswered',
+        templateUrl: 'app/profile/profile.questionsanswered.html'
       });
   });
