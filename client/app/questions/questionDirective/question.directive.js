@@ -8,17 +8,13 @@ questionLayout.$inject = ['userQuestionService'];
 function questionLayout(userQuestionService) {
 
 	return {
-		scope: {
-			question: '=question',
-			loadNextQuestion: '&'
-		},
 		controller: 'QuestionCtrl as qctrl',
 		restrict: 'E',
 		templateUrl: function(elem, attr) {
 			if (attr.context === 'answer') {
-				return 'app/questions/question.vote.html';
+				return 'app/questions/question.view.html';
 			} else if (attr.context === 'ask') {
-				return 'app/questions/question.template.html';
+				return 'app/questions/question.ask.html';
 			}
 		}
 	}

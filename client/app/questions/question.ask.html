@@ -1,8 +1,8 @@
 <div class="question-template">
 	<div class="asker-row">
 		<img ng-src="{{qctrl.pic}}">
-		<p><b>{{qctrl.user.name}} asks:</b></p>
-		<textarea ng-model="qctrl.question.query"
+		<p><b>{{qctrl.user.name}} asks:</b>{{ask.test}}</p>
+		<textarea ng-model="ask.question.query"
 							placeholder="Enter question..."
 							maxlength="100"></textarea>
 	</div>
@@ -10,17 +10,17 @@
 
 	<div class="row options-row">
 		<div class="option-input">
-			<image-uploader pic="qctrl.question.answer1.image"></image-uploader>
-			<textarea ng-if="!qctrl.question.answer1.image"
-								ng-model="qctrl.question.answer1.option" 
+			<image-uploader pic="ask.question.answer1.image"></image-uploader>
+			<textarea ng-if="!ask.question.answer1.image"
+								ng-model="ask.question.answer1.option" 
 								placeholder="Answer" 
 								maxlength="50">
 			</textarea>
 		</div>
 	  <div class="option-input">
-			<image-uploader pic="qctrl.question.answer2.image"></image-uploader>
-		  <textarea ng-if="!qctrl.question.answer2.image"
-		  					ng-model="qctrl.question.answer2.option" 
+			<image-uploader pic="ask.question.answer2.image"></image-uploader>
+		  <textarea ng-if="!ask.question.answer2.image"
+		  					ng-model="ask.question.answer2.option" 
 		  					placeholder="Answer" 
 		  					maxlength="50">
 	  	</textarea>
@@ -28,25 +28,25 @@
 	</div>
 
 	<div class="voters-row">
-		<button class="button" ng-click="qctrl.openVotersPopup()">
-		  <span ng-if="!qctrl.voters.length">SELECT VOTERS</span>
-		  <span ng-if="qctrl.voters.length">{{qctrl.voters.length}} selected</span>
+		<button class="button" ng-click="ask.openVotersPopup()">
+		  <span ng-if="!ask.voters.length">SELECT VOTERS</span>
+		  <span ng-if="ask.voters.length">{{ask.voters.length}} selected</span>
 		</button>
 		<button class="comments-button button"
-						ng-class="{enabled: qctrl.commentsAllowed}"
-						ng-click="qctrl.enableComments()">
-		  <p ng-if="qctrl.commentsAllowed">Comments On</p>
-		  <p ng-if="!qctrl.commentsAllowed">Comments Off</p>
+						ng-class="{enabled: ask.commentsAllowed}"
+						ng-click="ask.enableComments()">
+		  <p ng-if="ask.commentsAllowed">Comments On</p>
+		  <p ng-if="!ask.commentsAllowed">Comments Off</p>
 		</button>
-		<choose-voters ng-if="qctrl.votersOpen"></choose-voters>
+		<choose-voters ng-if="ask.votersOpen"></choose-voters>
 		
-		<input type="range" name="timer" min="0" max="6" ng-model="qctrl.timerIndex">
+		<input type="range" name="timer" min="0" max="6" ng-model="ask.timerIndex">
 
-		<p>{{qctrl.timerOptions[qctrl.timerIndex]}}</p>
+		<p>{{ask.timerOptions[ask.timerIndex]}}</p>
 	</div>
 
 	<div class="bottom-row">
-		<button class="ask-button button" ng-click="qctrl.askQuestion()">
+		<button class="ask-button button" ng-click="ask.askQuestion()">
 		  ASK!
 		</button>
 	</div>
