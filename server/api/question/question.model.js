@@ -50,9 +50,16 @@ QuestionSchema.methods = {
     question.voters.forEach(function(voter) {
       User.findById(voter._id, function(err, user) {
         if (err) throw err;
+        if (!user) {
+          console.log('user', voter._id, 'not found');
+          return;
+        }
         user.friendQuestionsActive.push(question._id);
-        user.save();
-        return;
+        user.save(function(err) {
+          if (err) throw err;
+          console.log('assigned question', question._id, 'to user', user.name);
+          return;
+        });
       });
     });
   },
