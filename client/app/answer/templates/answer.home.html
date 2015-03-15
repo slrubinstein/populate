@@ -1,3 +1,5 @@
+<ion-content>
+
 <div class="question-template">
 	<div class="profile-row">
 		<div class="third-col">
@@ -19,9 +21,11 @@
 	</div>
 
 	<div class="open-closed-row">
-		<button ng-class="{active: answer.group === 'friendQuestionsActive'}"
+		<button class="button button-small"
+						ng-class="{active: answer.group === 'friendQuestionsActive'}"
 						ng-click="answer.typeSelection('friendQuestionsActive')">OPEN</button>
-		<button ng-class="{active: answer.group === 'friendQuestionsOld'}"
+		<button class="button button-small"
+						ng-class="{active: answer.group === 'friendQuestionsOld'}"
 						ng-click="answer.typeSelection('friendQuestionsOld')">CLOSED</button>
 	</div>
 
@@ -41,3 +45,5 @@
 		</div>
 	</div>
 </div>
+
+</ion-content>
