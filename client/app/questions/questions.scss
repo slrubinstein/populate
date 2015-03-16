@@ -1,6 +1,9 @@
 .question-template {
 	background-color: $yellow;
 	color: #444;
+	max-width: 400px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .asker-row {
@@ -36,8 +39,8 @@
 }
 
 .options-row {
-	height: 120px;
-	margin-left: 6%;
+	/*height: 120px;*/
+	margin-left: auto;
 	margin-right: auto;
 	width: 94%;
 
@@ -56,7 +59,7 @@
 	  vertical-align: top;
 	  border: 3px solid #c2c2c2;
 	  height: 120px;
-	  margin-top: 2px;
+	  margin: auto;
 	  width: 45%;
 	}
 
@@ -99,20 +102,14 @@
 
 .voters-row {
 
-	margin-left: 6%;
+	margin-left: auto;
 	margin-right: auto;
-	width: 94%;
+	width: 88%;
 
 	.button {
-		background-color: $balanced;
-		border: none;
-		border-radius: 8px;
 		color: #fff;
-		display: inline-block;
 		font-size: 1.1em;
-		height: 40px;
 		margin: 10px 0 10px 2px;
-		vertical-align: bottom;
 		width: 72%;
 
 		&.comments-button {
@@ -120,8 +117,8 @@
 			color: #222;
 			font-size: 10px;
 			line-height: 12px;
-			padding: 0;
 			margin-left: -4px;
+			padding: 4px;
 			width: 20%;
 		
 			&.enabled {
@@ -177,33 +174,15 @@
 }
 
 .bottom-row {
-	bottom: 64px;
-	margin-left: auto;
-	margin-right: auto;
-	position: absolute;
+
 	text-align: center;
-	width: 92%;
 
 	img {
 		height: 40px;
 		margin: 30px 12px 0 12px;
 	}
 
-	.button {
-		width: 46%;
-		border-radius: 6px;
-		border: none;
-		height: 44px;
-	}
 	.ask-button {
-		background-color: $balanced;
-		border: none;
-		border-radius: 6px;
-		color: white;
-		font-size: 1.2em;
-		height: 90px;
-		margin-top: 26px;
-		width: 92%;
-		vertical-align: bottom;
+		width: 88%;
 	}
 }

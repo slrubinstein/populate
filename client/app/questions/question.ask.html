@@ -1,7 +1,7 @@
 <div class="question-template">
 	<div class="asker-row">
 		<img ng-src="{{qctrl.pic}}">
-		<p><b>{{qctrl.user.name}} asks:</b>{{ask.test}}</p>
+		<p><b>{{qctrl.user.name}} asks:</b></p>
 		<textarea ng-model="ask.question.query"
 							placeholder="Enter question..."
 							maxlength="100"></textarea>
@@ -28,11 +28,11 @@
 	</div>
 
 	<div class="voters-row">
-		<button class="button" ng-click="ask.openVotersPopup()">
+		<button class="button button-large button-balanced" ng-click="ask.openVotersPopup()">
 		  <span ng-if="!ask.voters.length">SELECT VOTERS</span>
 		  <span ng-if="ask.voters.length">{{ask.voters.length}} selected</span>
 		</button>
-		<button class="comments-button button"
+		<button class="comments-button button button-large"
 						ng-class="{enabled: ask.commentsAllowed}"
 						ng-click="ask.enableComments()">
 		  <p ng-if="ask.commentsAllowed">Comments On</p>
@@ -46,7 +46,7 @@
 	</div>
 
 	<div class="bottom-row">
-		<button class="ask-button button" ng-click="ask.askQuestion()">
+		<button class="ask-button button button-large button-balanced" ng-click="ask.askQuestion()">
 		  ASK!
 		</button>
 	</div>
