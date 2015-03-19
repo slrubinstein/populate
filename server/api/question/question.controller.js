@@ -42,7 +42,7 @@ exports.update = function(req, res) {
     if (err) { return handleError(res, err); }
     if(!question) { return res.send(404); }
     // give vote a plus 1
-    question[answer].option.votes++;
+    question[answer].votes++;
     // add voter to array of voters for this option
     question[answer].voters.push({
       _id: voterId,
