@@ -1,62 +1,64 @@
-<div class="question-template">
-	<div class="profile-row">
-		<div class="third-col">
-			<p>{{profile.user.name}}</p>
-			<br>
-			<p>{{profile.user.location}}</p>
-			<br>
-			<p><a ui-sref="profile.invite">Invite Friends</a></p>
+<ion-content>
+
+	<div class="question-template">
+		<div class="profile-row">
+			<div class="third-col">
+				<p>{{profile.user.facebook.first_name}}</p>
+				<p>{{profile.user.location}}</p>
+				<p><a ui-sref="profile.invite">Invite Friends</a></p>
+			</div>
+			<div class="third-col profile-pic">
+				<img ng-src="{{profile.pic}}">
+			</div>
+			<div class="third-col">
+				<p>Populating since...</p>
+				<p></p>
+				<p><a ui-sref="profile.edit">Edit Profile</a></p>
+			</div>
 		</div>
-		<div class="third-col">
-			<img ng-src="{{profile.pic}}">
+
+		<div class="open-closed-row">
+			<button class="button button-small"
+							ng-class="{active: profile.group === 'myQuestionsActive'}"
+							ng-click="profile.typeSelection('myQuestionsActive')">OPEN</button>
+			<button class="button button-small"
+							ng-class="{active: profile.group === 'myQuestionsOld'}"
+							ng-click="profile.typeSelection('myQuestionsOld')">CLOSED</button>
 		</div>
-		<div class="third-col">
-			<p>Populating since...</p>
-			<br>
-			<p><a ui-sref="profile.edit">Edit Profile</a></p>
+
+		<div class="container question-block">
+			<div ng-repeat="question in profile.currentQuestions track by $index | limitTo: 2"
+					 ng-click="profile.loadQuestion($index)">
+				<img class="clock" src="assets/images/noun_77811_cc.png">
+				<h5>{{question.query}}</h5>
+				<div class="pop-option">
+					<p ng-if="!question.answer1.image">{{question.answer1.option}}</p>
+					<img class="img-thumbs"
+								ng-if="question.answer1.image"
+					 			ng-src="{{question.answer1.image}}">
+				</div>
+				<div class="pop-option">
+					<p ng-if="!question.answer2.image">{{question.answer2.option}}</p>
+					<img class="img-thumbs"
+								ng-if="question.answer2.image"
+					 			ng-src="{{question.answer2.image}}">
+				</div>
+				<div class="pop-voters">
+					<p>
+						<span>{{question.answer1.voters[0].name}}</span>
+						<span ng-if="question.answer1.voters.length > 1">, {{question.answer1.voters[1].name}}</span>
+						<span ng-if="question.answer1.voters.length > 2">, and {{question.answer.voters.length - 2}} others</span>
+					</p>
+				</div>
+				<div class="pop-voters">
+					<p>
+						<span>{{question.answer2.voters[0].name}}</span>
+						<span ng-if="question.answer2.voters.length > 1">, {{question.answer2.voters[1].name}}</span>
+						<span ng-if="question.answer2.voters.length > 2">, and {{question.answer2.voters.length - 2}} others</span>
+					</p>
+				</div>
+			</div>
 		</div>
 	</div>
 
-	<div class="open-closed-row">
-		<button class="button button-small"
-						ng-class="{active: profile.group === 'myQuestionsActive'}"
-						ng-click="profile.typeSelection('myQuestionsActive')">OPEN</button>
-		<button class="button button-small"
-						ng-class="{active: profile.group === 'myQuestionsOld'}"
-						ng-click="profile.typeSelection('myQuestionsOld')">CLOSED</button>
-	</div>
-
-	<div class="container question-block">
-		<div ng-repeat="question in profile.currentQuestions track by $index | limitTo: 2"
-				 ng-click="profile.loadQuestion($index)">
-			<img class="clock" src="assets/images/noun_77811_cc.png">
-			<h5>{{question.query}}</h5>
-			<div class="pop-option">
-				<p ng-if="!question.answer1.image">{{question.answer1.option}}</p>
-				<img class="img-thumbs"
-							ng-if="question.answer1.image"
-				 			ng-src="{{question.answer1.image}}">
-			</div>
-			<div class="pop-option">
-				<p ng-if="!question.answer2.image">{{question.answer2.option}}</p>
-				<img class="img-thumbs"
-							ng-if="question.answer2.image"
-				 			ng-src="{{question.answer2.image}}">
-			</div>
-			<div class="pop-voters">
-				<p>
-					<span>{{question.answer1.voters[0].name}}</span>
-					<span ng-if="question.answer1.voters.length > 1">, {{question.answer1.voters[1].name}}</span>
-					<span ng-if="question.answer1.voters.length > 2">, and {{question.answer.voters.length - 2}} others</span>
-				</p>
-			</div>
-			<div class="pop-voters">
-				<p>
-					<span>{{question.answer2.voters[0].name}}</span>
-					<span ng-if="question.answer2.voters.length > 1">, {{question.answer2.voters[1].name}}</span>
-					<span ng-if="question.answer2.voters.length > 2">, and {{question.answer2.voters.length - 2}} others</span>
-				</p>
-			</div>
-		</div>
-	</div>
-</div>
+</ion-content>
