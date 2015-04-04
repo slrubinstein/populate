@@ -33,8 +33,8 @@ function facebookFriends($q) {
 
     window.fbAsyncInit = function() {
       FB.init({
-        // appId      : '777210872316391', // h
-        appId      : '776373095733502', // l
+        appId      : '777210872316391', // h
+        // appId      : '776373095733502', // l
         xfbml      : true,
         version    : 'v2.1',
         status     : true
