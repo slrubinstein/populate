@@ -3,19 +3,16 @@
 <div class="question-template">
 	<div class="profile-row">
 		<div class="third-col">
-			<p>{{answer.user.name}}</p>
-			<p>{{answer.test}}</p>
-			<br>
+			<p>{{answer.user.facebook.first_name}}</p>
 			<p>{{answer.user.location}}</p>
-			<br>
 			<p><a ui-sref="profile.invite">Invite Friends</a></p>
 		</div>
-		<div class="third-col">
+		<div class="third-col profile-pic">
 			<img ng-src="{{answer.pic}}">
 		</div>
 		<div class="third-col">
 			<p>People want to hear from you!</p>
-			<br>
+			<p></p>
 			<p><a ui-sref="profile.edit">Edit Profile</a></p>
 		</div>
 	</div>

@@ -1,29 +1,39 @@
 .profile-row {
 
 	.third-col {
-		display: inline-block;
-		width: 40%;
 	
+		float: left;
+		width: 33%;
+
 		&:first-child {
 			text-align: right;
 		}
 
-		&:nth-child(2) {
-			height: 100px;
+		&.profile-pic {
+			margin-top: 20px;
+			text-align: center;
 			vertical-align: bottom;
-			width: 50px;
 		}
-	
+
 		img {
 			border-radius: 50%;
 		}
 
+
+		&:last-child {
+			text-align: left;
+		}
+
+		p:nth-child(1) {
+			margin: 0;
+		}
 	}
 
 }
 
 .open-closed-row {
 
+	clear: both;
 	max-width: 400px;
 	margin-left: auto;
 	margin-right: auto;

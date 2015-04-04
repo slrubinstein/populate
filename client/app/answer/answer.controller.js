@@ -11,8 +11,6 @@ function AnswerCtrl($scope, dataService, Auth, $state,
 
 	var vm = this;
 
-	vm.test = 'test'
-
 	vm.errors = {};
 	vm.group = 'friendQuestionsActive';
 	vm.loadQuestion = loadQuestion;
